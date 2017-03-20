@@ -1,6 +1,6 @@
 site_name: Geoladris
 pages:
-- 'Inicio': index.md
+- Home: index.md
 - 'Changelog': changelog.md
 - 'Usuario - Introducción': user_intro.md
 - 'Usuario - Configuración': user_config.md
