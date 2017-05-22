@@ -14,4 +14,5 @@
 * [Contribuir](dev_contrib.md).
 * [Consejos](dev_tips.md).
 
+## Changelog
 * [Changelog](changelog.md).
