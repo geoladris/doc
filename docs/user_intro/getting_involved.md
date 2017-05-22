@@ -9,14 +9,14 @@ Una de las principales maneras de colaborar en el proyecto es desarrollando sobr
 
 Puedes revisar la documentación de desarrollo que encontrarás en el repositorio de documentación, o ir directamente al [GitHub](https://github.com/geoladris) del proyecto.
 
-Se recomienda acceder a la [Lista de Desarrolladores](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-devel() antes de comenzar con nuevos desarrollos sobre el proyecto.
+Se recomienda acceder a la [Lista de Desarrolladores](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-devel) antes de comenzar con nuevos desarrollos sobre el proyecto.
 
 ## Documentación
 Tan importante como el mismo código es la generación de una buena documentación. La documentación de Geoladris la encontrarás en este repositorio. Como en el código, cualquier puede contribuir en la documentación.
 
 ## Listas de correo
-[Lista de Usuarios](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-usuarios)
-[Lista de Desarrolladores](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-devel)
+* [Lista de Usuarios](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-usuarios)
+* [Lista de Desarrolladores](https://groups.google.com/forum/?hl=es#!forum/nfms4redd-devel)
 
 ## Soporte
 Geoladris es software libre, tu puedes hacer uso de las [cuatros libertades del software libre](https://es.wikipedia.org/wiki/Definici%C3%B3n_de_Software_Libre) pero si quieres o necesitas soporte comercial, las organizaciones que se detallan a continuación han participado activamente en el desarrollo de Geoladris.
