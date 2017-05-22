@@ -1,12 +1,13 @@
 site_name: Geoladris
 pages:
 - Home: index.md
-- 'Changelog': changelog.md
 - 'Usuario - Introducción': user_intro.md
+- 'Usuario - Instalación': user_install.md
 - 'Usuario - Configuración': user_config.md
 - 'Usuario - Despliegue': user_deploy.md
 - 'Usuario - Tutoriales y guías': user_guides.md
 - 'Desarrollador - Plugins': dev_plugins.md
 - 'Desarrollador - Contribuir': dev_contrib.md
 - 'Desarrollador - Consejos': dev_tips.md
+- 'Changelog': changelog.md
 
