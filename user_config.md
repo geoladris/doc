@@ -1,5 +1,6 @@
 # Configuración
 
+* [Configuración Inicial](initial_config.md)
 * Múltiples apps
 * Base de datos
 * Ficheros
