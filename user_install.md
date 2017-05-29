@@ -2,6 +2,6 @@
 
 Como instalar Geoladris
 
-* [Instalación](installation/installation.md)
-* [Estructura del Proyecto](installation/structure_project.md)
-* [Descargas](installation/download.md)
+* [Instalación](installation.md)
+* [Estructura del Proyecto](structure_project.md)
+* [Descargas](download.md)
