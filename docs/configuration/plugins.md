@@ -1,5 +1,7 @@
 # Configuración de los plugins
 
+Como ya se ha comentado, Geoladris está preparado para modificar su comportamiento mediante la carga de plugins. Si se visualiza la [estructura del proyecto](../installation/project_structure.md) se verá que la mayor parte de la funcionalidad se encuentra implementada mediante el desarrollo de plugins. A continuación se introduce la configuración de los diferentes plugins.
+
 La configuración de los plugins se puede especificar de dos maneras diferentes: mediante [ficheros](#ficheros-json) en el directorio de configuración o mediante una conexión a una [base de datos](#db).
 
 En ambos casos, la configuración se especifica con un objeto JSON. Cada propiedad del objeto es el nombre del _plugin_ a configurar y el valor es la configuración del plugin.
@@ -13,7 +15,7 @@ Aparte existen los siguientes psedo-módulos:
 
 Ejemplo:
 
-```json
+~~~
     {
       "base" : {
         "banner" : {
@@ -33,7 +35,7 @@ Ejemplo:
         "_enabled" : false
       }
     }
-```
+~~~
 
 De esta forma es posible no solo cambiar la configuración de un _plugin_, sino también añadir o eliminar _plugins_ para un usuario concreto con el pseudomódulo `_enabled`.
 
@@ -56,19 +58,19 @@ Para configurar los plugins desde una base de datos, dicha base de datos deberá
 - `role`: Rol autenticado. El rol `default` está reservado para la configuración pública (análogo a `public-conf.json`).
 - `conf`: Configuración de los plugins.
 
-```sql
+~~~
 CREATE TABLE geoladris.apps (app text, role text, conf json NOT NULL,
   PRIMARY KEY(app, role));
-```
+~~~
 
 También es posible configurar las propiedades y los mensajes de la aplicación desde la base de datos con las siguientes tablas:
 
-```sql
+~~~
 CREATE TABLE geoladris.props (app text, key text, value text NOT NULL,
   PRIMARY KEY(app, key));
 CREATE TABLE geoladris.messages (app text, lang varchar(5), key text, value text NOT NULL,
   PRIMARY KEY(app, lang, key));
-```
+~~~
 
 La conexión a la base de datos se obtiene de la siguiente manera:
 
