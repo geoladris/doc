@@ -4,7 +4,7 @@
 
 * [Introducción](user_intro/user_intro.md).
 * [Instalación](installation/installation.md).
-* [Configuración](user_config.md).
+* [Configuración](configuration/initial_config.md).
 * [Despliegue](user_deploy.md).
 * [Tutoriales y guías](user_guides.md).
 

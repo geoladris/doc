@@ -17,7 +17,7 @@ El portal es personalizable a las necesidades de cada país, tanto en su aspecto
 
 En nuestro caso, una vez instalado el portal se obtendrá el siguiente aspecto inicial:
 
-![](_images/portal_initial_config.png)
+![](../_images/portal_initial_config.png)
 
 El Portal es accesible en:
 
@@ -301,7 +301,7 @@ Define la estructura de capas del proyecto. Consiste en un elemento JSON con cua
 
 Veamos cómo modificar la imagen de fondo, bandera y título de la cabecera del portal:
 
-![](_images/header.png)
+![](../_images/header.png)
 
 Partiendo del PORTAL_CONFIG_DIR (generalmente en /var/portal):
 

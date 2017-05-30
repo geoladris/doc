@@ -9,7 +9,9 @@ pages:
     - Instalación: installation/installation.md
     - Estructura del Proyecto: installation/project_structure.md
     - Descargas: installation/download.md
-- 'Configuración': user_config.md
+- 'Configuración':
+    - Configuración inicial: configuration/initial_config.md
+    - Supuestos prácticos: configuration/config_exercices.md
 - 'Usuario - Despliegue': user_deploy.md
 - 'Usuario - Tutoriales y guías': user_guides.md
 - 'Desarrollador - Plugins': dev_plugins.md
