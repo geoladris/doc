@@ -1,4 +1,5 @@
 site_name: Geoladris
+theme: 'material'
 pages:
 - Home: index.md
 - Introducción:
@@ -11,7 +12,7 @@ pages:
     - Descargas: installation/download.md
 - 'Configuración':
     - Configuración inicial: configuration/initial_config.md
-    - Supuestos prácticos: configuration/config_exercices.md
+    - Plugins: configuration/plugins.md
 - 'Usuario - Despliegue': user_deploy.md
 - 'Usuario - Tutoriales y guías': user_guides.md
 - 'Desarrollador - Plugins': dev_plugins.md
