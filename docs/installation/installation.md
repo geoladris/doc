@@ -34,14 +34,14 @@ Una vez instalado Tomcat en la máquina comprobaremos que se encuentra corriendo
 
 En esa URL deberemos ver la página de inicio de Tomcat:
 
-![Página de inicio de Tomcat](_images/tomcat.png)
+![Página de inicio de Tomcat](../_images/tomcat.png)
 
 ## Instalación de GeoLadris
 Antes de proceder con la instalación de GeoLadris recomendamos revisar la documentación sobre la [estructura del proyecto](structure_project.md).
 
 Para tener disponible GeoLadris, haremos una instalación de la app [demo](https://github.com/geoladris/apps/tree/master/demo).
 
-Deberemos tener instalado Tomcat como se ha comentado anteriormente en este mismo capítulo. Descargaremos la última vesrión disponible de GeoLadris. Para ello podremos acceder a la [sección de descargas del software](download.md).
+Deberemos tener instalado Tomcat como se ha comentado anteriormente en este mismo capítulo. Descargaremos la última vesrión disponible de GeoLadris. Para ello podremos acceder a la [sección de descargas del software](../download.md).
 
 Una vez descargado el archivo *demo-6.0.0.war*, renombraremos este archivo a *demo.war* y lo moveremos a la carpeta `$TOMCAT_HOME/webapps` de nuestra instalación de Tomcat.
 

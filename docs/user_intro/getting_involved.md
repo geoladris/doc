@@ -21,7 +21,7 @@ Tan importante como el mismo código es la generación de una buena documentaci�
 ## Soporte
 Geoladris es software libre, tu puedes hacer uso de las [cuatros libertades del software libre](https://es.wikipedia.org/wiki/Definici%C3%B3n_de_Software_Libre) pero si quieres o necesitas soporte comercial, las organizaciones que se detallan a continuación han participado activamente en el desarrollo de Geoladris.
 
-[![CSGIS](_images/logo_CSGIS.png "CSGIS")](http://www.csgis.de/)
-[![geomati.co](_images/logo_geomatico.png "geomati.co")](http://geomati.co)
+[![CSGIS](../_images/logo_CSGIS.png "CSGIS")](http://www.csgis.de/)
+[![geomati.co](../_images/logo_geomatico.png "geomati.co")](http://geomati.co)
 
 Ánimo, haz que tu organización también sea partícipe

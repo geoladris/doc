@@ -1,9 +1,15 @@
 site_name: Geoladris
 pages:
 - Home: index.md
-- 'Usuario - Introducción': user_intro.md
-- 'Usuario - Instalación': user_install.md
-- 'Usuario - Configuración': user_config.md
+- Introducción:
+    - Introducción: user_intro/user_intro.md
+    - Participación: user_intro/getting_involved.md
+    - Licencia: user_intro/license.md
+- Instalación:
+    - Instalación: installation/installation.md
+    - Estructura del Proyecto: installation/project_structure.md
+    - Descargas: installation/download.md
+- 'Configuración': user_config.md
 - 'Usuario - Despliegue': user_deploy.md
 - 'Usuario - Tutoriales y guías': user_guides.md
 - 'Desarrollador - Plugins': dev_plugins.md
