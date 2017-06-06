@@ -44,6 +44,10 @@ Además es importante destacar que esta configuración pública o base puede ser
 
 **Nota**: los usuarios y roles son gestionados por los *plugins*. Actualmente en Geoladris existe un plugin `auth` encargado de la autenticación.
 
+
+En el Webinar de Programación se encuentra algunos ejemplos de configuración de plugins.
+<a href="https://geoladris.github.io/webinar-programacion/programmer/#hola-geoladris">Ejemplo de Configuración de plugins</a>
+
 ## <a name="ficheros-json"></a>Ficheros `.json`
 
 En el caso de configurar los plugins mediante ficheros, bastará con crear un fichero `public-conf.json` en el directorio de configuración, con el objeto JSON descrito en el apartado anterior-
