@@ -461,6 +461,8 @@
 <p>De esta forma es posible no solo cambiar la configuración de un <em>plugin</em>, sino también añadir o eliminar <em>plugins</em> para un usuario concreto con el pseudomódulo <code>_enabled</code>.</p>
 <p>Además es importante destacar que esta configuración pública o base puede ser adaptada en función del usuario que accede a la plataforma. Para ello, habrá que especificar un objeto JSON diferente por cada rol que pueda autenticarse en la aplicación. El formato de esos objetos JSON es el mismo que el descrito anteriormente.</p>
 <p><strong>Nota</strong>: los usuarios y roles son gestionados por los <em>plugins</em>. Actualmente en Geoladris existe un plugin <code>auth</code> encargado de la autenticación.</p>
+<p>En el Webinar de Programación se encuentra algunos ejemplos de configuración de plugins.
+<a href="https://geoladris.github.io/webinar-programacion/programmer/#hola-geoladris">Ejemplo de Configuración de plugins</a></p>
 <h2 id="ficheros-json"><a name="ficheros-json"></a>Ficheros <code>.json</code></h2>
 <p>En el caso de configurar los plugins mediante ficheros, bastará con crear un fichero <code>public-conf.json</code> en el directorio de configuración, con el objeto JSON descrito en el apartado anterior-</p>
 <p>Si además se desea adaptar la configuración en función del usuario , habrá que añadir ficheros <code>role_conf/&lt;rol&gt;.json</code> dentro del directorio de configuración. Cada uno de los ficheros contiene la configuración específica del rol del usuario. El contenido de los ficheros sigue el mismo formato que <code>public-conf.json</code>.</p>
