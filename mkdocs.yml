@@ -13,6 +13,7 @@ pages:
 - 'Configuración':
     - Configuración inicial: configuration/initial_config.md
     - Plugins: configuration/plugins.md
+    - Migración de Versiones: configuration/migrating.md
 - 'Usuario - Despliegue': user_deploy.md
 - 'Usuario - Tutoriales y guías': user_guides.md
 - 'Desarrollador - Plugins': dev_plugins.md
