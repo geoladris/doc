@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,19 @@
         
     <url>
      <loc>/user_intro/user_intro/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/user_intro/getting_involved/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/user_intro/license/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,19 +35,19 @@
         
     <url>
      <loc>/installation/installation/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/installation/project_structure/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/installation/download/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -57,13 +57,19 @@
         
     <url>
      <loc>/configuration/initial_config/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/configuration/plugins/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/configuration/migrating/</loc>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -72,7 +78,7 @@
     
     <url>
      <loc>/user_deploy/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -80,7 +86,7 @@
     
     <url>
      <loc>/user_guides/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -88,7 +94,7 @@
     
     <url>
      <loc>/dev_plugins/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -96,7 +102,7 @@
     
     <url>
      <loc>/dev_contrib/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -104,7 +110,7 @@
     
     <url>
      <loc>/dev_tips/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -112,7 +118,7 @@
     
     <url>
      <loc>/changelog/</loc>
-     <lastmod>2017-06-06</lastmod>
+     <lastmod>2017-06-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
