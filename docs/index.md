@@ -2,16 +2,22 @@
 
 ## Usuario
 
-* [Introducción](user_intro/user_intro.md).
-* [Instalación](installation/installation.md).
-* [Configuración](configuration/initial_config.md).
-* [Despliegue](user_deploy.md).
-* [Tutoriales y guías](user_guides.md).
+* [Guía rápida](user/quickstart.md).
+* [Configuración de aplicaciones](user/config.md).
+* [Creación de aplicaciones](user/create.md).
+* [Migración](user/migrate.md).
 
 ## Desarrollador
 
-* [Plugins](dev_plugins.md).
-* [Contribuir](dev_contrib.md).
-* [Consejos](dev_tips.md).
+* [Código fuente](dev/source_code.md).
+* [Guía rápida](dev/quickstart.md).
+* [Plugins](dev/plugins.md).
+* [Aplicaciones](dev/apps.md).
+* [Contribuir](dev/contribute.md).
+* [Desarrolar con Eclipse](dev/eclipse.md).
 
-* [Changelog](changelog.md).
+## Referencia
+
+* [Registro de cambios](ref/changelog.md).
+* [Plugins](ref/plugins.md).
+* [Eventos](ref/events.md).

@@ -1,22 +1,21 @@
 site_name: Geoladris
+theme: 'material'
 pages:
 - Home: index.md
-- Introducción:
-    - Introducción: user_intro/user_intro.md
-    - Participación: user_intro/getting_involved.md
-    - Licencia: user_intro/license.md
-- Instalación:
-    - Instalación: installation/installation.md
-    - Estructura del Proyecto: installation/project_structure.md
-    - Descargas: installation/download.md
-- 'Configuración':
-    - Configuración inicial: configuration/initial_config.md
-    - Plugins: configuration/plugins.md
-    - Migración de Versiones: configuration/migrating.md
-- 'Usuario - Despliegue': user_deploy.md
-- 'Usuario - Tutoriales y guías': user_guides.md
-- 'Desarrollador - Plugins': dev_plugins.md
-- 'Desarrollador - Contribuir': dev_contrib.md
-- 'Desarrollador - Consejos': dev_tips.md
-- 'Changelog': changelog.md
+- Usuario:
+    - 'Guía rápida': user/quickstart.md
+    - 'Configuración de aplicaciones': user/config.md
+    - 'Creación de aplicaciones': user/create.md
+    - 'Migración': user/migrate.md
+- Desarrollador:
+    - 'Código fuente': dev/source_code.md
+    - 'Guía rápida': dev/quickstart.md
+    - Plugins: dev/plugins.md
+    - Aplicaciones: dev/apps.md
+    - Contribuir: dev/contribute.md
+    - 'Desarrollar con Eclipse': dev/eclipse.md
+- Referencia:
+    - 'Registro de cambios': ref/changelog.md
+    - Plugins: ref/plugins.md
+    - Eventos: ref/events.md
 
