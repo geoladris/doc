@@ -9,11 +9,11 @@ Para migrar a la versión 6.x bastará con crear un subdirectorio con el nombre 
 
 Por ejemplo, para un plugin empaquetado como jar, en la versión 5.0.0 tendríamos algo como esto:
 
-![](../_images/plugin-jar-5.x.png)
+![](_images/plugin-jar-5.x.png)
 
 que deberíamos transformar a:
 
-![](../_images/plugin-jar-6.x.png)
+![](_images/plugin-jar-6.x.png)
 
 
 #### <a name="ModuleConfigurationProviders"></a>`ModuleConfigurationProviders`
