@@ -29,12 +29,6 @@
      <changefreq>daily</changefreq>
     </url>
         
-    <url>
-     <loc>/user/migrate/</loc>
-     <lastmod>2017-08-02</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
     
 
     
@@ -59,6 +53,12 @@
         
     <url>
      <loc>/dev/apps/</loc>
+     <lastmod>2017-08-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/dev/migrate/</loc>
      <lastmod>2017-08-02</lastmod>
      <changefreq>daily</changefreq>
     </url>
