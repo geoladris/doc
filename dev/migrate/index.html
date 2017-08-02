@@ -548,9 +548,9 @@
 <p>Anteriormente, los recursos de un plugin empaquetado como jar estaban directamente dentro de <code>geoladris</code>, por lo que un plugin de este tipo que funciona con la versión 5.0.0 no será válido para la versión 6.0.0.</p>
 <p>Para migrar a la versión 6.x bastará con crear un subdirectorio con el nombre de nuestro plugin dentro de <code>geoladris</code> y mover todos los recursos ahí.</p>
 <p>Por ejemplo, para un plugin empaquetado como jar, en la versión 5.0.0 tendríamos algo como esto:</p>
-<p><img alt="" src="../_images/plugin-jar-5.x.png" /></p>
+<p><img alt="" src="../../_images/plugin-jar-5.x.png" /></p>
 <p>que deberíamos transformar a:</p>
-<p><img alt="" src="../_images/plugin-jar-6.x.png" /></p>
+<p><img alt="" src="../../_images/plugin-jar-6.x.png" /></p>
 <h4 id="moduleconfigurationproviders"><a name="ModuleConfigurationProviders"></a><code>ModuleConfigurationProviders</code></h4>
 <p>En el caso de que se hayan desarrollado <code>ModuleConfigurationProvider</code> propios, estos deben añadirse a la aplicación de manera distinta. Anteriormente se añadían a un objeto <code>Config</code> en un <code>ServletContextListener</code>:</p>
 <pre><code class="java">@Override
