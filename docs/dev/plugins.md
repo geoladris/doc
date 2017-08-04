@@ -21,10 +21,12 @@ Un plugin cliente es un directorio que contiene:
 
 		La configuración se puede obtener en el módulo con la pseudodependencia `module`:
 
-			define([ "module" ], function(module) {
-			  var configuration = module.config();
-  			  ...
+			:::js
+            define([ "module" ], function(module) {
+              var configuration = module.config();
+              ...
             });
+
 
 
 
