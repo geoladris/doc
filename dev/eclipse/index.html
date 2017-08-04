@@ -291,6 +291,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../releases/" title="Publicación" class="md-nav__link">
+      Publicación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../contribute/" title="Contribuir" class="md-nav__link">
       Contribuir
     </a>
@@ -335,13 +347,6 @@
         <li class="md-nav__item">
   <a href="#formateando-el-codigo" title="Formateando el código" class="md-nav__link">
     Formateando el código
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trucos-utiles" title="Trucos útiles" class="md-nav__link">
-    Trucos útiles
   </a>
   
 </li>
@@ -452,13 +457,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#trucos-utiles" title="Trucos útiles" class="md-nav__link">
-    Trucos útiles
-  </a>
-  
-</li>
-      
       
       
     </ul>
@@ -477,14 +475,17 @@
                   <h1>Desarrollar con Eclipse</h1>
                 
                 <h2 id="configurar-el-workspace">Configurar el workspace</h2>
-<blockquote>
-<p>TODO</p>
-</blockquote>
+<p>Para importar los proyectos de Geoladris, basta con importarlos como proyectos Maven (<em>Project Explorer</em>, <em>Import &gt; Import... &gt; Maven &gt; Existing Maven Projects</em>).</p>
+<p>Para el caso particular de los plugins, estos contienen directorios <code>node</code> y <code>node_modules</code> con una gran cantidad de recursos que ralentizan Eclipse. Para ignorar esos directorios podemos ejecutar el siguiente script bash:</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>find geoladris/plugins -name .project<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  sed -i <span class="s2">&quot;s#&lt;/projectDescription&gt;#&lt;filteredResources&gt;&lt;filter&gt;&lt;id&gt;`date +%s0000`&lt;/id&gt;&lt;name&gt;&lt;/name&gt;&lt;type&gt;10&lt;/type&gt;&lt;matcher&gt;&lt;id&gt;org.eclipse.ui.ide.multiFilter&lt;/id&gt;&lt;arguments&gt;1.0-name-matches-false-false-node*&lt;/arguments&gt;&lt;/matcher&gt;&lt;/filter&gt;&lt;/filteredResources&gt;&lt;/projectDescription&gt;#g&quot;</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">done</span>
+</pre></div>
+
+
 <h2 id="formateando-el-codigo">Formateando el código</h2>
-<blockquote>
-<p>TODO Java</p>
-</blockquote>
-<p>Existe un <a href="../geoladris-style-js.xml">fichero de estilo</a> para Eclipse con algunas de las <a href="../contribute/#formateo-del-codigo">reglas</a> de formateo de JavaScript  que utiliza el proyecto.</p>
+<p>Para Java podemos utilizar el <a href="https://google.github.io/styleguide/eclipse-java-google-style.xml">fichero de estilo</a> de Google.</p>
+<p>Para JavaScript existe un <a href="../geoladris-style-js.xml">fichero de estilo</a> propio con algunas de las <a href="../contribute/#formateo-del-codigo">reglas</a> de formateo que utiliza el proyecto.</p>
 <p>Para aplicar los ficheros de estilos en Eclipse basta con descargar el fichero XML correspondiente e importarlo en Eclipse (<em>Preferences</em> -&gt; <em>&lt;lang&gt;</em> -&gt; <em>Code Style</em> -&gt; <em>Formatter</em> -&gt; <em>Import...</em>).</p>
 <p>También es posible configurar JSHint en Eclipse de forma que muestre avisos para algunos (no todos) los errores de <code>eslint</code>:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -511,14 +512,6 @@
     <span class="nt">&quot;it&quot;</span> <span class="p">:</span> <span class="kc">true</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
-
-<h2 id="trucos-utiles">Trucos útiles</h2>
-<p><strong> Script bash para filtrar los recursos <code>node*</code> para los plugins</strong>:</p>
-<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>find geoladris/plugins -name .project<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
-  sed -i <span class="s2">&quot;s#&lt;/projectDescription&gt;#&lt;filteredResources&gt;&lt;filter&gt;&lt;id&gt;`date +%s0000`&lt;/id&gt;&lt;name&gt;&lt;/name&gt;&lt;type&gt;10&lt;/type&gt;&lt;matcher&gt;&lt;id&gt;org.eclipse.ui.ide.multiFilter&lt;/id&gt;&lt;arguments&gt;1.0-name-matches-false-false-node*&lt;/arguments&gt;&lt;/matcher&gt;&lt;/filter&gt;&lt;/filteredResources&gt;&lt;/projectDescription&gt;#g&quot;</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="k">done</span>
 </pre></div>
                 
                   

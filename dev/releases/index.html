@@ -16,7 +16,7 @@
     
     
       
-        <title>Código fuente - Geoladris</title>
+        <title>Publicación - Geoladris</title>
       
     
     
@@ -77,7 +77,7 @@
                 </span>
               
             
-            Código fuente
+            Publicación
           
         </span>
       </div>
@@ -229,64 +229,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Código fuente
-      </label>
-    
-    <a href="./" title="Código fuente" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../source_code/" title="Código fuente" class="md-nav__link">
       Código fuente
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tecnologias" title="Tecnologías" class="md-nav__link">
-    Tecnologías
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
-    Integración continua
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
-    Depurando JavaScript en el navegador
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git" title="Git" class="md-nav__link">
-    Git
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -342,11 +289,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../releases/" title="Publicación" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="Publicación" class="md-nav__link md-nav__link--active">
       Publicación
     </a>
+    
   </li>
 
         
@@ -454,41 +408,6 @@
   
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tecnologias" title="Tecnologías" class="md-nav__link">
-    Tecnologías
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
-    Integración continua
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
-    Depurando JavaScript en el navegador
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#git" title="Git" class="md-nav__link">
-    Git
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -500,70 +419,23 @@
               
                 
                 
-                  <h1>Código fuente</h1>
+                  <h1>Publicación</h1>
                 
-                <h2 id="tecnologias">Tecnologías</h2>
-<blockquote>
-<p>TODO</p>
+                <blockquote>
+<p>TODO Frecuencia de publicaciones</p>
+<p>TODO Pasos:</p>
 <ul>
-<li>yarn</li>
-<li>Maven (incluso para plugins cliente). mvn verify para probar todo.</li>
-<li>RequireJS</li>
-<li>...</li>
+<li>Reminder a la lista x tiempo antes.</li>
+<li>Crear la rama release-* en el repo</li>
+<li>Fixes de última hora</li>
 </ul>
-</blockquote>
-<h2 id="integracion-continua">Integración continua</h2>
-<p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
-<p>La configuración debe garantizar que se pasan todos los tests y que se hace un <code>mvn deploy</code> de todos los artefactos que componen Geoladris.</p>
-<p>El deploy de Maven requiere autenticación. Para proporcionarla hay un fichero <code>deploy-settings.xml</code> en la raíz del repositorio que utiliza variables de entorno para las credenciales:</p>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;settings</span>
-        <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span>
-        <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-        <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;servers&gt;</span>
-        <span class="nt">&lt;server&gt;</span>
-            <span class="nt">&lt;id&gt;</span>geoladris-releases<span class="nt">&lt;/id&gt;</span>
-            <span class="nt">&lt;username&gt;</span>${env.GEOLADRIS_DEPLOY_USER}<span class="nt">&lt;/username&gt;</span>
-            <span class="nt">&lt;password&gt;</span>${env.GEOLADRIS_DEPLOY_PASS}<span class="nt">&lt;/password&gt;</span>
-        <span class="nt">&lt;/server&gt;</span>
-        <span class="nt">&lt;server&gt;</span>
-            <span class="nt">&lt;id&gt;</span>geoladris-snapshots<span class="nt">&lt;/id&gt;</span>
-            <span class="nt">&lt;username&gt;</span>${env.GEOLADRIS_DEPLOY_USER}<span class="nt">&lt;/username&gt;</span>
-            <span class="nt">&lt;password&gt;</span>${env.GEOLADRIS_DEPLOY_PASS}<span class="nt">&lt;/password&gt;</span>
-        <span class="nt">&lt;/server&gt;</span>
-    <span class="nt">&lt;/servers&gt;</span>
-<span class="nt">&lt;/settings&gt;</span>
-</pre></div>
-
-
-<p>Basta con configurar Maven en el fichero <code>.travis.yml</code> para que utilice este fichero:</p>
-<div class="codehilite"><pre><span></span>after_success:
-  - mvn deploy -s deploy-settings.xml
-</pre></div>
-
-
-<p>Por último, hay que configurar las variables de entorno en la interfaz web de Travis.</p>
-<h2 id="depurando-javascript-en-el-navegador">Depurando JavaScript en el navegador</h2>
-<p>Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del <a href="../apps/">empaquetado</a>.</p>
-<p>También es posible utilizar recursos <em>no</em> minificados añadiendo el parámetro <code>debug=true</code> a la petición HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.</p>
-<blockquote>
-<p>TODO Secuencia de inicio de la aplicación (customization, <code>modules-loaded</code>, <code>layers-loaded</code>, etc.).</p>
-</blockquote>
-<h2 id="git">Git</h2>
-<blockquote>
-<p>TODO</p>
-<ul>
-<li>Repositorios.</li>
-<li>Modelo de ramas. Revisar doc:<ul>
-<li><a href="http://docs.geoserver.org/stable/en/developer/source.html">GeoServer</a></li>
-<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow">gitflow</a></li>
-<li><a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">cactus</a></li>
-</ul>
-</li>
-<li>Actualizar versiones (semántico) cuando se integra una nueva feature. De esta forma al <a href="../releases/">publicar</a> ya tenemos la versión que toca.</li>
-<li>Actualizar changelog cuand se hace cualquier cambio. De esta forma al <a href="../releases/">publicar</a> ya tenemos el changelog listo.</li>
-</ul>
+<p>Cuando la rama está lista:
+<em> bump versions
+</em> Actualizar doc
+<em> Crear version en readthedocs para la rama de la doc de la versión
+</em> git tag
+<em> Mezclar ramas/cherry-pick
+</em> Avisar en la lista de correo</p>
 </blockquote>
                 
                   
@@ -583,7 +455,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../user/create/" title="Creación de aplicaciones" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../migrate/" title="Migración" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -592,19 +464,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Creación de aplicaciones
+                Migración
               </span>
             </div>
           </a>
         
         
-          <a href="../quickstart/" title="Guía rápida" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../contribute/" title="Contribuir" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Guía rápida
+                Contribuir
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

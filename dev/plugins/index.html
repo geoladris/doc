@@ -278,29 +278,49 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#descripcion" title="Descripción" class="md-nav__link">
+    Descripción
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#servidor" title="Servidor" class="md-nav__link">
     Servidor
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#cliente" title="Cliente" class="md-nav__link">
     Cliente
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#hibridos" title="Híbridos" class="md-nav__link">
     Híbridos
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#plugins-oficiales" title="Plugins oficiales" class="md-nav__link">
     Plugins oficiales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-la-aplicacion-mediante-programacion" title="Configurar la aplicación mediante programación" class="md-nav__link">
+    Configurar la aplicación mediante programación
   </a>
   
 </li>
@@ -334,6 +354,18 @@
   <li class="md-nav__item">
     <a href="../migrate/" title="Migración" class="md-nav__link">
       Migración
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../releases/" title="Publicación" class="md-nav__link">
+      Publicación
     </a>
   </li>
 
@@ -446,29 +478,49 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#descripcion" title="Descripción" class="md-nav__link">
+    Descripción
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#servidor" title="Servidor" class="md-nav__link">
     Servidor
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#cliente" title="Cliente" class="md-nav__link">
     Cliente
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#hibridos" title="Híbridos" class="md-nav__link">
     Híbridos
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#plugins-oficiales" title="Plugins oficiales" class="md-nav__link">
     Plugins oficiales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-la-aplicacion-mediante-programacion" title="Configurar la aplicación mediante programación" class="md-nav__link">
+    Configurar la aplicación mediante programación
   </a>
   
 </li>
@@ -490,11 +542,12 @@
                 
                   <h1>Plugins</h1>
                 
-                <p>Las aplicaciones Geoladris utilizan una arquitectura cliente/servidor. El servidor utiliza la API Servlet mientras que el cliente utiliza HTML+CSS+Javascript.</p>
+                <h2 id="descripcion">Descripción</h2>
+<p>Las aplicaciones Geoladris utilizan una arquitectura cliente/servidor. El servidor utiliza la API Servlet mientras que el cliente utiliza HTML+CSS+Javascript.</p>
 <p>Podemos encontrar dos tipos básicos de plugins: servidor y cliente.</p>
-<h2 id="servidor">Servidor</h2>
+<h3 id="servidor">Servidor</h3>
 <p>Un plugin servidor es un proyecto Java que aprovecha la <a href="https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf">API Servlet 3.1</a> en el servidor. Es suficiente tener un paquete <code>.jar</code> en el <em>classpath</em> que contenga un fichero <code>web-fragment.xml</code> con los <em>servlets</em>, filtros, etc. a utilizar por el plugin.</p>
-<h2 id="cliente">Cliente</h2>
+<h3 id="cliente">Cliente</h3>
 <p>Un plugin cliente es un directorio que contiene:</p>
 <ul>
 <li><code>src</code>: Subdirectorio con módulos RequireJS (<code>.js</code>) y/o estilos (<code>.css</code>).</li>
@@ -527,7 +580,7 @@ Hay que tener en cuenta que el lugar donde se instalen los módulos afecta a la 
 </li>
 </ul>
 <p>Adicionalmente puede tener otros recursos propios de cualquier proyecto JavaScript (<code>karma.conf.js</code>, <code>test</code>, <code>yarn.lock</code>, ...).</p>
-<h2 id="hibridos">Híbridos</h2>
+<h3 id="hibridos">Híbridos</h3>
 <p>Proyectos que contienen ambos tipos de recurso (Java y JavaScript).</p>
 <p>Para incluir <a href="https://github.com/geoladris/plugins/blob/js_deps/pom.xml#L68">recursos</a> correctamente en el .jar.</p>
 <p>Para empaquetar recursos correctamente en el <a href="https://github.com/geoladris/plugins/blob/js_deps/base/package.json#L10">package.json</a>.</p>
@@ -542,6 +595,14 @@ Hay que tener en cuenta que el lugar donde se instalen los módulos afecta a la 
 <li><code>yarn.lock</code>: Las dependencias son manejadas con <code>yarn</code>. Se considera una <a href="https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all/">buena práctica</a> incluir este fichero en el repositorio.</li>
 <li><code>pom.xml</code>: Los plugins cliente también se gestionan con Maven (gracias al plugin Maven <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a>) de forma que se pueden ejecutar todos los tests, tanto servidor como cliente, con <code>mvn test</code>.</li>
 </ul>
+<h2 id="configurar-la-aplicacion-mediante-programacion">Configurar la aplicación mediante programación</h2>
+<p>En ocasiones la configuración de un plugin depende de un valor de la base de datos o, en general, de aspectos que se tienen que comprobar por programación. ¿De qué manera es posible hacer llegar estos valores a un elemento de la interfaz de usuario? La solución son los proveedores de configuración.</p>
+<p>Los proveedores de configuración son instancias que implementan la interfaz <code>org.geoladris.config.PluginConfigProvider</code> que permiten añadir elementos a la configuración de los módulos de la misma manera que se haría manualmente modificando el fichero <code>public-conf.json</code>.</p>
+<p>Para que la instancia contribuya a la configuración hay que registrarla en la instancia <code>Config</code>, por lo que normalmente se registrará en un <code>ServletContextListener</code> con un código similar al siguiente:</p>
+<div class="codehilite"><pre><span></span><span class="n">ServletContext</span> <span class="n">servletContext</span> <span class="o">=</span> <span class="n">sce</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+<span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="o">(</span><span class="n">Config</span><span class="o">)</span> <span class="n">servletContext</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">Geoladris</span><span class="o">.</span><span class="na">ATTR_CONFIG</span><span class="o">);</span>
+<span class="n">config</span><span class="o">.</span><span class="na">addPluginConfigProvider</span><span class="o">(</span><span class="k">new</span> <span class="n">MiConfigProvider</span><span class="o">());</span>
+</pre></div>
                 
                   
                 
