@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -273,9 +273,55 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Aplicaciones
+      </label>
+    
     <a href="./" title="Aplicaciones" class="md-nav__link md-nav__link--active">
       Aplicaciones
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-una-aplicacion" title="Estructura de una aplicación" class="md-nav__link">
+    Estructura de una aplicación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definir-dependencias" title="Definir dependencias" class="md-nav__link">
+    Definir dependencias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empaquetar" title="Empaquetar" class="md-nav__link">
+    Empaquetar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servir" title="Servir" class="md-nav__link">
+    Servir
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -396,6 +442,41 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-una-aplicacion" title="Estructura de una aplicación" class="md-nav__link">
+    Estructura de una aplicación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definir-dependencias" title="Definir dependencias" class="md-nav__link">
+    Definir dependencias
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empaquetar" title="Empaquetar" class="md-nav__link">
+    Empaquetar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servir" title="Servir" class="md-nav__link">
+    Servir
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -409,20 +490,49 @@
                 
                   <h1>Aplicaciones</h1>
                 
-                <ul>
-<li>Mención a <code>geoladris_build.sh</code>.</li>
-<li>Estructura de directorios</li>
-<li>
-<p>Dependencias:</p>
+                <blockquote>
+<p>TODO mención a <code>geoladris_build.sh</code>.</p>
+</blockquote>
+<h2 id="estructura-de-una-aplicacion">Estructura de una aplicación</h2>
+<blockquote>
+<p>TODO proyecto Java, pom.xml, web.xml, etc.</p>
+</blockquote>
+<h2 id="definir-dependencias">Definir dependencias</h2>
+<blockquote>
+<p>TODO en pom.xml y package.json</p>
+</blockquote>
+<h2 id="empaquetar">Empaquetar</h2>
+<p>El <code>core</code> de Geoladris se encarga de empaquetar todos los recursos tanto Java (servlets, filtros, listeners,...) como JavaScript (módulos, estilos, dependencias, etc. a <code>src/main/webapp</code> para empaquetarlos dentro del war y servirlos con Tomcat) y minificar los recursos estáticos.</p>
+<p>Los <strong>plugins JavaScript</strong> se gestionan con herramientas de JavaScript. El flujo de trabajo es:</p>
 <ul>
-<li>pom.xml</li>
-<li>package.json</li>
+<li>Incluir plugins en <code>dependencies</code> dentro del <code>package.json</code>.</li>
+<li><code>yarn install</code> para gestionar todas las dependencias.</li>
+<li><code>gl-build-app.js</code>. Es un script propio de <code>core</code> que:</li>
+<li>Copia los plugins definidos en la opción <code>dependencies</code> del <code>package.json</code> dentro de <code>src/main/webapp</code>; también copia las dependencias (<code>*.js</code> y <code>*.css</code>).</li>
+<li>Genera el fichero <code>app.min.css</code> con  todos los estilos (de menos a más prioridad: dependencias, <code>src</code> y <code>css</code>).</li>
+<li>Genera el fichero <code>main.js</code> de RequireJS que se sirve en la aplicación final (solo con <code>debug=true</code>).</li>
+<li>Genera el fichero <code>index.html</code>.</li>
+<li>Genera un fichero <code>build.js</code> para minificar módulos RequireJS, teniendo en cuenta la configuración de <code>requirejs</code> en los <code>geoladris.json</code> de los plugins.</li>
+<li><code>r.js -o build.js</code>. Genera <code>src/main/webapp/app.min.js</code> con la minificación de los recursos JavaScript a partir del <code>build.js</code> generado por <code>gl-build-app.js</code>.</li>
 </ul>
-</li>
-<li>
-<p>mvn package</p>
-</li>
+<p>Los <strong>plugins Java</strong> se gestionan simplemente incluyéndolos como dependencias en el <code>pom.xml</code>.</p>
+<p>El build de plugins JavaScript se incluye como parte del <a href="https://github.com/geoladris/apps/blob/js_deps/demo/pom.xml#L119">build</a> de Maven con un plugin. Por tanto, basta con hacer <code>mvn package</code> para empaquetarlo todo.</p>
+<h2 id="servir">Servir</h2>
+<p>Una vez desplegada la aplicación <code>.war</code> en Tomcat, el <code>core</code> de Geoladris también se encarga de servir todos los recursos estáticos (plugins empaquetados en el war, plugins en el directorio de configuración, ficheros estáticos en el directorio de configuración,...) y dinámicos (<code>config.js</code>, ...). Son los siguientes:</p>
+<p>Recursos estáticos gestionados directamente por Tomcat (por estar en <code>src/main/webapp</code>):</p>
+<ul>
+<li><code>src/main/webapp/app.min.js</code></li>
+<li><code>src/main/webapp/app.min.css</code></li>
+<li><code>src/main/webapp/index.html</code></li>
+<li><code>src/main/webapp/*.js</code></li>
+<li><code>src/main/webapp/geoladris/*</code></li>
 </ul>
+<p>Recursos estáticos fuera del <code>war</code>. Configurado automáticamente para Tomcat 8.x y 9.x:</p>
+<ul>
+<li><code>&lt;config_dir&gt;/plugins/</code>. Bajo el path <code>/plugins/*</code>.</li>
+<li><code>&lt;config_dir&gt;/static/</code>. Bajo el path <code>/static/*</code>. Inhabilita <code>src/main/webapp/static</code>.</li>
+</ul>
+<p><code>config.js</code> (con un servlet), que es dinámico porque puede depender, por ejemplo, del usuario.</p>
                 
                   
                 
@@ -492,7 +602,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
+      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>

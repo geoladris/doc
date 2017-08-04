@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -189,9 +189,83 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Configuración de aplicaciones
+      </label>
+    
     <a href="./" title="Configuración de aplicaciones" class="md-nav__link md-nav__link--active">
       Configuración de aplicaciones
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#directorio-de-configuracion" title="Directorio de configuración" class="md-nav__link">
+    Directorio de configuración
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-global" title="Configuración global" class="md-nav__link">
+    Configuración global
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacion-y-configuracion-especifica-de-usuario" title="Autenticación y configuración específica de usuario" class="md-nav__link">
+    Autenticación y configuración específica de usuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traducciones" title="Traducciones" class="md-nav__link">
+    Traducciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadir-plugins-despues-de-desplegar" title="Añadir plugins después de desplegar" class="md-nav__link">
+    Añadir plugins después de desplegar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-estaticos" title="Recursos estáticos" class="md-nav__link">
+    Recursos estáticos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config_dirportalproperties" title="&lt;config_dir&gt;/portal.properties" class="md-nav__link">
+    &lt;config_dir&gt;/portal.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-cache" title="Configurar caché" class="md-nav__link">
+    Configurar caché
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -396,6 +470,69 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#directorio-de-configuracion" title="Directorio de configuración" class="md-nav__link">
+    Directorio de configuración
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-global" title="Configuración global" class="md-nav__link">
+    Configuración global
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacion-y-configuracion-especifica-de-usuario" title="Autenticación y configuración específica de usuario" class="md-nav__link">
+    Autenticación y configuración específica de usuario
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traducciones" title="Traducciones" class="md-nav__link">
+    Traducciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadir-plugins-despues-de-desplegar" title="Añadir plugins después de desplegar" class="md-nav__link">
+    Añadir plugins después de desplegar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-estaticos" title="Recursos estáticos" class="md-nav__link">
+    Recursos estáticos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config_dirportalproperties" title="&lt;config_dir&gt;/portal.properties" class="md-nav__link">
+    &lt;config_dir&gt;/portal.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-cache" title="Configurar caché" class="md-nav__link">
+    Configurar caché
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -409,28 +546,110 @@
                 
                   <h1>Configuración de aplicaciones</h1>
                 
-                <ul>
-<li>Configurar directorio en Tomcat<ul>
-<li>GEOLADRIS_CONFIG_DIR</li>
-<li>PORTAL_CONFIG_DIR (deprecado).</li>
+                <h2 id="directorio-de-configuracion">Directorio de configuración</h2>
+<p>Las aplicaciones Geoladris se configuran mediante un directorio con ficheros de configuración.</p>
+<p>Este directorio deberá contener un subdirectorio por cada aplicación desplegada. Por ejemplo, si se han desplegado las aplicaciones <code>demo.war</code> y <code>bosques.war</code>, y <code>GEOLADRIS_CONFIG_DIR</code> se ha establecido a <code>/var/geoladris</code>, se utilizarán los directorios <code>/var/geoladris/demo</code> y <code>/var/geoladris/bosques</code> para las aplicaciones <code>demo.war</code> y <code>bosques.war</code> respectivamente.</p>
+<p>Si alguno de esos directorios no existe o si <code>GEOLADRIS_CONFIG_DIR</code> no se ha configurado correctamente, se utilizará el directorio por defecto para esa aplicación concreta: <code>$CATALINA_BASE/webapps/&lt;app&gt;/WEB-INF/default_config</code>.</p>
+<p>Para configurar este directorio en Tomcat hay diferentes formas de hacerlo:</p>
+<ul>
+<li>Variable de entorno: <code>export GEOLADRIS_CONFIG_DIR=/var/geoladris</code>.</li>
+<li>Propiedad Java: <code>-DGEOLADRIS_CONFIG_DIR=/var/geoladris</code>.</li>
+<li>Parámetro en <code>web.xml</code>:</li>
 </ul>
-</li>
-<li>Contenido del directorio<ul>
-<li>portal.properties</li>
-<li>public-conf.json</li>
-<li>plugin-conf.json (deprecado)</li>
-<li>messages.properties</li>
-<li>role_conf</li>
-<li>static</li>
-<li>plugins</li>
+<div class="codehilite"><pre><span></span>    <span class="nt">&lt;context-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>GEOLADRIS_CONF_DIR<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>/var/geoladris<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
+
+
+<p>A partir de ahora utilizaremos <code>&lt;config_dir&gt;</code> como el directorio de configuración de una aplicación.</p>
+<h2 id="configuracion-global">Configuración global</h2>
+<p>La configuración global de la aplicación se realiza con el fichero <code>&lt;config_dir&gt;/public-conf.json</code>. Es un fichero de texto que contiene un objeto JSON donde cada propiedad del objeto es el nombre del plugin a configurar y el valor es la configuración del plugin.</p>
+<p>La configuración del plugin es a su vez otro objeto JSON. Cada propiedad es el nombre del módulo RequireJS a configurar y el valor es la configuración del módulo, tal y como se puede obtener con <code>module.config()</code>.</p>
+<p>Aparte existen las siguientes propiedades o psedo-módulos:</p>
+<ul>
+<li><code>_enabled</code>: Activa (<code>true</code>) o desactiva (<code>false</code>) el plugin. Por defecto es <code>true</code>.</li>
+<li><code>_override</code>: Sobreescribe (<code>true</code>) o mezcla (<code>false</code>) la configuración por defecto del plugin. Por defecto es <code>false</code>.</li>
 </ul>
-</li>
-<li>Configurar caché<ul>
+<p>Ejemplo:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;base&quot;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;banner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;hide&quot;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;show-flag&quot;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nt">&quot;show-logos&quot;</span> <span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;footnote&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;footnote&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;footnote.text&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;align&quot;</span><span class="p">:</span> <span class="s2">&quot;center&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;feedback&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;_enabled&quot;</span> <span class="p">:</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>De esta forma es posible no solo cambiar la configuración de un plugin, sino también añadir o eliminar plugins para un usuario concreto con la propiedad <code>_enabled</code>.</p>
+<h2 id="autenticacion-y-configuracion-especifica-de-usuario">Autenticación y configuración específica de usuario</h2>
+<p>Además de la configuración global, se puede adaptadar la aplicación en función del usuario que accede a ella. Basta con añadir un fichero <code>&lt;config_dir&gt;/role_conf/&lt;role&gt;.json</code> por cada rol con su configuración específica. El formato de estos ficheros es el mismo que el de <code>public-conf.json</code>.</p>
+<p>Para mayor flexibilidad, la autenticación es gestionada por los plugins. Actualmente en Geoladris existe un plugin <code>auth</code> encargado de la autenticación. Para utilizarlo es necesario incluirlo en el momento de <a href="../create/">crear</a> la aplicación.</p>
+<p>La autenticación de este plugin se apoya en la autenticación del contenedor de servlets. Es decir, si se utiliza Tomcat, los usuarios de Geoladris serán aquellos que están configurados en Tomcat.</p>
+<p>Para configurar la autenticación de Tomcat, lo más fácil es editar el fichero <code>$CATALINA_BASE/conf/tomcat-users.xml</code> y añadir los usuarios y roles que necesitemos. Por ejemplo:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;tomcat-users&gt;</span>
+  <span class="nt">&lt;role</span> <span class="na">rolename=</span><span class="s">&quot;viewer&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">&quot;user&quot;</span> <span class="na">password=</span><span class="s">&quot;pass&quot;</span> <span class="na">roles=</span><span class="s">&quot;viewer&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/tomcat-users&gt;</span>
+</pre></div>
+
+
+<p>Aunque hay otras opciones de configuración que se pueden encontrar en la <a href="https://tomcat.apache.org/tomcat-8.5-doc/realm-howto.html">documentación oficial</a>.</p>
+<p>Una vez se han configurado los usuarios, lo siguiente es restringir qué roles pueden acceder al visor. Para ello, basta con añadir la propiedad <code>auth.roles</code> al fichero <code>portal.properties</code> del directorio de configuración:</p>
+<div class="codehilite"><pre><span></span>auth.roles=viewer
+</pre></div>
+
+
+<p>Esta propiedad es una lista de roles separada por comas. Los roles deben de coincidir con los roles definidos en Tomcat.</p>
+<p>Por último, para configurar el visor de manera específica para cada rol deberemos añadir un fichero <code>&lt;role&gt;.json</code> a <code>&lt;config_dir&gt;/role_conf</code> por cada rol definido en <code>auth.roles</code>.</p>
+<p>Por ejemplo, para habilitar los plugins <code>layer-order</code> y <code>layers-editor</code> en el rol <code>viewer</code>, habrá que añadir un fichero <code>role_conf/viewer.json</code> con el siguiente contenido:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;layer-order&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;_enabled&quot;</span> <span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;layers-editor&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;_enabled&quot;</span> <span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="traducciones">Traducciones</h2>
+<blockquote>
+<p>TODO Subdirectorio <code>messages</code></p>
+</blockquote>
+<h2 id="anadir-plugins-despues-de-desplegar">Añadir plugins después de desplegar</h2>
+<blockquote>
+<p>TODO Subdirectorio <code>plugins</code></p>
+</blockquote>
+<h2 id="recursos-estaticos">Recursos estáticos</h2>
+<blockquote>
+<p>TODO Subdirectorio <code>static</code></p>
+</blockquote>
+<h2 id="config_dirportalproperties"><code>&lt;config_dir&gt;/portal.properties</code></h2>
+<p>Fichero de propiedades. Cada plugin define sus propiedades (ver <a href="../../ref/plugins/">referencia</a>). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.</p>
+<h2 id="configurar-cache">Configurar caché</h2>
+<blockquote>
+<p>TODO</p>
+<ul>
 <li>GEOLADRIS_CONFIG_CACHE</li>
 <li>GEOLADRIS_CACHE_TIMEOUT</li>
 </ul>
-</li>
-</ul>
+</blockquote>
                 
                   
                 
@@ -500,7 +719,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
+      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>
