@@ -1,12 +1,14 @@
+## Descripción
+
 Las aplicaciones Geoladris utilizan una arquitectura cliente/servidor. El servidor utiliza la API Servlet mientras que el cliente utiliza HTML+CSS+Javascript.
 
 Podemos encontrar dos tipos básicos de plugins: servidor y cliente.
 
-## Servidor
+### Servidor
 
 Un plugin servidor es un proyecto Java que aprovecha la [API Servlet 3.1](https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf) en el servidor. Es suficiente tener un paquete `.jar` en el _classpath_ que contenga un fichero `web-fragment.xml` con los _servlets_, filtros, etc. a utilizar por el plugin.
 
-## Cliente
+### Cliente
 
 Un plugin cliente es un directorio que contiene:
 
@@ -37,7 +39,7 @@ Un plugin cliente es un directorio que contiene:
 
 Adicionalmente puede tener otros recursos propios de cualquier proyecto JavaScript (`karma.conf.js`, `test`, `yarn.lock`, ...).
 
-## Híbridos
+### Híbridos
 
 Proyectos que contienen ambos tipos de recurso (Java y JavaScript).
 
@@ -60,3 +62,16 @@ Los plugins cliente, además de los subdirectorios mencionados arriba, contienen
 * `yarn.lock`: Las dependencias son manejadas con `yarn`. Se considera una [buena práctica](https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all/) incluir este fichero en el repositorio.
 * `pom.xml`: Los plugins cliente también se gestionan con Maven (gracias al plugin Maven [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)) de forma que se pueden ejecutar todos los tests, tanto servidor como cliente, con `mvn test`.
 
+## Configurar la aplicación mediante programación
+
+En ocasiones la configuración de un plugin depende de un valor de la base de datos o, en general, de aspectos que se tienen que comprobar por programación. ¿De qué manera es posible hacer llegar estos valores a un elemento de la interfaz de usuario? La solución son los proveedores de configuración.
+
+Los proveedores de configuración son instancias que implementan la interfaz `org.geoladris.config.PluginConfigProvider` que permiten añadir elementos a la configuración de los módulos de la misma manera que se haría manualmente modificando el fichero ``public-conf.json``.
+
+Para que la instancia contribuya a la configuración hay que registrarla en la instancia `Config`, por lo que normalmente se registrará en un `ServletContextListener` con un código similar al siguiente:
+
+```java
+ServletContext servletContext = sce.getServletContext();
+Config config = (Config) servletContext.getAttribute(Geoladris.ATTR_CONFIG);
+config.addPluginConfigProvider(new MiConfigProvider());
+```
