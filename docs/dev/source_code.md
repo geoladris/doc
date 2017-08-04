@@ -45,11 +45,13 @@ after_success:
 
 Por último, hay que configurar las variables de entorno en la interfaz web de Travis.
 
-# Depurando JavaScript en el navegador
+## Depurando JavaScript en el navegador
 
 Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del [empaquetado](apps.md).
 
 También es posible utilizar recursos *no* minificados añadiendo el parámetro `debug=true` a la petición HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.
+
+> TODO Secuencia de inicio de la aplicación (customization, `modules-loaded`, `layers-loaded`, etc.).
 
 ## Git
 
@@ -60,4 +62,5 @@ También es posible utilizar recursos *no* minificados añadiendo el parámetro 
 >     - [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html)
 >     - [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow)
 >     - [cactus](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/)
-
+> * Actualizar versiones (semántico) cuando se integra una nueva feature. De esta forma al [publicar](releases.md) ya tenemos la versión que toca.
+> * Actualizar changelog cuand se hace cualquier cambio. De esta forma al [publicar](releases.md) ya tenemos el changelog listo.
