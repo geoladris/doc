@@ -143,7 +143,11 @@ Para añadir un nuevo idioma (por ejemplo, el guaraní):
 
 ## Añadir plugins después de desplegar
 
-> TODO Subdirectorio `plugins`
+Una de las funcionalidades más interesantes de Geoladris es el despliegue de funcionalidad en caliente: es posible incluir nuevos plugins sin tener que parar y reiniciar el servidor.
+
+Para esto, basta con copiar el plugin que se desea incluir dentro del directorio `<config_dir>/plugins`, [configurarlo](#configuracion-global) en caso necesario y recargar el navegador.
+
+La única limitación es que los plugins han de ser plugins [cliente](../dev/plugins.md#cliente); es decir, plugins con código JavaScript exclusivamente. No es posible desplegar en caliente código Java con nuevos servicios.
 
 ## Recursos estáticos
 
