@@ -14,7 +14,7 @@ Para configurar este directorio en Tomcat hay diferentes formas de hacerlo:
 
 ```xml
 	<context-param>
-		<param-name>GEOLADRIS_CONF_DIR</param-name>
+		<param-name>GEOLADRIS_CONFIG_DIR</param-name>
 		<param-value>/var/geoladris</param-value>
 	</context-param>
 ```
@@ -192,7 +192,22 @@ Fichero de propiedades. Cada plugin define sus propiedades (ver [referencia](../
 
 ## Configurar caché
 
-> TODO
->
-> * GEOLADRIS_CONFIG_CACHE
-> * GEOLADRIS_CACHE_TIMEOUT
+La configuración del portal se obtiene a partir de varios ficheros (configuración global y específica de usuario) e incluso puede obtenerse de una base de datos o de un servicio externo para [desarrollos personalizados](../dev/plugins.md#configurar-la-aplicacion-mediante-programacion). En cualquier caso, obtenerla requiere un tiempo que puede hacer que el visor se ralentice cada vez.
+
+Para ello, Geoladris proporciona una caché que se puede configurar mediante dos variables:
+
+* `GEOLADRIS_CONFIG_CACHE`: `true`/`false`. Determina si se utiliza la caché o no. Por defecto es `false`.
+* `GEOLADRIS_CACHE_TIMEOUT`: Número máximo de segundos que se mantiene la caché. Si no se especifica, la caché se mantiene siempre y es necesario reiniciar el servidor para releer la configuración.
+
+De la misma manera que el directorio de configuración, estas variables pueden establecerse de varias maneras:
+
+* Variable de entorno: `export GEOLADRIS_CONFIG_CACHE=true`.
+* Propiedad Java: `-DGEOLADRIS_CONFIG_CACHE=true`.
+* Parámetro en `web.xml`:
+
+```xml
+	<context-param>
+		<param-name>GEOLADRIS_CONFIG_CACHE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+```
