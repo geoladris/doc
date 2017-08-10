@@ -102,7 +102,24 @@ Por ejemplo, para habilitar los plugins `layer-order` y `layers-editor` en el ro
 
 ## Traducciones
 
-> TODO Subdirectorio `messages`
+Con Geoladris se pueden configurar las cadenas de texto que aparecen en el visor e incluso escribirlas en diferentes idiomas.
+
+Para ello, basta con crear un directorio `<config_dir>/messages` que contenga ficheros `messages_<lang>.properties`. Por ejemplo, para tener traducciones en inglés y español habría que crear los ficheros `messages_en.properties` y `messages_es.properties`. Además, existe un fichero `messages.properties` (sin el sufijo del idioma) con las traducciones por defecto, que puede ser una copia de los anteriores.
+
+Un ejemplo de fichero de traducciones:
+
+```
+...
+base_layers=Capas Base
+cancel=Cancelar
+chart=Gr\u00e1fico
+data_source=Fuente de datos
+...
+```
+
+Cada plugin define sus propias traducciones. Para ver qué traducciones hay disponibles, ver [referencia](../ref/plugins.md).
+
+Para añadir la posibilidad de cambiar de un idioma a otro en el visor, existe el plugin `language-buttons`.
 
 ### Soporte multiidioma
 
