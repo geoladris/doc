@@ -1,4 +1,8 @@
-Documentación de referencia de la configuración de los plugins (obtenida con `module.config()`).
+> TODO
+> Documentación de referencia de:
+> 
+> * Configuración (obtenida con `module.config()`).
+> * Traducciones.
 
 ### layers.json
 
@@ -81,7 +85,7 @@ Define la estructura de capas del proyecto. Consiste en un elemento JSON con cua
 			],
 			...
 		}
-~~~    
+~~~
   * **Google**:
 
 	* gmaps-type: Tipo de capa Google: ROADMAP, SATELLITE, HYBRID o TERRAIN
