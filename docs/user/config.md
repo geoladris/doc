@@ -147,7 +147,7 @@ Para añadir un nuevo idioma (por ejemplo, el guaraní):
 
 ## Recursos estáticos
 
-> TODO Subdirectorio `static`
+En ocasiones es útil poder servir recursos estáticos directamente desde la aplicación web. Para eso existe el directorio `<config_dir>/static`. Cualquier fichero que se incluya en este directorio se servirá automáticamente a través de la URL `http://<host>/<app>/static/*`. Por ejemplo, se podría acceder a un fichero `<config_dir>/static/header.png` a través de `http://localhost:8080/demo/static/header.png`.
 
 ### Adaptación del aspecto gráfico
 
