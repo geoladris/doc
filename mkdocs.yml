@@ -8,8 +8,8 @@ pages:
     - 'Configuración de aplicaciones': user/config.md
     - 'Creación de aplicaciones': user/create.md
 - Desarrollador:
-    - 'Código fuente': dev/source_code.md
     - 'Guía rápida': dev/quickstart.md
+    - 'Código fuente': dev/source_code.md
     - Plugins: dev/plugins.md
     - Aplicaciones: dev/apps.md
     - Migración: dev/migrate.md

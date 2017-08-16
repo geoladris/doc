@@ -8,8 +8,8 @@
 
 ## Desarrollador
 
-* [Código fuente](dev/source_code.md).
 * [Guía rápida](dev/quickstart.md).
+* [Código fuente](dev/source_code.md).
 * [Plugins](dev/plugins.md).
 * [Aplicaciones](dev/apps.md).
 * [Migración](dev/migrate.md).
