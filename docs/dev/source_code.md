@@ -1,11 +1,12 @@
 ## Tecnologías
 
-> TODO
->
-> * yarn
-> * Maven (incluso para plugins cliente). mvn verify para probar todo.
-> * RequireJS
-> * ...
+En Geoladris utilizamos [Maven](https://maven.apache.org/) para construir nuestros proyectos, tanto el *core* como los plugins. Incluso los plugins que únicamente tienen parte cliente (CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin).
+
+Tanto el core como los plugins con parte servidora utilizan la [API Servlet 3.1](https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf). Utilizan ficheros `web-fragment.xml` para definir sus servlets, filters y application listeners.
+
+En cuanto a los plugins cliente, todos tienen un fichero `package.json` con sus dependencias. Las dependencias JavaScript las manejamos con `yarn`. Como se explica arriba, `Maven` se encarga de hacer las llamadas correspondientes a `yarn` mediante el `frontend-maven-plugin`.
+
+Por último, el código JavaScript se organiza en módulos de [RequireJS](http://requirejs.org/).
 
 ## Integración continua
 
@@ -55,9 +56,16 @@ También es posible utilizar recursos *no* minificados añadiendo el parámetro 
 
 ## Git
 
-> TODO
->
-> * Repositorios.
+### Repositorios
+
+El código de Geoladris se organiza en tres repositorios:
+
+* [core](https://github.com/geoladris/core). Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).
+* [plugins](https://github.com/geoladris/plugins): Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver [plugins](plugins.md)).
+* [aplicaciones](https://github.com/geoladris/apps): Aplicaciones que definen qué plugins utilizan y cómo se configuran.
+
+### Modelo de ramas
+
 > * Modelo de ramas. Revisar doc:
 >     - [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html)
 >     - [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow)
