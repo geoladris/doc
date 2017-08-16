@@ -1,6 +1,6 @@
 ## Lista de correo
 
-> TODO
+* [Desarrollo](https://groups.google.com/forum/#!forum/geoladris)
 
 ## Reportar errores
 
@@ -14,5 +14,6 @@ Para el código JavaScript se utilizan unas reglas basadas en Airbnb ([ES5](http
 
 ## Contribuir cambios
 
-> TODO: pull requests
+Para incluir correcciones o nuevas funcionalidades, en Geoladris utilizamos [pull requests](https://help.github.com/articles/about-pull-requests/).
+
 
