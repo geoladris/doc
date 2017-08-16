@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
+      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -229,6 +229,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../quickstart/" title="Guía rápida" class="md-nav__link">
+      Guía rápida
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -279,6 +291,26 @@
     Git
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repositorios" title="Repositorios" class="md-nav__link">
+    Repositorios
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelo-de-ramas" title="Modelo de ramas" class="md-nav__link">
+    Modelo de ramas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -287,18 +319,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../quickstart/" title="Guía rápida" class="md-nav__link">
-      Guía rápida
-    </a>
   </li>
 
         
@@ -483,6 +503,26 @@
     Git
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repositorios" title="Repositorios" class="md-nav__link">
+    Repositorios
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelo-de-ramas" title="Modelo de ramas" class="md-nav__link">
+    Modelo de ramas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -503,15 +543,10 @@
                   <h1>Código fuente</h1>
                 
                 <h2 id="tecnologias">Tecnologías</h2>
-<blockquote>
-<p>TODO</p>
-<ul>
-<li>yarn</li>
-<li>Maven (incluso para plugins cliente). mvn verify para probar todo.</li>
-<li>RequireJS</li>
-<li>...</li>
-</ul>
-</blockquote>
+<p>En Geoladris utilizamos <a href="https://maven.apache.org/">Maven</a> para construir nuestros proyectos, tanto el <em>core</em> como los plugins. Incluso los plugins que únicamente tienen parte cliente (CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a>.</p>
+<p>Tanto el core como los plugins con parte servidora utilizan la <a href="https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf">API Servlet 3.1</a>. Utilizan ficheros <code>web-fragment.xml</code> para definir sus servlets, filters y application listeners.</p>
+<p>En cuanto a los plugins cliente, todos tienen un fichero <code>package.json</code> con sus dependencias. Las dependencias JavaScript las manejamos con <code>yarn</code>. Como se explica arriba, <code>Maven</code> se encarga de hacer las llamadas correspondientes a <code>yarn</code> mediante el <code>frontend-maven-plugin</code>.</p>
+<p>Por último, el código JavaScript se organiza en módulos de <a href="http://requirejs.org/">RequireJS</a>.</p>
 <h2 id="integracion-continua">Integración continua</h2>
 <p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
 <p>La configuración debe garantizar que se pasan todos los tests y que se hace un <code>mvn deploy</code> de todos los artefactos que componen Geoladris.</p>
@@ -551,10 +586,16 @@
 <p>TODO Secuencia de inicio de la aplicación (customization, <code>modules-loaded</code>, <code>layers-loaded</code>, etc.).</p>
 </blockquote>
 <h2 id="git">Git</h2>
-<blockquote>
-<p>TODO</p>
+<h3 id="repositorios">Repositorios</h3>
+<p>El código de Geoladris se organiza en tres repositorios:</p>
 <ul>
-<li>Repositorios.</li>
+<li><a href="https://github.com/geoladris/core">core</a>. Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).</li>
+<li><a href="https://github.com/geoladris/plugins">plugins</a>: Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver <a href="../plugins/">plugins</a>).</li>
+<li><a href="https://github.com/geoladris/apps">aplicaciones</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
+</ul>
+<h3 id="modelo-de-ramas">Modelo de ramas</h3>
+<blockquote>
+<ul>
 <li>Modelo de ramas. Revisar doc:<ul>
 <li><a href="http://docs.geoserver.org/stable/en/developer/source.html">GeoServer</a></li>
 <li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow">gitflow</a></li>
@@ -583,7 +624,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../user/create/" title="Creación de aplicaciones" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../quickstart/" title="Guía rápida" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -592,19 +633,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Creación de aplicaciones
+                Guía rápida
               </span>
             </div>
           </a>
         
         
-          <a href="../quickstart/" title="Guía rápida" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../plugins/" title="Plugins" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Guía rápida
+                Plugins
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -634,7 +675,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
+      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>

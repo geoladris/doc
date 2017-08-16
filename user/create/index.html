@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
+      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -238,8 +238,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dev/source_code/" title="Código fuente" class="md-nav__link">
-      Código fuente
+    <a href="../../dev/quickstart/" title="Guía rápida" class="md-nav__link">
+      Guía rápida
     </a>
   </li>
 
@@ -250,8 +250,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dev/quickstart/" title="Guía rápida" class="md-nav__link">
-      Guía rápida
+    <a href="../../dev/source_code/" title="Código fuente" class="md-nav__link">
+      Código fuente
     </a>
   </li>
 
@@ -421,9 +421,37 @@
                 
                   <h1>Creación de aplicaciones</h1>
                 
-                <ul>
-<li>geoladris_build.sh</li>
-</ul>
+                <p>Para crear una aplicación propia, Geoladris proporciona un <a href="https://raw.githubusercontent.com/geoladris/core/master/build-tools/geoladris_build.sh">script</a> bash (Linux). Este script utiliza un fichero <code>build.json</code> que describe la aplicación y (opcionalmente) un directorio de configuración (llamado <code>config</code> junto a <code>build.json</code>) y produce un paquete <code>.war</code> listo para desplegar.</p>
+<p>Por ejemplo, se puede crear una aplicación que contenga únicamente los plugins <code>base</code> y <code>layers-editor</code> utilizando este fichero <code>build.json</code>:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;demo&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;layers-editor&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Si se ejecuta el script sin argumentos:</p>
+<div class="codehilite"><pre><span></span>$ geoladris_build.sh
+</pre></div>
+
+
+<p>obtendremos un fichero <code>demo.war</code> listo para desplegar. La versión de los plugins será la última versión estable. Para especificar una versión concreta para todos los plugins de Geoladris se puede utilizar <code>-v</code>:</p>
+<div class="codehilite"><pre><span></span>$ geoladris_build.sh -v <span class="m">6</span>.0.1
+</pre></div>
+
+
+<p>También se puede utilizar el script para generar una aplicación con plugins que no son de Geoladris. Basta con añadir <code>&lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;</code> para los plugins servidor y <code>&lt;dependency&gt;:&lt;version&gt;</code> para los plugins cliente. Por ejemplo:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;demo&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;layers-editor&quot;</span><span class="p">,</span> <span class="s2">&quot;@csgis/ui:1.0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;de.csgis.geoladris:myplugin:1.0.1&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Por último, es posible obtener una ayuda con todas las opciones del script y la referencia del fichero <code>build.json</code> con <code>-h</code>:</p>
+<div class="codehilite"><pre><span></span>$ geoladris_build.sh -h
+</pre></div>
                 
                   
                 
@@ -457,13 +485,13 @@
           </a>
         
         
-          <a href="../../dev/source_code/" title="Código fuente" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../dev/quickstart/" title="Guía rápida" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Código fuente
+                Guía rápida
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -493,7 +521,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
+      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>

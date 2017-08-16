@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Documentaci\u00f3n de Geoladris\n\n\nUsuario\n\n\n\n\nGu\u00eda r\u00e1pida\n.\n\n\nConfiguraci\u00f3n de aplicaciones\n.\n\n\nCreaci\u00f3n de aplicaciones\n.\n\n\n\n\nDesarrollador\n\n\n\n\nC\u00f3digo fuente\n.\n\n\nGu\u00eda r\u00e1pida\n.\n\n\nPlugins\n.\n\n\nAplicaciones\n.\n\n\nMigraci\u00f3n\n.\n\n\nContribuir\n.\n\n\nDesarrolar con Eclipse\n.\n\n\n\n\nReferencia\n\n\n\n\nRegistro de cambios\n.\n\n\nPlugins\n.\n\n\nEventos\n.", 
+            "text": "Documentaci\u00f3n de Geoladris\n\n\nUsuario\n\n\n\n\nGu\u00eda r\u00e1pida\n.\n\n\nConfiguraci\u00f3n de aplicaciones\n.\n\n\nCreaci\u00f3n de aplicaciones\n.\n\n\n\n\nDesarrollador\n\n\n\n\nGu\u00eda r\u00e1pida\n.\n\n\nC\u00f3digo fuente\n.\n\n\nPlugins\n.\n\n\nAplicaciones\n.\n\n\nMigraci\u00f3n\n.\n\n\nContribuir\n.\n\n\nDesarrolar con Eclipse\n.\n\n\n\n\nReferencia\n\n\n\n\nRegistro de cambios\n.\n\n\nPlugins\n.\n\n\nEventos\n.", 
             "title": "Home"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/#desarrollador", 
-            "text": "C\u00f3digo fuente .  Gu\u00eda r\u00e1pida .  Plugins .  Aplicaciones .  Migraci\u00f3n .  Contribuir .  Desarrolar con Eclipse .", 
+            "text": "Gu\u00eda r\u00e1pida .  C\u00f3digo fuente .  Plugins .  Aplicaciones .  Migraci\u00f3n .  Contribuir .  Desarrolar con Eclipse .", 
             "title": "Desarrollador"
         }, 
         {
@@ -77,17 +77,22 @@
         }, 
         {
             "location": "/user/create/", 
-            "text": "geoladris_build.sh", 
+            "text": "Para crear una aplicaci\u00f3n propia, Geoladris proporciona un \nscript\n bash (Linux). Este script utiliza un fichero \nbuild.json\n que describe la aplicaci\u00f3n y (opcionalmente) un directorio de configuraci\u00f3n (llamado \nconfig\n junto a \nbuild.json\n) y produce un paquete \n.war\n listo para desplegar.\n\n\nPor ejemplo, se puede crear una aplicaci\u00f3n que contenga \u00fanicamente los plugins \nbase\n y \nlayers-editor\n utilizando este fichero \nbuild.json\n:\n\n\n{\n\n  \nname\n:\n \ndemo\n,\n\n  \nplugins\n:\n \n[\nbase\n,\n \nlayers-editor\n]\n\n\n}\n\n\n\n\n\n\nSi se ejecuta el script sin argumentos:\n\n\n$ geoladris_build.sh\n\n\n\n\n\nobtendremos un fichero \ndemo.war\n listo para desplegar. La versi\u00f3n de los plugins ser\u00e1 la \u00faltima versi\u00f3n estable. Para especificar una versi\u00f3n concreta para todos los plugins de Geoladris se puede utilizar \n-v\n:\n\n\n$ geoladris_build.sh -v \n6\n.0.1\n\n\n\n\n\nTambi\u00e9n se puede utilizar el script para generar una aplicaci\u00f3n con plugins que no son de Geoladris. Basta con a\u00f1adir \ngroupId\n:\nartifactId\n:\nversion\n para los plugins servidor y \ndependency\n:\nversion\n para los plugins cliente. Por ejemplo:\n\n\n{\n\n  \nname\n:\n \ndemo\n,\n\n  \nversion\n:\n \n1.0.0\n,\n\n  \nplugins\n:\n \n[\nbase\n,\n \nlayers-editor\n,\n \n@csgis/ui:1.0.0\n,\n \nde.csgis.geoladris:myplugin:1.0.1\n]\n\n\n}\n\n\n\n\n\n\nPor \u00faltimo, es posible obtener una ayuda con todas las opciones del script y la referencia del fichero \nbuild.json\n con \n-h\n:\n\n\n$ geoladris_build.sh -h", 
             "title": "Creaci\u00f3n de aplicaciones"
         }, 
         {
+            "location": "/dev/quickstart/", 
+            "text": "Clonar repos\n\n\nmvn install (mvn generate-resources ejecuta yarn install sin ejecutar tests).\n\n\nEmpaquetar app\n\n\nProbar en Tomcat", 
+            "title": "Gu\u00eda r\u00e1pida"
+        }, 
+        {
             "location": "/dev/source_code/", 
-            "text": "Tecnolog\u00edas\n\n\n\n\nTODO\n\n\n\n\nyarn\n\n\nMaven (incluso para plugins cliente). mvn verify para probar todo.\n\n\nRequireJS\n\n\n...\n\n\n\n\n\n\nIntegraci\u00f3n continua\n\n\nGeoladris est\u00e1 configurado en \nTravis\n para su integraci\u00f3n continua.\n\n\nLa configuraci\u00f3n debe garantizar que se pasan todos los tests y que se hace un \nmvn deploy\n de todos los artefactos que componen Geoladris.\n\n\nEl deploy de Maven requiere autenticaci\u00f3n. Para proporcionarla hay un fichero \ndeploy-settings.xml\n en la ra\u00edz del repositorio que utiliza variables de entorno para las credenciales:\n\n\n?xml version=\n1.0\n encoding=\nUTF-8\n?\n\n\nsettings\n\n        \nxmlns=\nhttp://maven.apache.org/SETTINGS/1.0.0\n\n        \nxmlns:xsi=\nhttp://www.w3.org/2001/XMLSchema-instance\n\n        \nxsi:schemaLocation=\nhttp://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\n\n    \nservers\n\n        \nserver\n\n            \nid\ngeoladris-releases\n/id\n\n            \nusername\n${env.GEOLADRIS_DEPLOY_USER}\n/username\n\n            \npassword\n${env.GEOLADRIS_DEPLOY_PASS}\n/password\n\n        \n/server\n\n        \nserver\n\n            \nid\ngeoladris-snapshots\n/id\n\n            \nusername\n${env.GEOLADRIS_DEPLOY_USER}\n/username\n\n            \npassword\n${env.GEOLADRIS_DEPLOY_PASS}\n/password\n\n        \n/server\n\n    \n/servers\n\n\n/settings\n\n\n\n\n\n\nBasta con configurar Maven en el fichero \n.travis.yml\n para que utilice este fichero:\n\n\nafter_success:\n  - mvn deploy -s deploy-settings.xml\n\n\n\n\n\nPor \u00faltimo, hay que configurar las variables de entorno en la interfaz web de Travis.\n\n\nDepurando JavaScript en el navegador\n\n\nPor defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del \nempaquetado\n.\n\n\nTambi\u00e9n es posible utilizar recursos \nno\n minificados a\u00f1adiendo el par\u00e1metro \ndebug=true\n a la petici\u00f3n HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.\n\n\n\n\nTODO Secuencia de inicio de la aplicaci\u00f3n (customization, \nmodules-loaded\n, \nlayers-loaded\n, etc.).\n\n\n\n\nGit\n\n\n\n\nTODO\n\n\n\n\nRepositorios.\n\n\nModelo de ramas. Revisar doc:\n\n\nGeoServer\n\n\ngitflow\n\n\ncactus\n\n\n\n\n\n\nActualizar versiones (sem\u00e1ntico) cuando se integra una nueva feature. De esta forma al \npublicar\n ya tenemos la versi\u00f3n que toca.\n\n\nActualizar changelog cuand se hace cualquier cambio. De esta forma al \npublicar\n ya tenemos el changelog listo.", 
+            "text": "Tecnolog\u00edas\n\n\nEn Geoladris utilizamos \nMaven\n para construir nuestros proyectos, tanto el \ncore\n como los plugins. Incluso los plugins que \u00fanicamente tienen parte cliente (CSS y JavaScript) se gestionan a trav\u00e9s de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin \nfrontend-maven-plugin\n.\n\n\nTanto el core como los plugins con parte servidora utilizan la \nAPI Servlet 3.1\n. Utilizan ficheros \nweb-fragment.xml\n para definir sus servlets, filters y application listeners.\n\n\nEn cuanto a los plugins cliente, todos tienen un fichero \npackage.json\n con sus dependencias. Las dependencias JavaScript las manejamos con \nyarn\n. Como se explica arriba, \nMaven\n se encarga de hacer las llamadas correspondientes a \nyarn\n mediante el \nfrontend-maven-plugin\n.\n\n\nPor \u00faltimo, el c\u00f3digo JavaScript se organiza en m\u00f3dulos de \nRequireJS\n.\n\n\nIntegraci\u00f3n continua\n\n\nGeoladris est\u00e1 configurado en \nTravis\n para su integraci\u00f3n continua.\n\n\nLa configuraci\u00f3n debe garantizar que se pasan todos los tests y que se hace un \nmvn deploy\n de todos los artefactos que componen Geoladris.\n\n\nEl deploy de Maven requiere autenticaci\u00f3n. Para proporcionarla hay un fichero \ndeploy-settings.xml\n en la ra\u00edz del repositorio que utiliza variables de entorno para las credenciales:\n\n\n?xml version=\n1.0\n encoding=\nUTF-8\n?\n\n\nsettings\n\n        \nxmlns=\nhttp://maven.apache.org/SETTINGS/1.0.0\n\n        \nxmlns:xsi=\nhttp://www.w3.org/2001/XMLSchema-instance\n\n        \nxsi:schemaLocation=\nhttp://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\n\n    \nservers\n\n        \nserver\n\n            \nid\ngeoladris-releases\n/id\n\n            \nusername\n${env.GEOLADRIS_DEPLOY_USER}\n/username\n\n            \npassword\n${env.GEOLADRIS_DEPLOY_PASS}\n/password\n\n        \n/server\n\n        \nserver\n\n            \nid\ngeoladris-snapshots\n/id\n\n            \nusername\n${env.GEOLADRIS_DEPLOY_USER}\n/username\n\n            \npassword\n${env.GEOLADRIS_DEPLOY_PASS}\n/password\n\n        \n/server\n\n    \n/servers\n\n\n/settings\n\n\n\n\n\n\nBasta con configurar Maven en el fichero \n.travis.yml\n para que utilice este fichero:\n\n\nafter_success:\n  - mvn deploy -s deploy-settings.xml\n\n\n\n\n\nPor \u00faltimo, hay que configurar las variables de entorno en la interfaz web de Travis.\n\n\nDepurando JavaScript en el navegador\n\n\nPor defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del \nempaquetado\n.\n\n\nTambi\u00e9n es posible utilizar recursos \nno\n minificados a\u00f1adiendo el par\u00e1metro \ndebug=true\n a la petici\u00f3n HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.\n\n\n\n\nTODO Secuencia de inicio de la aplicaci\u00f3n (customization, \nmodules-loaded\n, \nlayers-loaded\n, etc.).\n\n\n\n\nGit\n\n\nRepositorios\n\n\nEl c\u00f3digo de Geoladris se organiza en tres repositorios:\n\n\n\n\ncore\n. Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilaci\u00f3n) y luego servir sus recursos (en tiempo de ejecuci\u00f3n).\n\n\nplugins\n: Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver \nplugins\n).\n\n\naplicaciones\n: Aplicaciones que definen qu\u00e9 plugins utilizan y c\u00f3mo se configuran.\n\n\n\n\nModelo de ramas\n\n\n\n\n\n\nModelo de ramas. Revisar doc:\n\n\nGeoServer\n\n\ngitflow\n\n\ncactus\n\n\n\n\n\n\nActualizar versiones (sem\u00e1ntico) cuando se integra una nueva feature. De esta forma al \npublicar\n ya tenemos la versi\u00f3n que toca.\n\n\nActualizar changelog cuand se hace cualquier cambio. De esta forma al \npublicar\n ya tenemos el changelog listo.", 
             "title": "C\u00f3digo fuente"
         }, 
         {
             "location": "/dev/source_code/#tecnologias", 
-            "text": "TODO   yarn  Maven (incluso para plugins cliente). mvn verify para probar todo.  RequireJS  ...", 
+            "text": "En Geoladris utilizamos  Maven  para construir nuestros proyectos, tanto el  core  como los plugins. Incluso los plugins que \u00fanicamente tienen parte cliente (CSS y JavaScript) se gestionan a trav\u00e9s de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin  frontend-maven-plugin .  Tanto el core como los plugins con parte servidora utilizan la  API Servlet 3.1 . Utilizan ficheros  web-fragment.xml  para definir sus servlets, filters y application listeners.  En cuanto a los plugins cliente, todos tienen un fichero  package.json  con sus dependencias. Las dependencias JavaScript las manejamos con  yarn . Como se explica arriba,  Maven  se encarga de hacer las llamadas correspondientes a  yarn  mediante el  frontend-maven-plugin .  Por \u00faltimo, el c\u00f3digo JavaScript se organiza en m\u00f3dulos de  RequireJS .", 
             "title": "Tecnolog\u00edas"
         }, 
         {
@@ -102,13 +107,18 @@
         }, 
         {
             "location": "/dev/source_code/#git", 
-            "text": "TODO   Repositorios.  Modelo de ramas. Revisar doc:  GeoServer  gitflow  cactus    Actualizar versiones (sem\u00e1ntico) cuando se integra una nueva feature. De esta forma al  publicar  ya tenemos la versi\u00f3n que toca.  Actualizar changelog cuand se hace cualquier cambio. De esta forma al  publicar  ya tenemos el changelog listo.", 
+            "text": "", 
             "title": "Git"
         }, 
         {
-            "location": "/dev/quickstart/", 
-            "text": "Clonar repos\n\n\nmvn install (mvn generate-resources ejecuta yarn install sin ejecutar tests).\n\n\nEmpaquetar app\n\n\nProbar en Tomcat", 
-            "title": "Gu\u00eda r\u00e1pida"
+            "location": "/dev/source_code/#repositorios", 
+            "text": "El c\u00f3digo de Geoladris se organiza en tres repositorios:   core . Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilaci\u00f3n) y luego servir sus recursos (en tiempo de ejecuci\u00f3n).  plugins : Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver  plugins ).  aplicaciones : Aplicaciones que definen qu\u00e9 plugins utilizan y c\u00f3mo se configuran.", 
+            "title": "Repositorios"
+        }, 
+        {
+            "location": "/dev/source_code/#modelo-de-ramas", 
+            "text": "Modelo de ramas. Revisar doc:  GeoServer  gitflow  cactus    Actualizar versiones (sem\u00e1ntico) cuando se integra una nueva feature. De esta forma al  publicar  ya tenemos la versi\u00f3n que toca.  Actualizar changelog cuand se hace cualquier cambio. De esta forma al  publicar  ya tenemos el changelog listo.", 
+            "title": "Modelo de ramas"
         }, 
         {
             "location": "/dev/plugins/", 
@@ -212,12 +222,12 @@
         }, 
         {
             "location": "/dev/contribute/", 
-            "text": "Lista de correo\n\n\n\n\nTODO\n\n\n\n\nReportar errores\n\n\n\n\nTODO: Issues y tags en Github\n\n\n\n\nFormateo del c\u00f3digo\n\n\nSe utiliza el \nestilo\n de Google para formatear el c\u00f3digo Java.\n\n\nPara el c\u00f3digo JavaScript se utilizan unas reglas basadas en Airbnb (\nES5\n) con ligeras modificaciones. Es posible encontrar los ficheros \n.eslintrc\n en el repositorio con las definiciones para ejecutar con \neslint\n.\n\n\nContribuir cambios\n\n\n\n\nTODO: pull requests", 
+            "text": "Lista de correo\n\n\n\n\nDesarrollo\n\n\n\n\nReportar errores\n\n\n\n\nTODO: Issues y tags en Github\n\n\n\n\nFormateo del c\u00f3digo\n\n\nSe utiliza el \nestilo\n de Google para formatear el c\u00f3digo Java.\n\n\nPara el c\u00f3digo JavaScript se utilizan unas reglas basadas en Airbnb (\nES5\n) con ligeras modificaciones. Es posible encontrar los ficheros \n.eslintrc\n en el repositorio con las definiciones para ejecutar con \neslint\n.\n\n\nContribuir cambios\n\n\nPara incluir correcciones o nuevas funcionalidades, en Geoladris utilizamos \npull requests\n.", 
             "title": "Contribuir"
         }, 
         {
             "location": "/dev/contribute/#lista-de-correo", 
-            "text": "TODO", 
+            "text": "Desarrollo", 
             "title": "Lista de correo"
         }, 
         {
@@ -232,7 +242,7 @@
         }, 
         {
             "location": "/dev/contribute/#contribuir-cambios", 
-            "text": "TODO: pull requests", 
+            "text": "Para incluir correcciones o nuevas funcionalidades, en Geoladris utilizamos  pull requests .", 
             "title": "Contribuir cambios"
         }, 
         {
