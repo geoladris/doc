@@ -104,6 +104,26 @@ Por ejemplo, para habilitar los plugins `layer-order` y `layers-editor` en el ro
 
 > TODO Subdirectorio `messages`
 
+### Soporte multiidioma
+
+En los casos anteriores vemos algunas cadenas de texto entre los símbolos `${` y `}`. Estos elementos son sustituidos por mensajes de texto traducidos a cada idioma.
+
+En el directorio `messages` contamos con un fichero `messages.properties` que contiene los mensajes por defecto. Son los textos que se usarán en caso de no encontrar mensajes traducidos a una lengua específica. Los ficheros para los distintos idiomas soportados llevan el código del idioma al final del nombre, según la `[nomenclatura ISO 639-1 de dos letras](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)`
+
+Para añadir un nuevo idioma (por ejemplo, el guaraní):
+
+ * Editar ``portal.properties`` y añadir el elemento ``"gn": "Guaraní"`` a la propiedad ``languages``::
+
+    languages = {"gn": "Guaraní", "es": "Español", "en": "English"}
+
+ * Copiar el fichero ``messages_es.properties`` con el nuevo nombre ``messages_gn.properties``.
+ * Traducir los textos en ``messages_gn.properties``.
+ * Reiniciar la aplicación para aplicar los cambios. Desde la linea de comandos::
+
+~~~
+	$ sudo service tomcat6 restart
+~~~
+
 ## Añadir plugins después de desplegar
 
 > TODO Subdirectorio `plugins`
@@ -111,6 +131,39 @@ Por ejemplo, para habilitar los plugins `layer-order` y `layers-editor` en el ro
 ## Recursos estáticos
 
 > TODO Subdirectorio `static`
+
+### Adaptación del aspecto gráfico
+
+#### Cabecera de página
+
+Veamos cómo modificar la imagen de fondo, bandera y título de la cabecera del portal:
+
+![](../_images/header.png)
+
+Partiendo del PORTAL_CONFIG_DIR (generalmente en /var/portal):
+
+* **Imagen de fondo**: Se encuentra en `static/img/right.jpg`. Sustituir este fichero por otro de igual nombre y formato (jpeg), de 92 píxeles de alto. El ancho puede variar, aunque se recomienda que sea tan ancho como sea posible, hasta los 1920 px de una pantalla de alta definición. Para conseguir un mejor efecto junto con la bandera, se recomienda rellenar de contenido (logotipos, fotografía) la parte más a la derecha de la imagen, hasta un máximo de 500 px. Utilizar un color de fondo liso para el resto de la imagen, que ocupe toda la franja de la izquierda, y que se corresponda con el color de fondo de la bandera.
+
+* **Bandera**: Se encuentra en `static/img/left.jpg`. Sustituir este fichero por otro de igual nombre y formato (jpeg), de 92 píxeles de alto. El ancho puede variar, aunque se recomienda alrededor de los 200 px. Utilizar un color de fondo liso, correspondiente con la parte izquierda de la imagen de fondo, para dar una sensación de continuidad.
+
+* **Título**: Se encuentra definido en los ficheros de mensajes, directorio `messages`, ficheros de nombre `messages_<lang>.properties`. Buscar la propiedad "title" en cada uno de los ficheros de idioma.
+
+#### Favicon
+
+Se conoce como *favicon* al icono que se muestra en el navegador en la barra de direcciones. Para personalizar el *favicon*
+del portal, basta con copiar la imagen en el directorio `static/img`. El nombre de la imagen sólo puede ser `favicon.ico` o `favicon.png`.
+
+#### Estilos predefinidos (CSS)
+
+En ciertos casos se requiere modificar los estilos que vienen predefinidos para OpenLayers, jQuery o cualquier otro. En estos casos,
+en lugar de modificar los estilos directamente en el fichero que se encuentra en `/var/tomcat/webapps/portal`, se ha de crear
+un nuevo fichero `overrides.css` en el directorio `/var/portal/static/css` que contenga las reglas CSS que se desean modificar.
+
+De esta manera, tendrán preferencia las reglas que se escriban en `overrides.css` frente a cualquier otra que se encuentre en
+`/var/tomcat/webapps/portal`.
+
+Además, cuando se despliegue una actualización del portal en Tomcat, el fichero `overrides.css` no se modificará, manteniendo
+así la personalización.
 
 ## `<config_dir>/portal.properties`
 
