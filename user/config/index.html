@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -278,6 +278,18 @@
   <li class="md-nav__item">
     <a href="../create/" title="Creación de aplicaciones" class="md-nav__link">
       Creación de aplicaciones
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../download/" title="Descargas" class="md-nav__link">
+      Descargas
     </a>
   </li>
 
@@ -569,7 +581,7 @@
 <li>Parámetro en <code>web.xml</code>:</li>
 </ul>
 <div class="codehilite"><pre><span></span>    <span class="nt">&lt;context-param&gt;</span>
-        <span class="nt">&lt;param-name&gt;</span>GEOLADRIS_CONF_DIR<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>GEOLADRIS_CONFIG_DIR<span class="nt">&lt;/param-name&gt;</span>
         <span class="nt">&lt;param-value&gt;</span>/var/geoladris<span class="nt">&lt;/param-value&gt;</span>
     <span class="nt">&lt;/context-param&gt;</span>
 </pre></div>
@@ -641,27 +653,55 @@
 
 
 <h2 id="traducciones">Traducciones</h2>
-<blockquote>
-<p>TODO Subdirectorio <code>messages</code></p>
-</blockquote>
+<p>Con Geoladris se pueden configurar las cadenas de texto que aparecen en el visor e incluso escribirlas en diferentes idiomas.</p>
+<p>Para ello, basta con crear un directorio <code>&lt;config_dir&gt;/messages</code> que contenga ficheros <code>messages_&lt;lang&gt;.properties</code>. <code>&lt;lang&gt;</code> es el código del idioma según la nomenclatura <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a> de dos letras.</p>
+<p>Por ejemplo, para tener traducciones en inglés y español habría que crear los ficheros <code>messages_en.properties</code> y <code>messages_es.properties</code>. Además, existe un fichero <code>messages.properties</code> (sin el sufijo del idioma) con las traducciones por defecto, que puede ser una copia de los anteriores.</p>
+<p>Un ejemplo de fichero de traducciones:</p>
+<div class="codehilite"><pre><span></span>...
+base_layers=Capas Base
+cancel=Cancelar
+chart=Gr\u00e1fico
+data_source=Fuente de datos
+...
+</pre></div>
+
+
+<p>Geoladris reconoce las siguientes traducciones:</p>
+<ul>
+<li><code>title</code>: Título de la página HTML.</li>
+</ul>
+<p>Aparte, cada plugin define sus propias traducciones. Para ver qué traducciones hay disponibles, ver <a href="../../ref/plugins/">referencia</a>.</p>
+<p>Para añadir la posibilidad de cambiar de un idioma a otro en el visor, existe el plugin <code>language-buttons</code>.</p>
 <h2 id="anadir-plugins-despues-de-desplegar">Añadir plugins después de desplegar</h2>
-<blockquote>
-<p>TODO Subdirectorio <code>plugins</code></p>
-</blockquote>
+<p>Una de las funcionalidades más interesantes de Geoladris es el despliegue de funcionalidad en caliente: es posible incluir nuevos plugins sin tener que parar y reiniciar el servidor.</p>
+<p>Para esto, basta con copiar el plugin que se desea incluir dentro del directorio <code>&lt;config_dir&gt;/plugins</code>, <a href="#configuracion-global">configurarlo</a> en caso necesario y recargar el navegador.</p>
+<p>La única limitación es que los plugins han de ser plugins <a href="../../dev/plugins/#cliente">cliente</a>; es decir, plugins con código JavaScript exclusivamente. No es posible desplegar en caliente código Java con nuevos servicios.</p>
 <h2 id="recursos-estaticos">Recursos estáticos</h2>
-<blockquote>
-<p>TODO Subdirectorio <code>static</code></p>
-</blockquote>
+<p>En ocasiones es útil poder servir recursos estáticos directamente desde la aplicación web. Para eso existe el directorio <code>&lt;config_dir&gt;/static</code>. Cualquier fichero que se incluya en este directorio se servirá automáticamente a través de la URL <code>http://&lt;host&gt;/&lt;app&gt;/static/*</code>. Por ejemplo, se podría acceder a un fichero <code>&lt;config_dir&gt;/static/header.png</code> a través de <code>http://localhost:8080/demo/static/header.png</code>.</p>
+<p>Geoladris reconoce algunos fichero estáticos específicos:</p>
+<ul>
+<li><code>static/img/favicon.png</code>: Favicon de la página HTML.</li>
+</ul>
 <h2 id="config_dirportalproperties"><code>&lt;config_dir&gt;/portal.properties</code></h2>
 <p>Fichero de propiedades. Cada plugin define sus propiedades (ver <a href="../../ref/plugins/">referencia</a>). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.</p>
 <h2 id="configurar-cache">Configurar caché</h2>
-<blockquote>
-<p>TODO</p>
+<p>La configuración del portal se obtiene a partir de varios ficheros (configuración global y específica de usuario) e incluso puede obtenerse de una base de datos o de un servicio externo para <a href="../../dev/plugins/#configurar-la-aplicacion-mediante-programacion">desarrollos personalizados</a>. En cualquier caso, obtenerla requiere un tiempo que puede hacer que el visor se ralentice cada vez.</p>
+<p>Para ello, Geoladris proporciona una caché que se puede configurar mediante dos variables:</p>
 <ul>
-<li>GEOLADRIS_CONFIG_CACHE</li>
-<li>GEOLADRIS_CACHE_TIMEOUT</li>
+<li><code>GEOLADRIS_CONFIG_CACHE</code>: <code>true</code>/<code>false</code>. Determina si se utiliza la caché o no. Por defecto es <code>false</code>.</li>
+<li><code>GEOLADRIS_CACHE_TIMEOUT</code>: Número máximo de segundos que se mantiene la caché. Si no se especifica, la caché se mantiene siempre y es necesario reiniciar el servidor para releer la configuración.</li>
 </ul>
-</blockquote>
+<p>De la misma manera que el directorio de configuración, estas variables pueden establecerse de varias maneras:</p>
+<ul>
+<li>Variable de entorno: <code>export GEOLADRIS_CONFIG_CACHE=true</code>.</li>
+<li>Propiedad Java: <code>-DGEOLADRIS_CONFIG_CACHE=true</code>.</li>
+<li>Parámetro en <code>web.xml</code>:</li>
+</ul>
+<div class="codehilite"><pre><span></span>    <span class="nt">&lt;context-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>GEOLADRIS_CONFIG_CACHE<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
                 
                   
                 
@@ -731,7 +771,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
+      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>

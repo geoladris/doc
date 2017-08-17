@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -199,6 +199,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user/download/" title="Descargas" class="md-nav__link">
+      Descargas
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -269,6 +281,19 @@
   <a href="#tecnologias" title="Tecnologías" class="md-nav__link">
     Tecnologías
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patron-de-diseno-message-bus" title="Patrón de diseño message-bus" class="md-nav__link">
+    Patrón de diseño message-bus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -482,6 +507,19 @@
     Tecnologías
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patron-de-diseno-message-bus" title="Patrón de diseño message-bus" class="md-nav__link">
+    Patrón de diseño message-bus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -547,6 +585,25 @@
 <p>Tanto el core como los plugins con parte servidora utilizan la <a href="https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf">API Servlet 3.1</a>. Utilizan ficheros <code>web-fragment.xml</code> para definir sus servlets, filters y application listeners.</p>
 <p>En cuanto a los plugins cliente, todos tienen un fichero <code>package.json</code> con sus dependencias. Las dependencias JavaScript las manejamos con <code>yarn</code>. Como se explica arriba, <code>Maven</code> se encarga de hacer las llamadas correspondientes a <code>yarn</code> mediante el <code>frontend-maven-plugin</code>.</p>
 <p>Por último, el código JavaScript se organiza en módulos de <a href="http://requirejs.org/">RequireJS</a>.</p>
+<h3 id="patron-de-diseno-message-bus">Patrón de diseño <code>message-bus</code></h3>
+<blockquote>
+<p>TODO: Repensar si esto va aqui.</p>
+</blockquote>
+<p>El patrón de diseño Message Bus permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.</p>
+<p>En cambio, si los objetos se acoplan a través de un objeto intermediario (<code>Message Bus</code>), casi todas las dependencias desaparecen, dejando sólo aquellas que hay entre el <code>Message Bus</code> y los distintos módulos.</p>
+<p>Para visualizar el patrón, propondremos un ejemplo, una aplicación modular que consta de tres componentes con representación gráfica y que están dispuestos de la siguiente manera:</p>
+<ul>
+<li>Map: En la parte central habrá un mapa.</li>
+<li>LayerList: En la parte izquierda habrá una lista de temas.</li>
+<li>NewLayer: En la parte superior existirá un control que permite añadir temas a los otros dos componentes.</li>
+</ul>
+<p>Un posible diseño de dicha página consistiría en un módulo <code>Layout</code> que maqueta la página HTML y que inicializa los otros tres objetos. En respuesta a la acción del usuario, el objeto NewLayer mandaría un mensaje a LayerList y Map para añadir el tema en ambos componentes. De la misma manera, LayerList podría mandar un mensaje a Map en caso de que se permitiera la eliminación de capas desde aquél. El siguiente grafo muestra los mensajes que se pasarían los distintos objetos:</p>
+<p><img alt="" src="../../_images/eventbus/eventbus.png" /></p>
+<p>Es posible observar como en el caso de que se quisiera quitar el módulo LayerList, sería necesario modificar el objeto Layout así como el objeto NewLayer, ya que están directamente acoplados. Sin embargo, con el uso del Message Bus, sería posible hacer que los distintos objetos no se referenciaran entre sí directamente sino a través del Message Bus:</p>
+<p><img alt="" src="../../_images/eventbus/eventbus2.png" /></p>
+<p>Así, el módulo NewLayer mandaría un mensaje al Message Bus con los datos de la nueva capa y Map y LayerList símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página LayerList ya que no hay ninguna referencia directa al mismo (salvo tal vez en Layout).</p>
+<p>Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento “add-layer” de forma que se añadirían los temas a ambos mapas.</p>
+<p>De esta manera la aplicación es totalmente modular: es posible reemplazar módulos sin que los otros módulos se vean afectados, se pueden realizar contribuciones bien definidas que sólo deben entender los mensajes existentes para poder integrarse en la aplicación, etc.</p>
 <h2 id="integracion-continua">Integración continua</h2>
 <p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
 <p>La configuración debe garantizar que se pasan todos los tests y que se hace un <code>mvn deploy</code> de todos los artefactos que componen Geoladris.</p>
@@ -587,11 +644,13 @@
 </blockquote>
 <h2 id="git">Git</h2>
 <h3 id="repositorios">Repositorios</h3>
-<p>El código de Geoladris se organiza en tres repositorios:</p>
+<p>A continuación se detalla la estructura del proyecto.</p>
+<p>Si uno revisa el repositorio de código de <a href="https://github.com/geoladris">Geoladris</a> encontrará 4 repositorios:</p>
 <ul>
+<li><a href="https://github.com/geoladris/doc">doc</a>, el repositorio donde se encuentra la documentación oficial del proyecto</li>
 <li><a href="https://github.com/geoladris/core">core</a>. Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).</li>
 <li><a href="https://github.com/geoladris/plugins">plugins</a>: Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver <a href="../plugins/">plugins</a>).</li>
-<li><a href="https://github.com/geoladris/apps">aplicaciones</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
+<li><a href="https://github.com/geoladris/apps">apps</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
 </ul>
 <h3 id="modelo-de-ramas">Modelo de ramas</h3>
 <blockquote>
@@ -675,7 +734,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
+      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>
