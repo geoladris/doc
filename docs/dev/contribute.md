@@ -1,6 +1,6 @@
-GeoLadris existe debido a los esfuerzos de personas como vosotros.
+Geoladris existe debido a los esfuerzos de personas como vosotros.
 
-Hay muchas maneras en las que puede ayudar con el proyecto GeoLadris. GeoLadris abarca completamente un modelo de desarrollo de código abierto en la que cualquiera puede participar mediante aportaciones de código, detección de errores, traducción documentación o lo que se os ocurra.
+Hay muchas maneras en las que puede ayudar con el proyecto Geoladris. Geoladris abarca completamente un modelo de desarrollo de código abierto en la que cualquiera puede participar mediante aportaciones de código, detección de errores, traducción documentación o lo que se os ocurra.
 
 ## Lista de correo
 

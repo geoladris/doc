@@ -88,12 +88,12 @@ También es posible utilizar recursos *no* minificados añadiendo el parámetro 
 
 A continuación se detalla la estructura del proyecto.
 
-Si uno revisa el repositorio de código de [GeoLadris](https://github.com/geoladris) encontrará 4 repositorios:
+Si uno revisa el repositorio de código de [Geoladris](https://github.com/geoladris) encontrará 4 repositorios:
 
 * [doc](https://github.com/geoladris/doc), el repositorio donde se encuentra la documentación oficial del proyecto
 * [core](https://github.com/geoladris/core). Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).
 * [plugins](https://github.com/geoladris/plugins): Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver [plugins](plugins.md)).
-* [aplicaciones](https://github.com/geoladris/apps): Aplicaciones que definen qué plugins utilizan y cómo se configuran.
+* [apps](https://github.com/geoladris/apps): Aplicaciones que definen qué plugins utilizan y cómo se configuran.
 
 ### Modelo de ramas
 
