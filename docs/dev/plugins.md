@@ -39,6 +39,10 @@ Un plugin cliente es un directorio que contiene:
 
 Adicionalmente puede tener otros recursos propios de cualquier proyecto JavaScript (`karma.conf.js`, `test`, `yarn.lock`, ...).
 
+#### Traducciones
+
+> TODO: Depender del módulo `i18n` y utilizar cadenas de `messages.properties`.
+
 ### Híbridos
 
 Proyectos que contienen ambos tipos de recurso (Java y JavaScript).

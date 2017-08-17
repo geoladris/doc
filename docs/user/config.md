@@ -104,7 +104,9 @@ Por ejemplo, para habilitar los plugins `layer-order` y `layers-editor` en el ro
 
 Con Geoladris se pueden configurar las cadenas de texto que aparecen en el visor e incluso escribirlas en diferentes idiomas.
 
-Para ello, basta con crear un directorio `<config_dir>/messages` que contenga ficheros `messages_<lang>.properties`. Por ejemplo, para tener traducciones en inglés y español habría que crear los ficheros `messages_en.properties` y `messages_es.properties`. Además, existe un fichero `messages.properties` (sin el sufijo del idioma) con las traducciones por defecto, que puede ser una copia de los anteriores.
+Para ello, basta con crear un directorio `<config_dir>/messages` que contenga ficheros `messages_<lang>.properties`. `<lang>` es el código del idioma según la nomenclatura [ISO 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) de dos letras.
+
+Por ejemplo, para tener traducciones en inglés y español habría que crear los ficheros `messages_en.properties` y `messages_es.properties`. Además, existe un fichero `messages.properties` (sin el sufijo del idioma) con las traducciones por defecto, que puede ser una copia de los anteriores.
 
 Un ejemplo de fichero de traducciones:
 
@@ -120,26 +122,6 @@ data_source=Fuente de datos
 Cada plugin define sus propias traducciones. Para ver qué traducciones hay disponibles, ver [referencia](../ref/plugins.md).
 
 Para añadir la posibilidad de cambiar de un idioma a otro en el visor, existe el plugin `language-buttons`.
-
-### Soporte multiidioma
-
-En los casos anteriores vemos algunas cadenas de texto entre los símbolos `${` y `}`. Estos elementos son sustituidos por mensajes de texto traducidos a cada idioma.
-
-En el directorio `messages` contamos con un fichero `messages.properties` que contiene los mensajes por defecto. Son los textos que se usarán en caso de no encontrar mensajes traducidos a una lengua específica. Los ficheros para los distintos idiomas soportados llevan el código del idioma al final del nombre, según la `[nomenclatura ISO 639-1 de dos letras](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)`
-
-Para añadir un nuevo idioma (por ejemplo, el guaraní):
-
- * Editar ``portal.properties`` y añadir el elemento ``"gn": "Guaraní"`` a la propiedad ``languages``::
-
-    languages = {"gn": "Guaraní", "es": "Español", "en": "English"}
-
- * Copiar el fichero ``messages_es.properties`` con el nuevo nombre ``messages_gn.properties``.
- * Traducir los textos en ``messages_gn.properties``.
- * Reiniciar la aplicación para aplicar los cambios. Desde la linea de comandos::
-
-~~~
-	$ sudo service tomcat6 restart
-~~~
 
 ## Añadir plugins después de desplegar
 
