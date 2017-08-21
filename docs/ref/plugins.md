@@ -4,6 +4,14 @@
 > * Configuración (obtenida con `module.config()`).
 > * Traducciones.
 
+## ol2
+
+### `map.js`
+
+* `gmaps_key`: Clave de API de Google Maps.
+* `htmlId`: Identificador del elemento HTML donde colocar el mapa. Por defecto `map`.
+* `numZoomLevels`: Número de niveles de zoom del mapa.
+
 ### layers.json
 
 Define la estructura de capas del proyecto. Consiste en un elemento JSON con cuatro propiedades::
