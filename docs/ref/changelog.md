@@ -1,5 +1,27 @@
 This project follows [semantic versioning](http://semver.org).
 
+## Plugins - Sin publicar (7.0.0)
+
+### Añadido
+
+* Posibilidad de especificar API para Google Maps ([#38](https://github.com/geoladris/plugins/issues/38)).
+
+### Corregido
+
+* Checkboxes de la lista de capas (`layer-list.js`) no respondían.
+* `legend-panel.js` lanzaba excepciones .
+
+## Plugins - Sin publicar (6.0.3)
+
+### Añadido
+
+* Posibilidad de especificar API para Google Maps ([#38](https://github.com/geoladris/plugins/issues/38)).
+
+### Corregido
+
+* Checkboxes de la lista de capas (`layer-list.js`) no respondían.
+* `legend-panel.js` lanzaba excepciones .
+
 ## Core - Sin publicar
 
 ### Modificado
