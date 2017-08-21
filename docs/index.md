@@ -15,7 +15,7 @@
 * [Aplicaciones](dev/apps.md).
 * [Migración](dev/migrate.md).
 * [Contribuir](dev/contribute.md).
-* [Desarrolar con Eclipse](dev/eclipse.md).
+* [Desarrollar con Eclipse](dev/eclipse.md).
 
 ## Referencia
 
