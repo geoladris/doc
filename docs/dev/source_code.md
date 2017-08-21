@@ -11,6 +11,7 @@ Por último, el código JavaScript se organiza en módulos de [RequireJS](http:/
 ### Patrón de diseño `message-bus`
 
 > TODO: Repensar si esto va aqui.
+> TODO: Hablar de la secuencia de inicio
 
 El patrón de diseño Message Bus permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.
 
