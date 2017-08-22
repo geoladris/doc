@@ -22,3 +22,4 @@
 * [Registro de cambios](ref/changelog.md).
 * [Plugins](ref/plugins.md).
 * [Eventos](ref/events.md).
+* [Licencia](ref/license.md).
