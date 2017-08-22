@@ -309,9 +309,41 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Publicación
+      </label>
+    
     <a href="./" title="Publicación" class="md-nav__link md-nav__link--active">
       Publicación
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frecuencia-de-publicaciones" title="Frecuencia de publicaciones" class="md-nav__link">
+    Frecuencia de publicaciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proceso" title="Proceso" class="md-nav__link">
+    Proceso
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -400,6 +432,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ref/license/" title="Licencia" class="md-nav__link">
+      Licencia
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -420,6 +464,27 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frecuencia-de-publicaciones" title="Frecuencia de publicaciones" class="md-nav__link">
+    Frecuencia de publicaciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proceso" title="Proceso" class="md-nav__link">
+    Proceso
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -433,22 +498,61 @@
                 
                   <h1>Publicación</h1>
                 
-                <blockquote>
-<p>TODO Frecuencia de publicaciones</p>
-<p>TODO Pasos:</p>
+                <h3 id="frecuencia-de-publicaciones">Frecuencia de publicaciones</h3>
+<h3 id="proceso">Proceso</h3>
 <ul>
-<li>Reminder a la lista x tiempo antes.</li>
-<li>Crear la rama release-* en el repo</li>
-<li>Fixes de última hora</li>
+<li>Acordar una fecha por la lista de correo.</li>
+<li>
+<p>Preparar la rama de release (principalmente copiado de <a href="http://docs.geoserver.org/stable/en/developer/release-guide/index.html#if-you-are-cutting-the-first-rc-of-a-series-create-the-stable-branch">GeoServer</a>) y de <strong>documentación</strong>. Necesitaremos ramas en el repo de documentación para mantener documentación de diferentes versiones con readthedocs. Dos casos:</p>
+</li>
+<li>
+<p>Cambios menores (únicamente cambia el patch number). No se hace nada, se utiliza la rama existente (queremos publicar la <code>7.0.1</code>, utilizamos la rama <code>7.0.x</code> existente).</p>
+</li>
+<li>
+<p>Cambios mayores (cambia el minor y/o major number). Se crea una rama de release:</p>
+<p><code>git checkout &lt;rama_base&gt;
+git checkout -b &lt;rama_release&gt;</code></p>
+<p><code>rama_release</code> se tiene que corresponder con el número de versión en el <code>pom.xml</code>. Por ejemplo, si en el <code>pom.xml</code> está <code>7.0.0-SNAPSHOT</code>, se crea la rama <code>7.0.x</code>. Para ello, se elige la <code>rama_base</code> correspondiente a la versión que se quiere publicar.</p>
+<p>Se actualiza <code>rama_base</code> con el siguiente minor number:
+<code>git checkout rama_base
+mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
+yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
+git commit -m "Bump version to 7.1.0-SNAPSHOT"
+git push</code></p>
+</li>
+<li>
+<p>Probar bien y hacer fixes de última hora sobre la rama de release.</p>
+</li>
+<li>Actualizar versiones a la versión definitiva:</li>
 </ul>
-<p>Cuando la rama está lista:
-<em> bump versions
-</em> Actualizar doc
-<em> Crear version en readthedocs para la rama de la doc de la versión
-</em> git tag
-<em> Mezclar ramas/cherry-pick
-</em> Avisar en la lista de correo</p>
-</blockquote>
+<p><code>git checkout rama_release
+mvn versions:set -DnewVersion=7.0.0
+yarn version --no-git-tag-version --new-version 7.0.0
+git commit -m "Bump version to 7.0.0"
+git push</code></p>
+<ul>
+<li>Desplegar</li>
+</ul>
+<p><code>mvn deploy -P release</code></p>
+<ul>
+<li>
+<p>Actualizar documentación (versiones en changelog, descargas, etc.) y hacer un tag.</p>
+</li>
+<li>
+<p>Añadir una versión en readthedocs para el tag creado.</p>
+</li>
+<li>
+<p>Actualizar la versión en la rama de release:
+  <code>git checkout rama_release
+mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
+yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
+git commit -m "Bump version to 7.1.0-SNAPSHOT"
+git push</code></p>
+</li>
+<li>
+<p>Enviar mensaje a la lista de correo.</p>
+</li>
+</ul>
                 
                   
                 

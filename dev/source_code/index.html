@@ -479,6 +479,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ref/license/" title="Licencia" class="md-nav__link">
+      Licencia
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -654,18 +666,22 @@ TODO: Hablar de la secuencia de inicio</p>
 <li><a href="https://github.com/geoladris/apps">apps</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
 </ul>
 <h3 id="modelo-de-ramas">Modelo de ramas</h3>
-<blockquote>
+<p>En Geoladris gastamos un modelo de ramas muy parecido al de <a href="http://docs.geoserver.org/stable/en/developer/source.html#repository-structure">GeoServer</a> y al modelo <a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">cactus</a>.</p>
+<p>Existen las siguientes ramas:</p>
 <ul>
-<li>Modelo de ramas. Revisar doc:<ul>
-<li><a href="http://docs.geoserver.org/stable/en/developer/source.html">GeoServer</a></li>
-<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow">gitflow</a></li>
-<li><a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">cactus</a></li>
-</ul>
+<li><strong><code>master</code></strong>: Rama principal sobre la que se realizan los últimos desarrollos.</li>
+<li>
+<p><strong>Ramas de <em>release</em></strong>: Ramas de desarrollo de una versión determinada. Tienen como nombre <code>&lt;major&gt;.&lt;minor&gt;.x</code> (<a href="http://semver.org">versionado semántico</a>). Por ejemplo: <code>6.0.x</code>.</p>
+<p>Estas ramas nacen de <code>master</code> o de otra rama de release; por ejemplo, si queremos sacar la <code>6.1.x</code> y en <code>master</code> existen cambios que nos llevan a la <code>7.0.x</code>, sacaremos la <code>6.1.x</code> a partir de la <code>6.0.x</code>.</p>
+<p>Nunca se vuelven a mezclar en <code>master</code>. Si se quieren incluir los cambios en diferentes ramas, se utiliza <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
 </li>
-<li>Actualizar versiones (semántico) cuando se integra una nueva feature. De esta forma al <a href="../releases/">publicar</a> ya tenemos la versión que toca.</li>
-<li>Actualizar changelog cuand se hace cualquier cambio. De esta forma al <a href="../releases/">publicar</a> ya tenemos el changelog listo.</li>
+<li>
+<p><strong>Ramas de <em>feature</em></strong>: Ramas para desarrollos específicos. Pueden salir tanto de <code>master</code> como de una rama de <em>release</em> y siempre se mezclan sobre la rama de la que salieron.</p>
+<p>Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.</p>
+</li>
 </ul>
-</blockquote>
+<p><strong>IMPORTANTE</strong>: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros <code>pom.xml</code> y <code>package.json</code>).</p>
+<p>Por ejemplo, si tenemos <code>6.1.0-SNAPSHOT</code> en <code>master</code> e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a <code>7.0.0-SNAPSHOT</code>, de forma que sepamos en todo momento qué version se corresponde con cada rama.</p>
                 
                   
                 
