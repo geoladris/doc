@@ -510,31 +510,43 @@
 </li>
 <li>
 <p>Cambios mayores (cambia el minor y/o major number). Se crea una rama de release:</p>
-<p><code>git checkout &lt;rama_base&gt;
-git checkout -b &lt;rama_release&gt;</code></p>
+<div class="codehilite"><pre><span></span>git checkout &lt;rama_base&gt;
+git checkout -b &lt;rama_release&gt;
+</pre></div>
+
+
 <p><code>rama_release</code> se tiene que corresponder con el número de versión en el <code>pom.xml</code>. Por ejemplo, si en el <code>pom.xml</code> está <code>7.0.0-SNAPSHOT</code>, se crea la rama <code>7.0.x</code>. Para ello, se elige la <code>rama_base</code> correspondiente a la versión que se quiere publicar.</p>
-<p>Se actualiza <code>rama_base</code> con el siguiente minor number:
-<code>git checkout rama_base
+<p>Se actualiza <code>rama_base</code> con el siguiente minor number:</p>
+<div class="codehilite"><pre><span></span>git checkout rama_base
 mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
 yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
-git commit -m "Bump version to 7.1.0-SNAPSHOT"
-git push</code></p>
+git commit -m &quot;Bump version to 7.1.0-SNAPSHOT&quot;
+git push
+</pre></div>
+
+
 </li>
 <li>
 <p>Probar bien y hacer fixes de última hora sobre la rama de release.</p>
 </li>
-<li>Actualizar versiones a la versión definitiva:</li>
-</ul>
-<p><code>git checkout rama_release
+<li>
+<p>Actualizar versiones a la versión definitiva:</p>
+<div class="codehilite"><pre><span></span>git checkout rama_release
 mvn versions:set -DnewVersion=7.0.0
 yarn version --no-git-tag-version --new-version 7.0.0
-git commit -m "Bump version to 7.0.0"
-git push</code></p>
-<ul>
-<li>Desplegar</li>
-</ul>
-<p><code>mvn deploy -P release</code></p>
-<ul>
+git commit -m &quot;Bump version to 7.0.0&quot;
+git push
+</pre></div>
+
+
+</li>
+<li>
+<p>Desplegar</p>
+<div class="codehilite"><pre><span></span>mvn deploy -P release
+</pre></div>
+
+
+</li>
 <li>
 <p>Actualizar documentación (versiones en changelog, descargas, etc.) y hacer un tag.</p>
 </li>
@@ -542,12 +554,15 @@ git push</code></p>
 <p>Añadir una versión en readthedocs para el tag creado.</p>
 </li>
 <li>
-<p>Actualizar la versión en la rama de release:
-  <code>git checkout rama_release
+<p>Actualizar la versión en la rama de release:</p>
+<div class="codehilite"><pre><span></span>git checkout rama_release
 mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
 yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
-git commit -m "Bump version to 7.1.0-SNAPSHOT"
-git push</code></p>
+git commit -m &quot;Bump version to 7.1.0-SNAPSHOT&quot;
+git push
+</pre></div>
+
+
 </li>
 <li>
 <p>Enviar mensaje a la lista de correo.</p>
