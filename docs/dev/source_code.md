@@ -98,9 +98,22 @@ Si uno revisa el repositorio de código de [Geoladris](https://github.com/geolad
 
 ### Modelo de ramas
 
-> * Modelo de ramas. Revisar doc:
->     - [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html)
->     - [gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow)
->     - [cactus](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/)
-> * Actualizar versiones (semántico) cuando se integra una nueva feature. De esta forma al [publicar](releases.md) ya tenemos la versión que toca.
-> * Actualizar changelog cuand se hace cualquier cambio. De esta forma al [publicar](releases.md) ya tenemos el changelog listo.
+En Geoladris gastamos un modelo de ramas muy parecido al de [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#repository-structure) y al modelo [cactus](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/).
+
+Existen las siguientes ramas:
+
+* **`master`**: Rama principal sobre la que se realizan los últimos desarrollos.
+* **Ramas de _release_**: Ramas de desarrollo de una versión determinada. Tienen como nombre `<major>.<minor>.x` ([versionado semántico](http://semver.org)). Por ejemplo: `6.0.x`.
+
+    Estas ramas nacen de `master` o de otra rama de release; por ejemplo, si queremos sacar la `6.1.x` y en `master` existen cambios que nos llevan a la `7.0.x`, sacaremos la `6.1.x` a partir de la `6.0.x`.
+
+    Nunca se vuelven a mezclar en `master`. Si se quieren incluir los cambios en diferentes ramas, se utiliza [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
+
+* **Ramas de _feature_**: Ramas para desarrollos específicos. Pueden salir tanto de `master` como de una rama de *release* y siempre se mezclan sobre la rama de la que salieron.
+
+    Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.
+
+
+**IMPORTANTE**: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros `pom.xml` y `package.json`).
+
+Por ejemplo, si tenemos `6.1.0-SNAPSHOT` en `master` e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a `7.0.0-SNAPSHOT`, de forma que sepamos en todo momento qué version se corresponde con cada rama.
