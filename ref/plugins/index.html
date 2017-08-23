@@ -412,15 +412,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#layersjson" title="layers.json" class="md-nav__link">
     layers.json
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -495,15 +495,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#layersjson" title="layers.json" class="md-nav__link">
     layers.json
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -524,29 +524,25 @@
                 
                   <h1>Plugins</h1>
                 
-                <blockquote>
-<p>TODO
-Documentación de referencia de:</p>
-<ul>
-<li>Configuración (obtenida con <code>module.config()</code>).</li>
-<li>Traducciones.</li>
-</ul>
-</blockquote>
+                <p><strong>IMPORTANTE</strong>: Esta documentación está en construcción y puede estar desactualizada y/o incompleta.</p>
 <h2 id="ol2">ol2</h2>
 <h3 id="mapjs"><code>map.js</code></h3>
+<p><strong>Configuración</strong>:</p>
 <ul>
 <li><code>gmaps_key</code>: Clave de API de Google Maps.</li>
 <li><code>htmlId</code>: Identificador del elemento HTML donde colocar el mapa. Por defecto <code>map</code>.</li>
 <li><code>numZoomLevels</code>: Número de niveles de zoom del mapa.</li>
 </ul>
-<h3 id="layersjson">layers.json</h3>
-<p>Define la estructura de capas del proyecto. Consiste en un elemento JSON con cuatro propiedades::</p>
-<div class="codehilite"><pre><span></span>{
-    &quot;default-server&quot; : &quot;http://snmb.ambiente.gob.ar/&quot;,
-    &quot;wmsLayers&quot; : [],
-    &quot;portalLayers&quot; : [],
-    &quot;groups&quot; : []
-}
+<p><strong>Traducciones</strong>:</p>
+<p><strong>Eventos</strong>:</p>
+<h2 id="layersjson">layers.json</h2>
+<p>Define la estructura de capas del proyecto. Consiste en un elemento JSON con cuatro propiedades:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;default-server&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;portalLayers&quot;</span> <span class="o">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;groups&quot;</span> <span class="o">:</span> <span class="p">[]</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -555,199 +551,166 @@ Documentación de referencia de:</p>
 <p><code>default-server</code> define el servidor que se usará como base en caso de que la URL de las capas no incluyan servidor. Ver atributo <code>baseUrl</code> más abajo.</p>
 </li>
 <li>
-<p><code>wmsLayers</code> define las capas WMS que tendrá el mapa. El orden en el que estas capas aparecen en el array <code>wmsLayers</code> define el orden de las capas en el dibujado del mapa. Cada capa consistirá en un elemento que puede ser de tres tipos. El tipo por defecto es WMS y tiene las siguientes propiedades:</p>
+<p><code>wmsLayers</code> define las capas que tendrá el mapa. El orden en el que estas capas aparecen en este array define el orden de las capas en el dibujado del mapa. Cada capa consistirá en un elemento que puede ser de tres tipos. El tipo por defecto es WMS y tiene las siguientes propiedades:</p>
 <ul>
-<li>id: Identificado de la capa</li>
-<li>type: Tipo de la capa: WMS, Open Street Map, Google maps, respectivamente "wms", "osm" o "gmaps". Por defecto se tomará type:"wms"</li>
-<li>visible: Si la capa es utilizada para visualizarse en el mapa o sólo para otras cosas (petición de información, por ejemplo).</li>
-<li>zIndex: Posición en la pila de dibujado</li>
-<li>legend: Nombre del fichero imagen con la leyenda de la capa. Estos ficheros se acceden en static/loc/{lang}/images. También es posible poner la cadena de carácteres "auto" y el portal intentará obtener la imagen automáticamente de GeoServer usando la petición GetLegendGraphics de WMS.</li>
-<li>label: Título de la leyenda</li>
-<li>sourceLink: URL del proveedor de los datos</li>
-<li>sourceLabel: Texto con el que presentar el enlace especificado en sourceLink</li>
+<li><code>id</code>: Identificador de la capa.</li>
+<li><code>type</code>: Tipo de la capa. Puede ser <code>wms</code>, <code>osm</code> (para Open Street Map) o <code>gmaps</code> (para Google Maps). Por defecto es <code>wms</code>.</li>
+<li><code>legend</code>: Nombre del fichero imagen con la leyenda de la capa. Estos ficheros se acceden en <code>static/loc/{lang}/images</code>. También es posible poner la cadena de carácteres <code>auto</code> y el portal intentará obtener la imagen automáticamente de GeoServer usando la petición <code>GetLegendGraphic</code> de WMS.</li>
+<li><code>sourceLink</code>: URL del proveedor de los datos.</li>
+<li><code>sourceLabel</code>: Texto con el que presentar el enlace especificado en <code>sourceLink</code>.</li>
 </ul>
-<p>En función del tipo de la capa se especificarán además otras propiedades</p>
-</li>
-<li>
-<p><strong>WMS</strong>:</p>
+<p>En función del tipo de la capa se especificarán además otras propiedades. Para <code>wms</code>:</p>
 <ul>
-<li>baseUrl: URL del servidor WMS que sirve la capa. Si se especifica una URL sin servidor, por ejemplo "/diss_geoserver/gwc/service/wms", se usará <code>default-server</code>.</li>
-<li>wmsName: Nombre de la capa en el servicio WMS</li>
-<li>imageFormat: Formato de imagen a utilizar en las llamadas WMS</li>
-<li>queryType: Protocolo usado para la herramienta de información: "wfs" o "wms". En caso de ser "wfs" los siguientes parámetros son obligatorios: <em>queryUrl</em>, <em>querGeomFieldName</em>, <em>queryFieldNames</em>, <em>queryFieldAliases</em>, <em>queryTimeField</em> (en caso de ser una capa temporal). En caso de ser "wms" no hay ningún parámetro adicional obligatorio, por lo que una capa que quiera usar WMS para la herramienta de información puede configurarse sólo con: <code>"queryType":"wms"</code>. El único requisito para capas con <code>"queryType":"wms"</code> es que el servidor codifique en EPSG:4326 la geometría de la respuesta al GetFeatureInfo, en caso contrario el objeto consultado no se podrá localizar en el mapa mediante zoom y resaltado. Si la capa no tiene un parámetro <code>queryType</code> la capa no será consultable.</li>
-<li>queryUrl: URL base a utilizar en la petición de información. Base del servidor WMS o WFS a utilizar (según <code>queryType</code>). Si no se especifica se toma <code>baseUrl</code>.</li>
-<li>queryGeomFieldName: Obligatorio en el caso de <code>"queryType":"wfs"</code>. El nombre del campo geométrico. Típicamente "geom", "the_geom", "geometry", etc.</li>
-<li>queryFieldNames: Obligatorio en el caso de <code>"queryType":"wfs"</code>. Nombres de los campos que se quieren obtener en la petición de info.</li>
-<li>queryFieldAliases: Obligatorio en el caso de especificar <code>queryFieldNames</code>. Aliases de los campos especificados en <code>queryFieldNames</code>.</li>
-<li>queryTimeFieldName: Obligatorio en el caso de <code>"queryType":"wfs"</code> si la capa tiene varias instancias temporales. Sin uso en el caso de <code>"queryType":"wms"</code>.</li>
-<li>queryHighlightBounds: Sólo para el caso <code>"queryType":"wms"</code>. Si se desea resaltar solo el rectángulo que encuadra la geometría de los objetos consultados (<code>true</code>) o toda la geometría (<code>false</code>). Por defecto es <code>false</code>. En los casos en los que la geometría es muy grande puede ser conveniente ponerlo a <code>true</code> para que el proceso de resaltado sea más rápido.</li>
-</ul>
-<p>Por ejemplo:</p>
-</li>
-</ul>
-<div class="codehilite"><pre><span></span>        {
-            &quot;wmsLayers&quot; : [
-                {
-                    &quot;id&quot; : &quot;provinces&quot;,
-                    &quot;baseUrl&quot; : &quot;http://snmb.ambiente.gob.ar/geo-server/bosques_umsef_db/wms&quot;,
-                    &quot;wmsName&quot; : &quot;bosques_umsef_db:limites_provinciales&quot;,
-                    &quot;imageFormat&quot; : &quot;image/png8&quot;,
-                    &quot;visible&quot; : true,
-                    &quot;sourceLink&quot; : &quot;&quot;,
-                    &quot;sourceLabel&quot; : &quot;&quot;,
-                    &quot;queryable&quot; : true
-                }
-            ],
-            ...
-        }
+<li><code>baseUrl</code>: URL del servidor WMS que sirve la capa. Si se especifica una URL sin servidor, por ejemplo  <code>/diss_geoserver/gwc/service/wms</code>, se usará <code>default-server</code>.</li>
+<li><code>wmsName</code>: Nombre de la capa en el servicio WMS.</li>
+<li><code>imageFormat</code>: Formato de imagen a utilizar en las llamadas WMS.</li>
+<li><code>queryType</code>: Protocolo usado para la herramienta de información: <code>wfs</code> o <code>wms</code>. En caso de ser <code>wfs</code> los siguientes parámetros son obligatorios: <code>queryGeomFieldName</code>, <code>queryFieldNames</code>, <code>queryFieldAliases</code> y <code>queryTimeField</code> (en caso de ser una capa temporal). En caso de ser <code>wms</code> no hay ningún parámetro adicional obligatorio, por lo que una capa que quiera usar WMS para la herramienta de información puede configurarse sólo con: <code>"queryType": "wms"</code>. El único requisito para capas con <code>"queryType": "wms"</code> es que el servidor codifique en EPSG:4326 la geometría de la respuesta al <code>GetFeatureInfo</code>; en caso contrario el objeto consultado no se podrá localizar en el mapa mediante zoom y resaltado. Si la capa no tiene un parámetro <code>queryType</code> la capa no será consultable.</li>
+<li><code>queryUrl</code>: URL base a utilizar en la petición de información. Base del servidor WMS o WFS a utilizar (según <code>queryType</code>). Si no se especifica se toma <code>baseUrl</code>.</li>
+<li><code>queryGeomFieldName</code>: Obligatorio en el caso de <code>"queryType": "wfs"</code>. El nombre del campo geométrico. Típicamente <code>geom</code>, <code>the_geom</code>, <code>geometry</code>, etc.</li>
+<li><code>queryFieldNames</code>: Obligatorio en el caso de <code>"queryType": "wfs"</code>. Nombres de los campos que se quieren obtener en la petición de info.</li>
+<li><code>queryFieldAliases</code>: Obligatorio en el caso de especificar <code>queryFieldNames</code>. Aliases de los campos especificados en <code>queryFieldNames</code>.</li>
+<li><code>queryTimeFieldName</code>: Obligatorio en el caso de <code>"queryType": "wfs"</code> si la capa tiene varias instancias temporales. Sin uso en el caso de <code>"queryType": "wms"</code>.</li>
+<li><code>queryHighlightBounds</code>: Sólo para el caso <code>"queryType": "wms"</code>. Si se desea resaltar solo el rectángulo que encuadra la geometría de los objetos consultados (<code>true</code>) o toda la geometría (<code>false</code>). Por defecto es <code>false</code>. En los casos en los que la geometría es muy grande puede ser conveniente ponerlo a <code>true</code> para que el proceso de resaltado sea más rápido. Por ejemplo:<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;baseUrl&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it/diss_geoserver/wms&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wmsName&quot;</span> <span class="o">:</span> <span class="s2">&quot;unredd:drc_provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;imageFormat&quot;</span> <span class="o">:</span> <span class="s2">&quot;image/png8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;visible&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLink&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://www.wri.org/publication/interactive-forest-atlas-democratic-republic-of-congo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLabel&quot;</span> <span class="o">:</span> <span class="s2">&quot;WRI&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;queryable&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}],</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<ul>
-<li>
-<p><strong>OpenStreetMap</strong>:</p>
-<ul>
-<li>osmUrls: lista de las URL de los tiles. Usando ${x}, ${y} y ${z} como variables.</li>
-</ul>
-<p>Por ejemplo:</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span>        {
-            &quot;wmsLayers&quot; : [
-                {
-                    &quot;id&quot; : &quot;openstreetmap&quot;,
-                    &quot;type&quot; : &quot;osm&quot;,
-                    &quot;osmUrls&quot; : [
-                        &quot;http://a.tile.openstreetmap.org/<span class="cp">${</span><span class="n">z</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">x</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">y</span><span class="cp">}</span>.png&quot;,
-                        &quot;http://b.tile.openstreetmap.org/<span class="cp">${</span><span class="n">z</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">x</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">y</span><span class="cp">}</span>.png&quot;,
-                        &quot;http://c.tile.openstreetmap.org/<span class="cp">${</span><span class="n">z</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">x</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">y</span><span class="cp">}</span>.png&quot;
-                    ]
-                }           
-            ],
-            ...
-        }
+<p>Para <code>osm</code> (Open Street Map):</p>
+<ul>
+<li><code>osmUrls</code>: lista de las URLs de los tiles. Usando <code>${x}</code>, <code>${y}</code> y <code>${z}</code> como variables. Por ejemplo:<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;openstreetmap&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;osm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;osmUrls&quot;</span> <span class="o">:</span> <span class="p">[</span>
+      <span class="s2">&quot;http://a.tile.openstreetmap.org/${z}/${x}/${y}.png&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;http://b.tile.openstreetmap.org/${z}/${x}/${y}.png&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;http://c.tile.openstreetmap.org/${z}/${x}/${y}.png&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}],</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<ul>
-<li>
-<p><strong>Google</strong>:</p>
-<ul>
-<li>gmaps-type: Tipo de capa Google: ROADMAP, SATELLITE, HYBRID o TERRAIN</li>
-</ul>
-<p>Por ejemplo:</p>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span>        {
-            &quot;wmsLayers&quot; : [
-                {
-                    &quot;id&quot; : &quot;google-maps&quot;,
-                    &quot;type&quot; : &quot;gmaps&quot;,
-                    &quot;gmaps-type&quot; : &quot;SATELLITE&quot;
-                }
-            ],
-            ...
-        }
+<p>Para <code>gmaps</code> (Google Maps):</p>
+<ul>
+<li><code>gmaps-type</code>: Tipo de capa Google: <code>ROADMAP</code>, <code>SATELLITE</code>, <code>HYBRID</code> o <code>TERRAIN</code>. Por ejemplo:<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;google-maps&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;gmaps&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gmaps-type&quot;</span> <span class="o">:</span> <span class="s2">&quot;SATELLITE&quot;</span>
+  <span class="p">}],</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 
 
-<ul>
+</li>
+</ul>
+</li>
 <li>
 <p><code>portalLayers</code> define las capas que aparecen visibles al usuario. Una <code>portalLayer</code> puede contener varias <code>wmsLayers</code>. Cada <code>portalLayer</code> puede contener los siguientes elementos:</p>
 <ul>
-<li>id: id de la capa</li>
-<li>label: Texto con el nombre de la capa a usar en el portal. Si se especifica entre ${ }, se intentará obtener la traducción de los ficheros .properties existentes en el directorio <code>messages</code> del  directorio de configuración del portal.</li>
-<li>infoFile: Nombre del fichero HTML con información sobre la capa. El fichero se accede en static/loc/{lang}/html. En la interfaz gráfica se representa con un botón de información al lado del nombre de la capa</li>
-<li>infoLink: Url con la información sobre la capa. Igual que infoFile pero especificando una ruta absoluta. infoFile tiene preferencia sobre infoLink, por lo que si se define el primero, infoLink se ignorará.</li>
-<li>inlineLegendUrl: URL con una imagen pequeña que situar al lado del nombre de la capa en el árbol de capas. También es posible poner la cadena de carácteres "auto" y el portal intentará obtener la imagen automáticamente de GeoServer usando la petición GetLegendGraphics de WMS.</li>
-<li>active: Si la capa está inicialmente visible o no</li>
-<li>layers: Array con los identificadores de las <code>wmsLayers</code> a las que se accede a través de esta capa</li>
-<li>timeInstances: Instantes de tiempo en ISO8601 separados por comas</li>
-<li>timeStyles: Nombres de los estilos a utilizar para cada instancia temporal. Cada estilo se corresponde con aquella instancia temporal que ocupa la misma posición en la lista. Si no se especifica este parámetro se utilizará el estilo por defecto para todos los estilos.</li>
-<li>date-format: Formato de la fecha para cada capa. Según la librería Moment (http://momentjs.com/docs/#/displaying/). Por ejempo: "DD-MM-YYYY". Por defecto sólo el año (YYYY).</li>
-<li>feedback: En el caso de que la herramienta de feedback esté instalada, si se quiere o no que la capa aparezca en dicha herramienta para permitir al usuario hacer comentarios sobre la capa.  </li>
-</ul>
-<p>Por ejemplo::</p>
-<div class="codehilite"><pre><span></span>{
-    &quot;wmsLayers&quot; : [
-        {
-            &quot;id&quot; : &quot;provinces&quot;,
-            &quot;baseUrl&quot; : &quot;http://snmb.ambiente.gob.ar/geo-server/bosques_umsef_db/wms&quot;,
-            &quot;wmsName&quot; : &quot;bosques_umsef_db:limites_provinciales&quot;,
-            &quot;imageFormat&quot; : &quot;image/png8&quot;,
-            &quot;visible&quot; : true,
-            &quot;sourceLink&quot; : &quot;&quot;,
-            &quot;sourceLabel&quot; : &quot;&quot;,
-            &quot;queryable&quot; : true
-        }
-    ],
-    &quot;portalLayers&quot; : [
-        {
-            &quot;id&quot; : &quot;provinces&quot;,
-            &quot;active&quot; : true,
-            &quot;infoFile&quot; : &quot;provinces_def.html&quot;,
-            &quot;label&quot; : &quot;<span class="cp">${</span><span class="n">provinces</span><span class="cp">}</span>&quot;,
-            &quot;layers&quot; : [ &quot;wms_provinces&quot; ],
-            &quot;inlineLegendUrl&quot; : &quot;http://snmb.ambiente.gob.ar/geo-server/bosques_umsef_db/wms?REQUEST=GetLegendGraphic<span class="err">&amp;</span>VERSION=1.0.0<span class="err">&amp;</span>FORMAT=image/png<span class="err">&amp;</span>WIDTH=20<span class="err">&amp;</span>HEIGHT=20<span class="err">&amp;</span>LAYER=bosques_umsef_db:limites_provinciales<span class="err">&amp;</span>TRANSPARENT=true&quot;,
-            &quot;timeInstances&quot; : &quot;&quot;,
-            &quot;timeStyles&quot; : &quot;&quot;,
-            &quot;date-format&quot; : &quot;&quot;
-        }
-    ],
-    ...
-}
+<li><code>id</code>: Identificador de la capa.</li>
+<li><code>label</code>: Texto con el nombre de la capa a usar en el portal. Si se especifica entre ${ }, se intentará obtener la traducción de los ficheros <code>.properties</code> existentes en el directorio <code>messages</code> del  directorio de configuración del portal.</li>
+<li><code>infoFile</code>: Nombre del fichero HTML con información sobre la capa. El fichero se accede en  <code>static/loc/{lang}/html</code>. En la interfaz gráfica se representa con un botón de información al lado del nombre de la capa.</li>
+<li><code>infoLink</code>: URL con la información sobre la capa. Igual que <code>infoFile</code> pero especificando una ruta absoluta. <code>infoFile</code> tiene preferencia sobre <code>infoLink</code>, por lo que si se define el primero, <code>infoLink</code> se ignorará.</li>
+<li><code>inlineLegendUrl</code>: URL con una imagen pequeña que situar al lado del nombre de la capa en el árbol de capas. También es posible poner la cadena de carácteres <code>auto</code> y el portal intentará obtener la imagen automáticamente de GeoServer usando la petición <code>GetLegendGraphic</code> de WMS.</li>
+<li><code>active</code>: Si la capa está inicialmente visible o no.</li>
+<li><code>layers</code>: Array con los identificadores de las <code>wmsLayers</code> a las que se accede a través de esta capa.</li>
+<li><code>timeInstances</code>: Instantes de tiempo en ISO8601 separados por comas.</li>
+<li><code>timeStyles</code>: Nombres de los estilos a utilizar para cada instancia temporal. Cada estilo se corresponde con aquella instancia temporal que ocupa la misma posición en la lista. Si no se especifica este parámetro se utilizará el estilo por defecto para todos los estilos.</li>
+<li><code>date-format</code>: Formato de la fecha para cada capa. Según la librería <code>Moment &lt;http://momentjs.com/docs/#/displaying&gt;_</code>. Por ejempo: <code>DD-MM-YYYY</code>. Por defecto sólo el año (<code>YYYY</code>).</li>
+<li>
+<p><code>feedback</code>: En el caso de que la herramienta de feedback esté instalada, si se quiere o no que la capa aparezca en dicha herramienta para permitir al usuario hacer comentarios sobre la capa.</p>
+<p>Por ejemplo:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;wms_provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;baseUrl&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it/diss_geoserver/wms&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wmsName&quot;</span> <span class="o">:</span> <span class="s2">&quot;unredd:drc_provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;imageFormat&quot;</span> <span class="o">:</span> <span class="s2">&quot;image/png8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;visible&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLink&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://www.wri.org/publication/interactive-forest-atlas-democratic-republic-of-congo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLabel&quot;</span> <span class="o">:</span> <span class="s2">&quot;WRI&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;queryable&quot;</span> <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}],</span>
+  <span class="s2">&quot;portalLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;active&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;infoFile&quot;</span> <span class="o">:</span> <span class="s2">&quot;provinces_def.html&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span> <span class="o">:</span> <span class="s2">&quot;${provinces}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;layers&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;wms_provinces&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;inlineLegendUrl&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it/diss_geoserver/wms?REQUEST=GetLegendGraphic&amp;VERSION=1.0.0&amp;FORMAT=image/png&amp;WIDTH=20&amp;HEIGHT=20&amp;LAYER=unredd:drc_provinces&amp;TRANSPARENT=true&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timeInstances&quot;</span> <span class="o">:</span> <span class="s2">&quot;2007-03-01T00:00,2008-05-11T00:00,2005-03-01T00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;timeStyles&quot;</span> <span class="o">:</span> <span class="s2">&quot;style2007,style2008,style2005&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date-format&quot;</span> <span class="o">:</span> <span class="s2">&quot;DD-MM-YYYY&quot;</span>
+  <span class="p">}],</span>
+  <span class="p">...</span>
+<span class="p">}</span>
 </pre></div>
 
 
+</li>
+</ul>
 </li>
 <li>
 <p><code>groups</code> define la estructura final de las capas en el árbol de capas de la aplicación. Cada elemento de <code>groups</code> contiene:</p>
 <ul>
-<li>id: id del grupo</li>
-<li>label: Igual que en <code>portalLayer</code></li>
-<li>infoFile: Igual que en <code>portalLayer</code></li>
-<li>infoLink: Igual que en <code>portalLayer</code></li>
-<li>items. Array de otros grupos, con la misma estructura que este elemento (recursivo).</li>
-</ul>
-<p>Por ejemplo::</p>
-<div class="codehilite"><pre><span></span>{
-    &quot;wmsLayers&quot; : [
-        {
-            &quot;id&quot; : &quot;provinces&quot;,
-            &quot;baseUrl&quot; : &quot;http://snmb.ambiente.gob.ar/geo-server/bosques_umsef_db/wms&quot;,
-            &quot;wmsName&quot; : &quot;bosques_umsef_db:limites_provinciales&quot;,
-            &quot;imageFormat&quot; : &quot;image/png8&quot;,
-            &quot;visible&quot; : true,
-            &quot;sourceLink&quot; : &quot;&quot;,
-            &quot;sourceLabel&quot; : &quot;&quot;,
-            &quot;queryable&quot; : true
-        }
-    ],
-    &quot;portalLayers&quot; : [
-        {
-            &quot;id&quot; : &quot;provinces&quot;,
-            &quot;active&quot; : true,
-            &quot;infoFile&quot; : &quot;provinces_def.html&quot;,
-            &quot;label&quot; : &quot;<span class="cp">${</span><span class="n">provinces</span><span class="cp">}</span>&quot;,
-            &quot;layers&quot; : [ &quot;wms_provinces&quot; ],
-            &quot;inlineLegendUrl&quot; : &quot;http://snmb.ambiente.gob.ar/geo-server/bosques_umsef_db/wms?REQUEST=GetLegendGraphic<span class="err">&amp;</span>VERSION=1.0.0<span class="err">&amp;</span>FORMAT=image/png<span class="err">&amp;</span>WIDTH=20<span class="err">&amp;</span>HEIGHT=20<span class="err">&amp;</span>LAYER=bosques_umsef_db:limites_provinciales<span class="err">&amp;</span>TRANSPARENT=true&quot;,
-            &quot;timeInstances&quot; : &quot;&quot;,
-            &quot;timeStyles&quot; : &quot;&quot;,
-            &quot;date-format&quot; : &quot;&quot;
-        }
-    ],
-    &quot;groups&quot; : [
-        {
-            &quot;id&quot; : &quot;base&quot;,
-            &quot;label&quot; : &quot;<span class="cp">${</span><span class="n">base_layers</span><span class="cp">}</span>&quot;,
-            &quot;infoFile&quot;: &quot;base_layers.html&quot;,
-            &quot;items&quot; : [&quot;provinces&quot;]
-        }
-    ]
-}
+<li><code>id</code>: Identificador del grupo.</li>
+<li><code>label</code>: Igual que en <code>portalLayer</code></li>
+<li><code>infoFile</code>: Igual que en <code>portalLayer</code></li>
+<li><code>infoLink</code>: Igual que en <code>portalLayer</code></li>
+<li>
+<p><code>items</code>. Array con los identificadores de otros grupos (con la misma estructura que este elemento; recursivo) o capas (<code>portalLayer</code>).</p>
+<p>Por ejemplo:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;wmsLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;wms_provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;baseUrl&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it/diss_geoserver/wms&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wmsName&quot;</span> <span class="o">:</span> <span class="s2">&quot;unredd:drc_provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;imageFormat&quot;</span> <span class="o">:</span> <span class="s2">&quot;image/png8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;visible&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLink&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://www.wri.org/publication/interactive-forest-atlas-democratic-republic-of-congo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sourceLabel&quot;</span> <span class="o">:</span> <span class="s2">&quot;WRI&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;queryable&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;wmsTime&quot;</span> <span class="o">:</span> <span class="s2">&quot;2007-03-01T00:00,2008-05-11T00:00,2005-03-01T00:00&quot;</span>
+  <span class="p">}],</span>
+  <span class="s2">&quot;portalLayers&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;provinces&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;active&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;infoFile&quot;</span> <span class="o">:</span> <span class="s2">&quot;provinces_def.html&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span> <span class="o">:</span> <span class="s2">&quot;${provinces}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;layers&quot;</span> <span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;wms_provinces&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;inlineLegendUrl&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://demo1.geo-solutions.it/diss_geoserver/wms?REQUEST=GetLegendGraphic&amp;VERSION=1.0.0&amp;FORMAT=image/png&amp;WIDTH=20&amp;HEIGHT=20&amp;LAYER=unredd:drc_provinces&amp;TRANSPARENT=true&quot;</span>
+  <span class="p">}],</span>
+  <span class="s2">&quot;groups&quot;</span> <span class="o">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span> <span class="o">:</span> <span class="s2">&quot;${base_layers}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;infoFile&quot;</span><span class="o">:</span> <span class="s2">&quot;base_layers.html&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;items&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s2">&quot;provinces&quot;</span><span class="p">]</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 
 
+</li>
+</ul>
 </li>
 </ul>
                 

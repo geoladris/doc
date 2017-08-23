@@ -593,29 +593,26 @@
                   <h1>Código fuente</h1>
                 
                 <h2 id="tecnologias">Tecnologías</h2>
-<p>En Geoladris utilizamos <a href="https://maven.apache.org/">Maven</a> para construir nuestros proyectos, tanto el <em>core</em> como los plugins. Incluso los plugins que únicamente tienen parte cliente (CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a>.</p>
+<p>En Geoladris utilizamos <a href="https://maven.apache.org/">Maven</a> para construir nuestros proyectos, tanto el <em>core</em> como los plugins. Incluso los plugins que únicamente tienen parte cliente (plugins <a href="../plugins/#cliente">cliente</a> con CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a>.</p>
 <p>Tanto el core como los plugins con parte servidora utilizan la <a href="https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf">API Servlet 3.1</a>. Utilizan ficheros <code>web-fragment.xml</code> para definir sus servlets, filters y application listeners.</p>
 <p>En cuanto a los plugins cliente, todos tienen un fichero <code>package.json</code> con sus dependencias. Las dependencias JavaScript las manejamos con <code>yarn</code>. Como se explica arriba, <code>Maven</code> se encarga de hacer las llamadas correspondientes a <code>yarn</code> mediante el <code>frontend-maven-plugin</code>.</p>
 <p>Por último, el código JavaScript se organiza en módulos de <a href="http://requirejs.org/">RequireJS</a>.</p>
 <h3 id="patron-de-diseno-message-bus">Patrón de diseño <code>message-bus</code></h3>
-<blockquote>
-<p>TODO: Repensar si esto va aqui.
-TODO: Hablar de la secuencia de inicio</p>
-</blockquote>
-<p>El patrón de diseño Message Bus permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.</p>
-<p>En cambio, si los objetos se acoplan a través de un objeto intermediario (<code>Message Bus</code>), casi todas las dependencias desaparecen, dejando sólo aquellas que hay entre el <code>Message Bus</code> y los distintos módulos.</p>
+<p>En Geoladris hacemos un uso extensivo del patrón de diseño <code>message-bus</code>.</p>
+<p>El patrón de diseño <code>message-bus</code> permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.</p>
+<p>En cambio, si los objetos se acoplan a través de un objeto intermediario (<code>message-bus</code>), casi todas las dependencias desaparecen, dejando sólo aquellas que hay entre el <code>message-bus</code> y los distintos módulos.</p>
 <p>Para visualizar el patrón, propondremos un ejemplo, una aplicación modular que consta de tres componentes con representación gráfica y que están dispuestos de la siguiente manera:</p>
 <ul>
 <li>Map: En la parte central habrá un mapa.</li>
-<li>LayerList: En la parte izquierda habrá una lista de temas.</li>
-<li>NewLayer: En la parte superior existirá un control que permite añadir temas a los otros dos componentes.</li>
+<li>LayerList: En la parte izquierda habrá una lista de capas.</li>
+<li>NewLayer: En la parte superior existirá un control que permite añadir capas a los otros dos componentes.</li>
 </ul>
-<p>Un posible diseño de dicha página consistiría en un módulo <code>Layout</code> que maqueta la página HTML y que inicializa los otros tres objetos. En respuesta a la acción del usuario, el objeto NewLayer mandaría un mensaje a LayerList y Map para añadir el tema en ambos componentes. De la misma manera, LayerList podría mandar un mensaje a Map en caso de que se permitiera la eliminación de capas desde aquél. El siguiente grafo muestra los mensajes que se pasarían los distintos objetos:</p>
+<p>Un posible diseño de dicha página consistiría en un módulo <code>layout</code> que maqueta la página HTML y que inicializa los otros tres objetos. En respuesta a la acción del usuario, el objeto <code>NewLayer</code> mandaría un mensaje a <code>LayerList</code> y <code>Map</code> para añadir el tema en ambos componentes. De la misma manera, <code>LayerList</code> podría mandar un mensaje a <code>Map</code> en caso de que se permitiera la eliminación de capas desde aquél. El siguiente grafo muestra los mensajes que se pasarían los distintos objetos:</p>
 <p><img alt="" src="../../_images/eventbus/eventbus.png" /></p>
-<p>Es posible observar como en el caso de que se quisiera quitar el módulo LayerList, sería necesario modificar el objeto Layout así como el objeto NewLayer, ya que están directamente acoplados. Sin embargo, con el uso del Message Bus, sería posible hacer que los distintos objetos no se referenciaran entre sí directamente sino a través del Message Bus:</p>
+<p>Es posible observar como en el caso de que se quisiera quitar el módulo <code>LayerList</code>, sería necesario modificar el objeto Layout así como el objeto <code>NewLayer</code>, ya que están directamente acoplados. Sin embargo, con el uso del <code>message-bus</code>, sería posible hacer que los distintos objetos no se referenciaran entre sí directamente sino a través del <code>message-bus</code>:</p>
 <p><img alt="" src="../../_images/eventbus/eventbus2.png" /></p>
-<p>Así, el módulo NewLayer mandaría un mensaje al Message Bus con los datos de la nueva capa y Map y LayerList símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página LayerList ya que no hay ninguna referencia directa al mismo (salvo tal vez en Layout).</p>
-<p>Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento “add-layer” de forma que se añadirían los temas a ambos mapas.</p>
+<p>Así, el módulo <code>NewLayer</code> mandaría un mensaje al <code>message-bus</code> con los datos de la nueva capa y <code>Map</code> y <code>LayerList</code> símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página <code>LayerList</code> ya que no hay ninguna referencia directa al mismo (salvo tal vez en <code>Layout</code>).</p>
+<p>Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento <code>add-layer</code> de forma que se añadirían los temas a ambos mapas.</p>
 <p>De esta manera la aplicación es totalmente modular: es posible reemplazar módulos sin que los otros módulos se vean afectados, se pueden realizar contribuciones bien definidas que sólo deben entender los mensajes existentes para poder integrarse en la aplicación, etc.</p>
 <h2 id="integracion-continua">Integración continua</h2>
 <p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
@@ -651,10 +648,16 @@ TODO: Hablar de la secuencia de inicio</p>
 <p>Por último, hay que configurar las variables de entorno en la interfaz web de Travis.</p>
 <h2 id="depurando-javascript-en-el-navegador">Depurando JavaScript en el navegador</h2>
 <p>Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del <a href="../apps/">empaquetado</a>.</p>
-<p>También es posible utilizar recursos <em>no</em> minificados añadiendo el parámetro <code>debug=true</code> a la petición HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.</p>
-<blockquote>
-<p>TODO Secuencia de inicio de la aplicación (customization, <code>modules-loaded</code>, <code>layers-loaded</code>, etc.).</p>
-</blockquote>
+<p>También es posible utilizar recursos <em>no</em> minificados añadiendo el parámetro <code>debug=true</code> a la petición HTML. Por ejemplo: <a href="http://localhost:8080/demo/?debug=true">http://localhost:8080/demo/?debug=true</a>.</p>
+<p>Cuando se depura JavaScript es importante conocer la secuencia de inicio de la aplicación:</p>
+<ol>
+<li>Se carga <code>require.js</code>.</li>
+<li><code>require.js</code> carga el módulo <code>main</code>.</li>
+<li><code>main</code> carga el módulo <code>customization</code>.</li>
+<li><code>customization</code> carga dinámicamente los módulos especificados en su configuración (<code>config.js</code>).</li>
+<li>Cuando todos los módulos se han cargado se lanza el evento <code>modules-loaded</code>.</li>
+<li>Cuando todas las capas se han añadido al mapa se lanza el evento <code>layers-loaded</code>.</li>
+</ol>
 <h2 id="git">Git</h2>
 <h3 id="repositorios">Repositorios</h3>
 <p>A continuación se detalla la estructura del proyecto.</p>

@@ -309,13 +309,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#definir-dependencias" title="Definir dependencias" class="md-nav__link">
-    Definir dependencias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#empaquetar" title="Empaquetar" class="md-nav__link">
     Empaquetar
   </a>
@@ -489,13 +482,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#definir-dependencias" title="Definir dependencias" class="md-nav__link">
-    Definir dependencias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#empaquetar" title="Empaquetar" class="md-nav__link">
     Empaquetar
   </a>
@@ -526,30 +512,110 @@
                 
                   <h1>Aplicaciones</h1>
                 
-                <blockquote>
-<p>TODO mención a <code>geoladris_build.sh</code>.</p>
-</blockquote>
+                <p>Existe un <a href="../../user/create/">script</a> para la generación de aplicaciones de manera sencilla. Esta documentación es útil para crear aplicaciones con necesidades específicas que el script no cubre o para entender el funcionamiento de las aplicaciones del <a href="https://github.com/geoladris/apps">repositorio</a> de Geoladris.</p>
 <h2 id="estructura-de-una-aplicacion">Estructura de una aplicación</h2>
-<blockquote>
-<p>TODO proyecto Java, pom.xml, web.xml, etc.</p>
-</blockquote>
-<h2 id="definir-dependencias">Definir dependencias</h2>
-<blockquote>
-<p>TODO en pom.xml y package.json</p>
-</blockquote>
+<p>Una aplicación Geoladris contiene los siguientes ficheros/directorios:</p>
+<ul>
+<li>
+<p><code>package.json</code>: Fichero de configuración de yarn. Aquí se deben incluir los plugins <a href="../plugins/#cliente">cliente</a> como dependencias:</p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&quot;@csgeoladris/ui&quot;</span><span class="p">:</span> <span class="s2">&quot;csgis/geoladris-ui#master&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;@geoladris/core&quot;</span><span class="p">:</span> <span class="s2">&quot;geoladris/core#master&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;@geoladris/base&quot;</span><span class="p">:</span> <span class="s2">&quot;file:../../plugins/base&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Además se debe incluir un script para el empaquetado de recursos cliente:</p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;scripts&quot;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&quot;build&quot;</span><span class="p">:</span> <span class="s2">&quot;gl-build-app.js &amp;&amp; r.js -o .requirejs-build.js&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p><code>pom.xml</code>: Fichero de configuración de Maven. Aquí se deben incluir los plugins <a href="../plugins/#servidor">servidor</a> como dependencias:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+  ...
+  <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.fao.unredd<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>layers-editor<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${plugins.version}<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span>
+  ...
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+
+
+<p>También se debe incluir el plugin <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a> para ejecutar el script de <code>build</code> de <code>yarn</code>:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.github.eirslett<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>frontend-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.4<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;executions&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>install-node-and-yarn<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                      <span class="nt">&lt;goal&gt;</span>install-node-and-yarn<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                    <span class="nt">&lt;configuration&gt;</span>
+                        <span class="nt">&lt;nodeVersion&gt;</span>${node.version}<span class="nt">&lt;/nodeVersion&gt;</span>
+                        <span class="nt">&lt;yarnVersion&gt;</span>${yarn.version}<span class="nt">&lt;/yarnVersion&gt;</span>
+                    <span class="nt">&lt;/configuration&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>yarn install<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                      <span class="nt">&lt;goal&gt;</span>yarn<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                    <span class="nt">&lt;configuration&gt;</span>
+                      <span class="nt">&lt;arguments&gt;</span>install<span class="nt">&lt;/arguments&gt;</span>
+                    <span class="nt">&lt;/configuration&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>yarn-build<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>yarn<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>prepare-package<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;configuration&gt;</span>
+                      <span class="nt">&lt;arguments&gt;</span>run build<span class="nt">&lt;/arguments&gt;</span>
+                    <span class="nt">&lt;/configuration&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+            <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</pre></div>
+
+
+</li>
+<li>
+<p><code>yarn.lock</code>: <a href="https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all/">Siempre</a> se deben incluir estos ficheros en el repositorio.</p>
+</li>
+<li><code>src/main/webapp/META-INF/context.xml</code>: Fichero de configuración de <a href="https://tomcat.apache.org/tomcat-8.5-doc/config/context.html#Defining_a_context">Tomcat</a>.</li>
+<li><code>src/main/webapp/WEB-INF/web.xml</code>: <a href="https://cloud.google.com/appengine/docs/standard/java/config/webxml">Descriptor</a> de aplicación.</li>
+<li><code>src/main/webapp/WEB-INF/default_config</code>: <a href="../../user/config/">Directorio de configuración</a> por defecto. Opcional.</li>
+</ul>
 <h2 id="empaquetar">Empaquetar</h2>
-<p>El <code>core</code> de Geoladris se encarga de empaquetar todos los recursos tanto Java (servlets, filtros, listeners,...) como JavaScript (módulos, estilos, dependencias, etc. a <code>src/main/webapp</code> para empaquetarlos dentro del war y servirlos con Tomcat) y minificar los recursos estáticos.</p>
+<p>El <code>core</code> de Geoladris se encarga de empaquetar todos los recursos tanto Java (servlets, filtros, listeners,...) como JavaScript (copiar módulos, estilos, dependencias, etc. a <code>src/main/webapp</code> para empaquetarlos dentro del war y servirlos con Tomcat) y minificar los recursos estáticos.</p>
 <p>Los <strong>plugins JavaScript</strong> se gestionan con herramientas de JavaScript. El flujo de trabajo es:</p>
 <ul>
 <li>Incluir plugins en <code>dependencies</code> dentro del <code>package.json</code>.</li>
 <li><code>yarn install</code> para gestionar todas las dependencias.</li>
-<li><code>gl-build-app.js</code>. Es un script propio de <code>core</code> que:</li>
+<li><code>gl-build-app.js</code>. Es un script propio de <code>core</code> que:<ul>
 <li>Copia los plugins definidos en la opción <code>dependencies</code> del <code>package.json</code> dentro de <code>src/main/webapp</code>; también copia las dependencias (<code>*.js</code> y <code>*.css</code>).</li>
 <li>Genera el fichero <code>app.min.css</code> con  todos los estilos (de menos a más prioridad: dependencias, <code>src</code> y <code>css</code>).</li>
 <li>Genera el fichero <code>main.js</code> de RequireJS que se sirve en la aplicación final (solo con <code>debug=true</code>).</li>
 <li>Genera el fichero <code>index.html</code>.</li>
-<li>Genera un fichero <code>build.js</code> para minificar módulos RequireJS, teniendo en cuenta la configuración de <code>requirejs</code> en los <code>geoladris.json</code> de los plugins.</li>
-<li><code>r.js -o build.js</code>. Genera <code>src/main/webapp/app.min.js</code> con la minificación de los recursos JavaScript a partir del <code>build.js</code> generado por <code>gl-build-app.js</code>.</li>
+<li>Genera un fichero <code>.requirejs-build.js</code> para minificar módulos RequireJS, teniendo en cuenta la configuración de <code>requirejs</code> en los <code>geoladris.json</code> de los plugins.</li>
+</ul>
+</li>
+<li><code>r.js -o build.js</code>. Genera <code>src/main/webapp/app.min.js</code> con la minificación de los recursos JavaScript a partir del <code>.requirejs-build.js</code> generado por <code>gl-build-app.js</code>.</li>
 </ul>
 <p>Los <strong>plugins Java</strong> se gestionan simplemente incluyéndolos como dependencias en el <code>pom.xml</code>.</p>
 <p>El build de plugins JavaScript se incluye como parte del <a href="https://github.com/geoladris/apps/blob/js_deps/demo/pom.xml#L119">build</a> de Maven con un plugin. Por tanto, basta con hacer <code>mvn package</code> para empaquetarlo todo.</p>

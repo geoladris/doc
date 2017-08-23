@@ -309,19 +309,6 @@
     Cliente
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#traducciones" title="Traducciones" class="md-nav__link">
-    Traducciones
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -337,15 +324,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plugins-oficiales" title="Plugins oficiales" class="md-nav__link">
-    Plugins oficiales
+  <a href="#servidor-configurar-la-aplicacion-mediante-programacion" title="Servidor: Configurar la aplicación mediante programación" class="md-nav__link">
+    Servidor: Configurar la aplicación mediante programación
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurar-la-aplicacion-mediante-programacion" title="Configurar la aplicación mediante programación" class="md-nav__link">
-    Configurar la aplicación mediante programación
+  <a href="#cliente-testeo" title="Cliente: Testeo" class="md-nav__link">
+    Cliente: Testeo
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karma" title="Karma" class="md-nav__link">
+    Karma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jasmine" title="Jasmine" class="md-nav__link">
+    Jasmine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" title="yarn" class="md-nav__link">
+    yarn
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliente-traducciones" title="Cliente: Traducciones" class="md-nav__link">
+    Cliente: Traducciones
   </a>
   
 </li>
@@ -534,19 +555,6 @@
     Cliente
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#traducciones" title="Traducciones" class="md-nav__link">
-    Traducciones
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -562,15 +570,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plugins-oficiales" title="Plugins oficiales" class="md-nav__link">
-    Plugins oficiales
+  <a href="#servidor-configurar-la-aplicacion-mediante-programacion" title="Servidor: Configurar la aplicación mediante programación" class="md-nav__link">
+    Servidor: Configurar la aplicación mediante programación
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurar-la-aplicacion-mediante-programacion" title="Configurar la aplicación mediante programación" class="md-nav__link">
-    Configurar la aplicación mediante programación
+  <a href="#cliente-testeo" title="Cliente: Testeo" class="md-nav__link">
+    Cliente: Testeo
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karma" title="Karma" class="md-nav__link">
+    Karma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jasmine" title="Jasmine" class="md-nav__link">
+    Jasmine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" title="yarn" class="md-nav__link">
+    yarn
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliente-traducciones" title="Cliente: Traducciones" class="md-nav__link">
+    Cliente: Traducciones
   </a>
   
 </li>
@@ -630,26 +672,12 @@ Hay que tener en cuenta que el lugar donde se instalen los módulos afecta a la 
 </li>
 </ul>
 <p>Adicionalmente puede tener otros recursos propios de cualquier proyecto JavaScript (<code>karma.conf.js</code>, <code>test</code>, <code>yarn.lock</code>, ...).</p>
-<h4 id="traducciones">Traducciones</h4>
-<blockquote>
-<p>TODO: Depender del módulo <code>i18n</code> y utilizar cadenas de <code>messages.properties</code>.</p>
-</blockquote>
 <h3 id="hibridos">Híbridos</h3>
 <p>Proyectos que contienen ambos tipos de recurso (Java y JavaScript).</p>
 <p>Para incluir <a href="https://github.com/geoladris/plugins/blob/js_deps/pom.xml#L68">recursos</a> correctamente en el .jar.</p>
 <p>Para empaquetar recursos correctamente en el <a href="https://github.com/geoladris/plugins/blob/js_deps/base/package.json#L10">package.json</a>.</p>
 <p><strong>NOTA</strong>: Es importante mencionar que los plugins híbridos se consideran una mala práctica, ya que acoplan la funcionalidad de cliente y servidor, mezclando todos los recursos y haciendo más difícil trabajar con el plugin.</p>
-<h2 id="plugins-oficiales">Plugins oficiales</h2>
-<p>En el <a href="https://github.com/geoladris/plugins/">repositorio</a> de Geoladris encontramos todo tipo de plugins, tanto servidor como cliente o híbridos.</p>
-<p>Los plugins servidor son proyectos Maven con un <code>pom.xml</code> donde se pueden ejecutar los comandos Maven normalmente (<code>mvn clean</code>, <code>mvn package</code>, etc.).</p>
-<p>Los plugins cliente, además de los subdirectorios mencionados arriba, contienen los siguientes recursos:</p>
-<ul>
-<li><code>test</code>: Directorio con los ficheros de test. Se utiliza <a href="https://jasmine.github.io/">Jasmine</a> como framework de testeo.</li>
-<li><code>karma.conf.js</code>: Configuración para la ejecución de los tests. Se utiliza <a href="https://karma-runner.github.io">Karma</a> como motor de testeo. Los tests se ejecutan con <code>yarn run test</code> (o <code>yarn run testd</code> para depurar).</li>
-<li><code>yarn.lock</code>: Las dependencias son manejadas con <code>yarn</code>. Se considera una <a href="https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all/">buena práctica</a> incluir este fichero en el repositorio.</li>
-<li><code>pom.xml</code>: Los plugins cliente también se gestionan con Maven (gracias al plugin Maven <a href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a>) de forma que se pueden ejecutar todos los tests, tanto servidor como cliente, con <code>mvn test</code>.</li>
-</ul>
-<h2 id="configurar-la-aplicacion-mediante-programacion">Configurar la aplicación mediante programación</h2>
+<h2 id="servidor-configurar-la-aplicacion-mediante-programacion">Servidor: Configurar la aplicación mediante programación</h2>
 <p>En ocasiones la configuración de un plugin depende de un valor de la base de datos o, en general, de aspectos que se tienen que comprobar por programación. ¿De qué manera es posible hacer llegar estos valores a un elemento de la interfaz de usuario? La solución son los proveedores de configuración.</p>
 <p>Los proveedores de configuración son instancias que implementan la interfaz <code>org.geoladris.config.PluginConfigProvider</code> que permiten añadir elementos a la configuración de los módulos de la misma manera que se haría manualmente modificando el fichero <code>public-conf.json</code>.</p>
 <p>Para que la instancia contribuya a la configuración hay que registrarla en la instancia <code>Config</code>, por lo que normalmente se registrará en un <code>ServletContextListener</code> con un código similar al siguiente:</p>
@@ -657,6 +685,92 @@ Hay que tener en cuenta que el lugar donde se instalen los módulos afecta a la 
 <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="o">(</span><span class="n">Config</span><span class="o">)</span> <span class="n">servletContext</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">Geoladris</span><span class="o">.</span><span class="na">ATTR_CONFIG</span><span class="o">);</span>
 <span class="n">config</span><span class="o">.</span><span class="na">addPluginConfigProvider</span><span class="o">(</span><span class="k">new</span> <span class="n">MiConfigProvider</span><span class="o">());</span>
 </pre></div>
+
+
+<h2 id="cliente-testeo">Cliente: Testeo</h2>
+<p><a href="https://jasmine.github.io/">Jasmine</a> como framework de testeo.</p>
+<h3 id="karma">Karma</h3>
+<p>Utilizamos <a href="https://karma-runner.github.io">Karma</a> como motor de testeo.</p>
+<p>Los plugins incluyen un fichero <code>karma.conf.js</code> como este:</p>
+<div class="codehilite"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../tests/karma.defaults.js&#39;</span><span class="p">));</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Como se puede ver, únicamente incluye la <a href="https://github.com/geoladris/plugins/blob/master/tests/karma.defaults.js">configuración</a> por defecto de los plugins.</p>
+<p>Si además de la configuración por defecto es necesario incluir otros ficheros <code>.js</code> para el testeo, se puede hacer de la siguiente manera:</p>
+<div class="codehilite"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../tests/karma.defaults.js&#39;</span><span class="p">);</span>
+    <span class="nx">defaults</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;node_modules/wellknown/wellknown.js&#39;</span><span class="p">,</span>
+        <span class="nx">included</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">});</span>
+    <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">defaults</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Cuando se ejecute (a través de la configuración por defecto) Karma cargará el módulo <a href="https://github.com/geoladris/plugins/blob/master/tests/test-main.js">test-main.js</a>, que a su vez cargará todos los tests del directorio <code>test</code>.</p>
+<h3 id="jasmine">Jasmine</h3>
+<p>Utilizamos <a href="https://jasmine.github.io/">Jasmine</a> como framework de testeo.</p>
+<p>Para ello incluimos en el directorio <code>test</code> los tests de Jasmine. Aquí podemos hacer uso de <a href="https://github.com/geoladris/plugins/blob/master/tests/geoladris-tests.js">geoladris-tests.js</a>. Es un módulo con un método <code>init</code> que se encarga de inicializar un <code>injector</code> de <a href="https://github.com/iammerrick/Squire.js/">Squire</a> y el <code>message-bus</code> para poder utilizarlos desde nuestro test:</p>
+<div class="codehilite"><pre><span></span><span class="nx">define</span><span class="p">([</span> <span class="s1">&#39;geoladris-tests&#39;</span> <span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tests</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;&lt;test suite name&gt;&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">bus</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">injector</span><span class="p">;</span>
+
+        <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">initialization</span> <span class="o">=</span> <span class="nx">tests</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span><span class="o">&lt;</span><span class="nx">module</span> <span class="nx">configuration</span><span class="o">&gt;</span><span class="p">},</span> <span class="p">{</span><span class="o">&lt;</span><span class="nx">module</span> <span class="nx">paths</span><span class="o">&gt;</span><span class="p">});</span>
+            <span class="nx">injector</span> <span class="o">=</span> <span class="nx">initialization</span><span class="p">.</span><span class="nx">injector</span><span class="p">;</span>
+            <span class="nx">bus</span> <span class="o">=</span> <span class="nx">initialization</span><span class="p">.</span><span class="nx">bus</span><span class="p">;</span>
+
+            <span class="nx">injector</span><span class="p">.</span><span class="nx">mock</span><span class="p">(...);</span>
+            <span class="p">...</span>
+
+            <span class="nx">injector</span><span class="p">.</span><span class="nx">require</span><span class="p">([</span> <span class="s1">&#39;&lt;module name&gt;&#39;</span> <span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">done</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;&lt;test&gt;&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+            <span class="o">&lt;</span><span class="nx">test</span> <span class="nx">code</span> <span class="nx">using</span> <span class="nx">jasmine</span><span class="o">&gt;</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h3 id="yarn">yarn</h3>
+<p>Por último, configuramos el fichero <code>package.json</code> para poder ejecutar (<code>yarn run test</code>) y depurar (<code>yarn run testd</code>) los tests:</p>
+<div class="codehilite"><pre><span></span>    <span class="s2">&quot;scripts&quot;</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;karma start&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;testd&quot;</span><span class="p">:</span> <span class="s2">&quot;karma start --single-run=false --auto-watch --browsers=Chrome --reporters=progress&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h2 id="cliente-traducciones">Cliente: Traducciones</h2>
+<p>En los plugins cliente se puede usar i18n. Para ello basta con:</p>
+<ul>
+<li>
+<p>Añadir <code>i18n</code> como dependencia:</p>
+<div class="codehilite"><pre><span></span><span class="nx">define</span><span class="p">([</span> <span class="s1">&#39;message-bus&#39;</span><span class="p">,</span> <span class="s1">&#39;i18n&#39;</span><span class="p">,</span> <span class="p">...</span> <span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">bus</span><span class="p">,</span> <span class="nx">i18n</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Añadir traducciones a los ficheros <code>messages.properties</code> en el <a href="../../user/config/#traducciones">directorio de configuración</a>.</p>
+</li>
+<li>
+<p>Utilizar las traducciones en nuestro código:</p>
+<div class="codehilite"><pre><span></span><span class="nx">bus</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="nx">i18n</span><span class="p">[</span><span class="s1">&#39;my_error_message&#39;</span><span class="p">]);</span>
+</pre></div>
+
+
+</li>
+</ul>
                 
                   
                 

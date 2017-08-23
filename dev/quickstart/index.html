@@ -445,12 +445,30 @@
                 
                   <h1>Guía rápida</h1>
                 
-                <ul>
-<li>Clonar repos</li>
-<li>mvn install (mvn generate-resources ejecuta yarn install sin ejecutar tests).</li>
-<li>Empaquetar app</li>
-<li>Probar en Tomcat</li>
-</ul>
+                <p>En primer lugar hay que clonar los repositorios de Geoladris (ver <a href="../source_code#repositorios">repositorios</a>):</p>
+<div class="codehilite"><pre><span></span>git clone git@github.com:geoladris/core.git
+git clone git@github.com:geoladris/plugins.git
+git clone git@github.com:geoladris/apps.git
+</pre></div>
+
+
+<p>Posteriormente hay que instalar <code>core</code> y <code>plugins</code> (en ese orden) localmente con Maven (puede tardar un poco):</p>
+<div class="codehilite"><pre><span></span>cd core
+mvn install
+cd ../plugins
+mvn install
+</pre></div>
+
+
+<p>Por último, nos falta por empaquetar las aplicaciones utilizando <code>core</code> y <code>plugins</code>:</p>
+<div class="codehilite"><pre><span></span>cd ../apps
+mvn package
+</pre></div>
+
+
+<p>Una vez hecho esto tendremos los paquetes <code>.war</code> listos para ser desplegados en Tomcat:</p>
+<div class="codehilite"><pre><span></span>cp apps/demo/target/demo.war $CATALINA_BASE/webapps
+</pre></div>
                 
                   
                 
