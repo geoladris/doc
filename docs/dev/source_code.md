@@ -1,6 +1,6 @@
 ## Tecnologías
 
-En Geoladris utilizamos [Maven](https://maven.apache.org/) para construir nuestros proyectos, tanto el *core* como los plugins. Incluso los plugins que únicamente tienen parte cliente (CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin).
+En Geoladris utilizamos [Maven](https://maven.apache.org/) para construir nuestros proyectos, tanto el *core* como los plugins. Incluso los plugins que únicamente tienen parte cliente (plugins [cliente](plugins.md#cliente) con CSS y JavaScript) se gestionan a través de Maven para poder tratarlos conjuntamente; para ello utilizamos el plugin [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin).
 
 Tanto el core como los plugins con parte servidora utilizan la [API Servlet 3.1](https://javaee.github.io/servlet-spec/downloads/servlet-3.1/Final/servlet-3_1-final.pdf). Utilizan ficheros `web-fragment.xml` para definir sus servlets, filters y application listeners.
 
@@ -10,30 +10,29 @@ Por último, el código JavaScript se organiza en módulos de [RequireJS](http:/
 
 ### Patrón de diseño `message-bus`
 
-> TODO: Repensar si esto va aqui.
-> TODO: Hablar de la secuencia de inicio
+En Geoladris hacemos un uso extensivo del patrón de diseño `message-bus`.
 
-El patrón de diseño Message Bus permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.
+El patrón de diseño `message-bus` permite desacoplar los componentes que forman una aplicación. En una aplicación modular, los distintos componentes necesitan interactuar entre sí. Si el acoplamiento es directo, la aplicación deja de ser modular ya que aparecen dependencias, con frecuencia recíprocas, entre los distintos módulos y no es posible realizar cambios a un módulo sin que otros se vean afectados.
 
-En cambio, si los objetos se acoplan a través de un objeto intermediario (`Message Bus`), casi todas las dependencias desaparecen, dejando sólo aquellas que hay entre el `Message Bus` y los distintos módulos.
+En cambio, si los objetos se acoplan a través de un objeto intermediario (`message-bus`), casi todas las dependencias desaparecen, dejando sólo aquellas que hay entre el `message-bus` y los distintos módulos.
 
 Para visualizar el patrón, propondremos un ejemplo, una aplicación modular que consta de tres componentes con representación gráfica y que están dispuestos de la siguiente manera:
 
 * Map: En la parte central habrá un mapa.
-* LayerList: En la parte izquierda habrá una lista de temas.
-* NewLayer: En la parte superior existirá un control que permite añadir temas a los otros dos componentes.
+* LayerList: En la parte izquierda habrá una lista de capas.
+* NewLayer: En la parte superior existirá un control que permite añadir capas a los otros dos componentes.
 
-Un posible diseño de dicha página consistiría en un módulo `Layout` que maqueta la página HTML y que inicializa los otros tres objetos. En respuesta a la acción del usuario, el objeto NewLayer mandaría un mensaje a LayerList y Map para añadir el tema en ambos componentes. De la misma manera, LayerList podría mandar un mensaje a Map en caso de que se permitiera la eliminación de capas desde aquél. El siguiente grafo muestra los mensajes que se pasarían los distintos objetos:
+Un posible diseño de dicha página consistiría en un módulo `layout` que maqueta la página HTML y que inicializa los otros tres objetos. En respuesta a la acción del usuario, el objeto `NewLayer` mandaría un mensaje a `LayerList` y `Map` para añadir el tema en ambos componentes. De la misma manera, `LayerList` podría mandar un mensaje a `Map` en caso de que se permitiera la eliminación de capas desde aquél. El siguiente grafo muestra los mensajes que se pasarían los distintos objetos:
 
 ![](../_images/eventbus/eventbus.png)
 
-Es posible observar como en el caso de que se quisiera quitar el módulo LayerList, sería necesario modificar el objeto Layout así como el objeto NewLayer, ya que están directamente acoplados. Sin embargo, con el uso del Message Bus, sería posible hacer que los distintos objetos no se referenciaran entre sí directamente sino a través del Message Bus:
+Es posible observar como en el caso de que se quisiera quitar el módulo `LayerList`, sería necesario modificar el objeto Layout así como el objeto `NewLayer`, ya que están directamente acoplados. Sin embargo, con el uso del `message-bus`, sería posible hacer que los distintos objetos no se referenciaran entre sí directamente sino a través del `message-bus`:
 
 ![](../_images/eventbus/eventbus2.png)
 
-Así, el módulo NewLayer mandaría un mensaje al Message Bus con los datos de la nueva capa y Map y LayerList símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página LayerList ya que no hay ninguna referencia directa al mismo (salvo tal vez en Layout).
+Así, el módulo `NewLayer` mandaría un mensaje al `message-bus` con los datos de la nueva capa y `Map` y `LayerList` símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página `LayerList` ya que no hay ninguna referencia directa al mismo (salvo tal vez en `Layout`).
 
-Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento “add-layer” de forma que se añadirían los temas a ambos mapas.
+Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento `add-layer` de forma que se añadirían los temas a ambos mapas.
 
 De esta manera la aplicación es totalmente modular: es posible reemplazar módulos sin que los otros módulos se vean afectados, se pueden realizar contribuciones bien definidas que sólo deben entender los mensajes existentes para poder integrarse en la aplicación, etc.
 
@@ -79,9 +78,16 @@ Por último, hay que configurar las variables de entorno en la interfaz web de T
 
 Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del [empaquetado](apps.md).
 
-También es posible utilizar recursos *no* minificados añadiendo el parámetro `debug=true` a la petición HTML. Por ejemplo: http://localhost:8080/demo/?debug=true.
+También es posible utilizar recursos *no* minificados añadiendo el parámetro `debug=true` a la petición HTML. Por ejemplo: [http://localhost:8080/demo/?debug=true](http://localhost:8080/demo/?debug=true).
 
-> TODO Secuencia de inicio de la aplicación (customization, `modules-loaded`, `layers-loaded`, etc.).
+Cuando se depura JavaScript es importante conocer la secuencia de inicio de la aplicación:
+
+1. Se carga `require.js`.
+2. `require.js` carga el módulo `main`.
+3. `main` carga el módulo `customization`.
+4. `customization` carga dinámicamente los módulos especificados en su configuración (`config.js`).
+5. Cuando todos los módulos se han cargado se lanza el evento `modules-loaded`.
+6. Cuando todas las capas se han añadido al mapa se lanza el evento `layers-loaded`.
 
 ## Git
 

@@ -39,10 +39,6 @@ Un plugin cliente es un directorio que contiene:
 
 Adicionalmente puede tener otros recursos propios de cualquier proyecto JavaScript (`karma.conf.js`, `test`, `yarn.lock`, ...).
 
-#### Traducciones
-
-> TODO: Depender del módulo `i18n` y utilizar cadenas de `messages.properties`.
-
 ### Híbridos
 
 Proyectos que contienen ambos tipos de recurso (Java y JavaScript).
@@ -53,20 +49,7 @@ Para empaquetar recursos correctamente en el [package.json](https://github.com/g
 
 **NOTA**: Es importante mencionar que los plugins híbridos se consideran una mala práctica, ya que acoplan la funcionalidad de cliente y servidor, mezclando todos los recursos y haciendo más difícil trabajar con el plugin.
 
-## Plugins oficiales
-
-En el [repositorio](https://github.com/geoladris/plugins/) de Geoladris encontramos todo tipo de plugins, tanto servidor como cliente o híbridos.
-
-Los plugins servidor son proyectos Maven con un `pom.xml` donde se pueden ejecutar los comandos Maven normalmente (`mvn clean`, `mvn package`, etc.).
-
-Los plugins cliente, además de los subdirectorios mencionados arriba, contienen los siguientes recursos:
-
-* `test`: Directorio con los ficheros de test. Se utiliza [Jasmine](https://jasmine.github.io/) como framework de testeo.
-* `karma.conf.js`: Configuración para la ejecución de los tests. Se utiliza [Karma](https://karma-runner.github.io) como motor de testeo. Los tests se ejecutan con `yarn run test` (o `yarn run testd` para depurar).
-* `yarn.lock`: Las dependencias son manejadas con `yarn`. Se considera una [buena práctica](https://yarnpkg.com/blog/2016/11/24/lockfiles-for-all/) incluir este fichero en el repositorio.
-* `pom.xml`: Los plugins cliente también se gestionan con Maven (gracias al plugin Maven [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)) de forma que se pueden ejecutar todos los tests, tanto servidor como cliente, con `mvn test`.
-
-## Configurar la aplicación mediante programación
+## Servidor: Configurar la aplicación mediante programación
 
 En ocasiones la configuración de un plugin depende de un valor de la base de datos o, en general, de aspectos que se tienen que comprobar por programación. ¿De qué manera es posible hacer llegar estos valores a un elemento de la interfaz de usuario? La solución son los proveedores de configuración.
 
@@ -79,3 +62,97 @@ ServletContext servletContext = sce.getServletContext();
 Config config = (Config) servletContext.getAttribute(Geoladris.ATTR_CONFIG);
 config.addPluginConfigProvider(new MiConfigProvider());
 ```
+
+## Cliente: Testeo
+
+[Jasmine](https://jasmine.github.io/) como framework de testeo.
+
+### Karma
+
+Utilizamos [Karma](https://karma-runner.github.io) como motor de testeo.
+
+Los plugins incluyen un fichero `karma.conf.js` como este:
+
+```js
+module.exports = function(config) {
+	config.set(require('../tests/karma.defaults.js'));
+};
+```
+
+Como se puede ver, únicamente incluye la [configuración](https://github.com/geoladris/plugins/blob/master/tests/karma.defaults.js) por defecto de los plugins.
+
+Si además de la configuración por defecto es necesario incluir otros ficheros `.js` para el testeo, se puede hacer de la siguiente manera:
+
+```js
+module.exports = function(config) {
+	var defaults = require('../tests/karma.defaults.js');
+	defaults.files.push({
+		pattern: 'node_modules/wellknown/wellknown.js',
+		included: false
+	});
+	config.set(defaults);
+};
+```
+
+Cuando se ejecute (a través de la configuración por defecto) Karma cargará el módulo [test-main.js](https://github.com/geoladris/plugins/blob/master/tests/test-main.js), que a su vez cargará todos los tests del directorio `test`.
+
+### Jasmine
+
+Utilizamos [Jasmine](https://jasmine.github.io/) como framework de testeo.
+
+Para ello incluimos en el directorio `test` los tests de Jasmine. Aquí podemos hacer uso de [geoladris-tests.js](https://github.com/geoladris/plugins/blob/master/tests/geoladris-tests.js). Es un módulo con un método `init` que se encarga de inicializar un `injector` de [Squire](https://github.com/iammerrick/Squire.js/) y el `message-bus` para poder utilizarlos desde nuestro test:
+
+```js
+define([ 'geoladris-tests' ], function(tests) {
+	describe('<test suite name>', function() {
+		var bus;
+		var injector;
+
+		beforeEach(function(done) {
+			var initialization = tests.init({<module configuration>}, {<module paths>});
+			injector = initialization.injector;
+			bus = initialization.bus;
+
+            injector.mock(...);
+            ...
+
+            injector.require([ '<module name>' ], function() {
+				done();
+			});
+		});
+
+		it('<test>', function(done) {
+            <test code using jasmine>
+		});
+	});
+});
+```
+
+### yarn
+
+Por último, configuramos el fichero `package.json` para poder ejecutar (`yarn run test`) y depurar (`yarn run testd`) los tests:
+
+```json
+	"scripts": {
+		"test": "karma start",
+		"testd": "karma start --single-run=false --auto-watch --browsers=Chrome --reporters=progress",
+	}
+```
+
+## Cliente: Traducciones
+
+En los plugins cliente se puede usar i18n. Para ello basta con:
+
+* Añadir `i18n` como dependencia:
+
+        :::js
+        define([ 'message-bus', 'i18n', ... ], function(bus, i18n, ...) {
+
+
+* Añadir traducciones a los ficheros `messages.properties` en el [directorio de configuración](../user/config.md#traducciones).
+
+* Utilizar las traducciones en nuestro código:
+
+        :::js
+        bus.send('error', i18n['my_error_message']);
+
