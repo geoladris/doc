@@ -6,9 +6,11 @@ Hay muchas maneras en las que puedes ayudar con el proyecto Geoladris. Geoladris
 
 * [Desarrollo](https://groups.google.com/forum/#!forum/geoladris)
 
-## Reportar errores
+## Errores y sugerencias
 
-> TODO: Issues y tags en Github
+Para reportar errores o sugerir funcionalidad nueva en Geoladris puedes gastar los issue trackers de GitHub: [core](https://github.com/geoladris/core/issues) y [plugins](https://github.com/geoladris/plugins/issues). Si no tienes claro si pertenece al `core` o a los `plugins`, utiliza el de [plugins](https://github.com/geoladris/plugins/issues).
+
+En nuestros trackers gastamos unas [etiquetas](https://github.com/geoladris/core/labels) específicas (basadas en la idea de Dave Lunny: [Sane GitHub Labels](https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63)) para saber el estado, el tipo y la prioridad de la issue. Cuando añadas una nueva issue sólo tienes que incluir una etiqueta `Type: <tipo>`. Del resto nos encargaremos nosotros.
 
 ## Formateo del código
 
