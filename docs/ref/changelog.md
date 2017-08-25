@@ -6,10 +6,14 @@ This project follows [semantic versioning](http://semver.org).
 
 * Posibilidad de especificar API para Google Maps ([#38](https://github.com/geoladris/plugins/issues/38)).
 
+### Modificado
+
+* El nombre del recurso de base de datos en el fichero de Tomcat `context.xml` ahora debe ser `geoladris` en lugar de `unredd-portal`.
+
 ### Corregido
 
 * Checkboxes de la lista de capas (`layer-list.js`) no respondían.
-* `legend-panel.js` lanzaba excepciones .
+* `legend-panel.js` lanzaba excepciones.
 
 ## Plugins - Sin publicar (6.0.3)
 
