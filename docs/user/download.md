@@ -1,6 +1,7 @@
 Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar directamente y probar. Estas aplicaciones son:
 
-* **demo**: Aplicación con la mayor parte de la funcionalidad de Geoladris.
+* **demo**: Aplicación con la mayor parte de la funcionalidad de Geoladris. Útil como plantilla para configurar una aplicación propia.
+* **essential**: Aplicación con la mínima funcionalidad de Geoladris. Útil como base para desarrollo.
 
 ## Estable
 
