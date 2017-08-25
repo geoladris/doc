@@ -12,6 +12,8 @@ Para reportar errores o sugerir funcionalidad nueva en Geoladris puedes gastar l
 
 En nuestros trackers gastamos unas [etiquetas](https://github.com/geoladris/core/labels) específicas (basadas en la idea de Dave Lunny: [Sane GitHub Labels](https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63)) para saber el estado, el tipo y la prioridad de la issue. Cuando añadas una nueva issue sólo tienes que incluir una etiqueta `Type: <tipo>`. Del resto nos encargaremos nosotros.
 
+Puedes ver el estado de todas las issues con [waffle](https://waffle.io/geoladris/core).
+
 ## Formateo del código
 
 Se utiliza el [estilo](https://google.github.io/styleguide/javaguide.html) de Google para formatear el código Java.
