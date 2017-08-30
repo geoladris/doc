@@ -1,5 +1,22 @@
 This project follows [semantic versioning](http://semver.org).
 
+## Core - Sin publicar (7.0.0)
+
+### Modificado
+
+* El proceso de empaquetado de aplicaciones ahora se gestiona con Maven y `yarn` conjuntamente (ver [aplicaciones](../dev/apps.md)).
+* Las dependencias de los plugins cliente se gestionan ahora con `yarn`.
+* Estructura de los plugins cliente (ver [plugins](../dev/plugins.md)).
+
+### Eliminado
+
+* Variable de entorno `GEOLADRIS_MINIFIED`. Los recursos en cliente se sirven minificados por defecto, con la posibilidad de servirlos sin minificar con el parámetro `debug=true`.
+
+### Corregido
+
+* Error al arrancar aplicaciones con Tomcat 8.0.x.
+
+
 ## Plugins - Sin publicar (7.0.0)
 
 ### Añadido
@@ -15,7 +32,13 @@ This project follows [semantic versioning](http://semver.org).
 * Checkboxes de la lista de capas (`layer-list.js`) no respondían.
 * `legend-panel.js` lanzaba excepciones.
 
-## Plugins - Sin publicar (6.0.3)
+## Core - 6.0.1 [30-08-2017]
+
+### Corregido
+
+* Error al arrancar aplicaciones con Tomcat 8.0.x.
+
+## Plugins - 6.0.3 [30-08-2017]
 
 ### Añadido
 
@@ -25,18 +48,6 @@ This project follows [semantic versioning](http://semver.org).
 
 * Checkboxes de la lista de capas (`layer-list.js`) no respondían.
 * `legend-panel.js` lanzaba excepciones .
-
-## Core - Sin publicar
-
-### Modificado
-
-* El proceso de empaquetado de aplicaciones ahora se gestiona con Maven y `yarn` conjuntamente (ver [aplicaciones](../dev/apps.md)).
-* Las dependencias de los plugins cliente se gestionan ahora con `yarn`.
-* Estructura de los plugins cliente (ver [plugins](../dev/plugins.md)).
-
-### Eliminado
-
-* Variable de entorno `GEOLADRIS_MINIFIED`. Los recursos en cliente se sirven minificados por defecto, con la posibilidad de servirlos sin minificar con el parámetro `debug=true`.
 
 ## Core - 6.0.0 [2017-04-21]
 
