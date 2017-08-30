@@ -27,7 +27,7 @@
         }, 
         {
             "location": "/user/quickstart/", 
-            "text": "Lo primero que hay que hacer es descargarse la aplicaci\u00f3n \ndemo\n y desplegarla en Tomcat:\n\n\ncurl http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.1/demo-6.0.1.war \n $CATALINA_BASE/webapps/demo.war\n\n\n\n\n\nAccedemos al navegador para visualizarla: \nhttp://localhost:8080/demo/\n:\n\n\n\n\nAhora podemos probar a cambiar algo en el visor. Editamos el fichero \n$CATALINA_BASE/webapps/demo/WEB-INF/default_config/public-conf.json\n y modificamos lo siguiente:\n\n\n...\n\n\nlayer-order\n \n:\n \n{\n\n    \n_enabled\n \n:\n \ntrue\n\n\n}\n,\n\n\n...\n\n\n\n\n\n\nAcabamos de habilitar el plugin \nlayer-order\n. Si recargamos el visor:\n\n\n\n\ncomprobaremos que ha aparecido el plugin \nlayer-order\n en la barra de herramientas.\n\n\nA partir de aqu\u00ed podemos seguir \nconfigurando\n la aplicaci\u00f3n \ndemo\n o \ncrear\n una propia.", 
+            "text": "Lo primero que hay que hacer es descargarse la aplicaci\u00f3n \ndemo\n y desplegarla en Tomcat:\n\n\ncurl http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.2/demo-6.0.2.war \n $CATALINA_BASE/webapps/demo.war\n\n\n\n\n\nAccedemos al navegador para visualizarla: \nhttp://localhost:8080/demo/\n:\n\n\n\n\nAhora podemos probar a cambiar algo en el visor. Editamos el fichero \n$CATALINA_BASE/webapps/demo/WEB-INF/default_config/public-conf.json\n y modificamos lo siguiente:\n\n\n...\n\n\nlayer-order\n \n:\n \n{\n\n    \n_enabled\n \n:\n \ntrue\n\n\n}\n,\n\n\n...\n\n\n\n\n\n\nAcabamos de habilitar el plugin \nlayer-order\n. Si recargamos el visor:\n\n\n\n\ncomprobaremos que ha aparecido el plugin \nlayer-order\n en la barra de herramientas.\n\n\nA partir de aqu\u00ed podemos seguir \nconfigurando\n la aplicaci\u00f3n \ndemo\n o \ncrear\n una propia.", 
             "title": "Gu\u00eda r\u00e1pida"
         }, 
         {
@@ -82,12 +82,12 @@
         }, 
         {
             "location": "/user/download/", 
-            "text": "Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar directamente y probar. Estas aplicaciones son:\n\n\n\n\ndemo\n: Aplicaci\u00f3n con la mayor parte de la funcionalidad de Geoladris. \u00datil como plantilla para configurar una aplicaci\u00f3n propia.\n\n\nessential\n: Aplicaci\u00f3n con la m\u00ednima funcionalidad de Geoladris. \u00datil como base para desarrollo.\n\n\n\n\nEstable\n\n\n\n\nDemo 6.0.1\n\n\n\n\nDesarrollo\n\n\n\n\nDemo Latest\n\n\n\n\nVersiones antiguas\n\n\n\n\nDemo 5.0.0", 
+            "text": "Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar directamente y probar. Estas aplicaciones son:\n\n\n\n\ndemo\n: Aplicaci\u00f3n con la mayor parte de la funcionalidad de Geoladris. \u00datil como plantilla para configurar una aplicaci\u00f3n propia.\n\n\nessential\n: Aplicaci\u00f3n con la m\u00ednima funcionalidad de Geoladris. \u00datil como base para desarrollo.\n\n\n\n\nEstable\n\n\n\n\nDemo 6.0.2\n\n\n\n\nDesarrollo\n\n\n\n\nDemo Latest\n\n\n\n\nVersiones antiguas\n\n\n\n\nDemo 5.0.0", 
             "title": "Descargas"
         }, 
         {
             "location": "/user/download/#estable", 
-            "text": "Demo 6.0.1", 
+            "text": "Demo 6.0.2", 
             "title": "Estable"
         }, 
         {
