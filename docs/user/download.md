@@ -5,7 +5,7 @@ Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar direct
 
 ## Estable
 
-* [Demo 6.0.1](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.1/demo-6.0.1.war)
+* [Demo 6.0.2](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.2/demo-6.0.2.war)
 
 ## Desarrollo
 

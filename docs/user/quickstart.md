@@ -1,7 +1,7 @@
-Lo primero que hay que hacer es descargarse la aplicación [demo](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.1/demo-6.0.1.war) y desplegarla en Tomcat:
+Lo primero que hay que hacer es descargarse la aplicación [demo](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.2/demo-6.0.2.war) y desplegarla en Tomcat:
 
 ```
-curl http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.1/demo-6.0.1.war > $CATALINA_BASE/webapps/demo.war
+curl http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.2/demo-6.0.2.war > $CATALINA_BASE/webapps/demo.war
 ```
 
 Accedemos al navegador para visualizarla: [http://localhost:8080/demo/](http://localhost:8080/demo/):
