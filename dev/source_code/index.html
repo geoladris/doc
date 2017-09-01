@@ -12,7 +12,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.2, mkdocs-material-1.7.5">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.0">
     
     
       
@@ -23,7 +23,7 @@
       <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
     
     
@@ -95,7 +95,7 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -298,20 +298,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
-    Integración continua
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
-    Depurando JavaScript en el navegador
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#git" title="Git" class="md-nav__link">
     Git
   </a>
@@ -335,6 +321,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
+    Integración continua
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-de-integracion" title="Tests de integración" class="md-nav__link">
+    Tests de integración
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
+    Depurando JavaScript en el navegador
+  </a>
   
 </li>
       
@@ -535,20 +542,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
-    Integración continua
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
-    Depurando JavaScript en el navegador
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#git" title="Git" class="md-nav__link">
     Git
   </a>
@@ -572,6 +565,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracion-continua" title="Integración continua" class="md-nav__link">
+    Integración continua
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-de-integracion" title="Tests de integración" class="md-nav__link">
+    Tests de integración
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depurando-javascript-en-el-navegador" title="Depurando JavaScript en el navegador" class="md-nav__link">
+    Depurando JavaScript en el navegador
+  </a>
   
 </li>
       
@@ -614,6 +628,33 @@
 <p>Así, el módulo <code>NewLayer</code> mandaría un mensaje al <code>message-bus</code> con los datos de la nueva capa y <code>Map</code> y <code>LayerList</code> símplemente escucharían el mensaje y reaccionarían convenientemente. Sería trivial quitar de la página <code>LayerList</code> ya que no hay ninguna referencia directa al mismo (salvo tal vez en <code>Layout</code>).</p>
 <p>Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adicional, y que ambos escuchasen el evento <code>add-layer</code> de forma que se añadirían los temas a ambos mapas.</p>
 <p>De esta manera la aplicación es totalmente modular: es posible reemplazar módulos sin que los otros módulos se vean afectados, se pueden realizar contribuciones bien definidas que sólo deben entender los mensajes existentes para poder integrarse en la aplicación, etc.</p>
+<h2 id="git">Git</h2>
+<h3 id="repositorios">Repositorios</h3>
+<p>A continuación se detalla la estructura del proyecto.</p>
+<p>Si uno revisa el repositorio de código de <a href="https://github.com/geoladris">Geoladris</a> encontrará 4 repositorios:</p>
+<ul>
+<li><a href="https://github.com/geoladris/doc">doc</a>, el repositorio donde se encuentra la documentación oficial del proyecto</li>
+<li><a href="https://github.com/geoladris/core">core</a>. Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).</li>
+<li><a href="https://github.com/geoladris/plugins">plugins</a>: Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver <a href="../plugins/">plugins</a>).</li>
+<li><a href="https://github.com/geoladris/apps">apps</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
+</ul>
+<h3 id="modelo-de-ramas">Modelo de ramas</h3>
+<p>En Geoladris gastamos un modelo de ramas muy parecido al de <a href="http://docs.geoserver.org/stable/en/developer/source.html#repository-structure">GeoServer</a> y al modelo <a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">cactus</a>.</p>
+<p>Existen las siguientes ramas:</p>
+<ul>
+<li><strong><code>master</code></strong>: Rama principal sobre la que se realizan los últimos desarrollos.</li>
+<li>
+<p><strong>Ramas de <em>release</em></strong>: Ramas de desarrollo de una versión determinada. Tienen como nombre <code>&lt;major&gt;.&lt;minor&gt;.x</code> (<a href="http://semver.org">versionado semántico</a>). Por ejemplo: <code>6.0.x</code>.</p>
+<p>Estas ramas nacen de <code>master</code> o de otra rama de release; por ejemplo, si queremos sacar la <code>6.1.x</code> y en <code>master</code> existen cambios que nos llevan a la <code>7.0.x</code>, sacaremos la <code>6.1.x</code> a partir de la <code>6.0.x</code>.</p>
+<p>Nunca se vuelven a mezclar en <code>master</code>. Si se quieren incluir los cambios en diferentes ramas, se utiliza <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
+</li>
+<li>
+<p><strong>Ramas de <em>feature</em></strong>: Ramas para desarrollos específicos. Pueden salir tanto de <code>master</code> como de una rama de <em>release</em> y siempre se mezclan sobre la rama de la que salieron.</p>
+<p>Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.</p>
+</li>
+</ul>
+<p><strong>IMPORTANTE</strong>: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros <code>pom.xml</code> y <code>package.json</code>).</p>
+<p>Por ejemplo, si tenemos <code>6.1.0-SNAPSHOT</code> en <code>master</code> e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a <code>7.0.0-SNAPSHOT</code>, de forma que sepamos en todo momento qué version se corresponde con cada rama.</p>
 <h2 id="integracion-continua">Integración continua</h2>
 <p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
 <p>La configuración debe garantizar que se pasan todos los tests y que se hace un <code>mvn deploy</code> de todos los artefactos que componen Geoladris.</p>
@@ -646,6 +687,21 @@
 
 
 <p>Por último, hay que configurar las variables de entorno en la interfaz web de Travis.</p>
+<h2 id="tests-de-integracion">Tests de integración</h2>
+<p>Para ejecutar los tests de integración es necesario utilizar de manera explícita el profile de Maven <code>integration-tests</code>:</p>
+<div class="codehilite"><pre><span></span>mvn verify -Pintegration-tests
+</pre></div>
+
+
+<p>Además, para que los tests de integración puedan pasar correctamente es necesario:</p>
+<ul>
+<li>Establecer la variable de entorno <code>GEOLADRIS_EMAIL_PASSWORD</code>. La contraseña es privada y sólo la conocen los principales desarrolladores de Geoladris.</li>
+<li>Configurar una base de datos PostGIS en local con puerto 5432 y credenciales <code>docker:docker</code>. Para ello se puede utilizar el siguiente comando:</li>
+</ul>
+<div class="codehilite"><pre><span></span>docker run -d -p 5432:5432 --name=postgis kartoza/postgis
+</pre></div>
+
+
 <h2 id="depurando-javascript-en-el-navegador">Depurando JavaScript en el navegador</h2>
 <p>Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del <a href="../apps/">empaquetado</a>.</p>
 <p>También es posible utilizar recursos <em>no</em> minificados añadiendo el parámetro <code>debug=true</code> a la petición HTML. Por ejemplo: <a href="http://localhost:8080/demo/?debug=true">http://localhost:8080/demo/?debug=true</a>.</p>
@@ -658,33 +714,6 @@
 <li>Cuando todos los módulos se han cargado se lanza el evento <code>modules-loaded</code>.</li>
 <li>Cuando todas las capas se han añadido al mapa se lanza el evento <code>layers-loaded</code>.</li>
 </ol>
-<h2 id="git">Git</h2>
-<h3 id="repositorios">Repositorios</h3>
-<p>A continuación se detalla la estructura del proyecto.</p>
-<p>Si uno revisa el repositorio de código de <a href="https://github.com/geoladris">Geoladris</a> encontrará 4 repositorios:</p>
-<ul>
-<li><a href="https://github.com/geoladris/doc">doc</a>, el repositorio donde se encuentra la documentación oficial del proyecto</li>
-<li><a href="https://github.com/geoladris/core">core</a>. Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).</li>
-<li><a href="https://github.com/geoladris/plugins">plugins</a>: Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver <a href="../plugins/">plugins</a>).</li>
-<li><a href="https://github.com/geoladris/apps">apps</a>: Aplicaciones que definen qué plugins utilizan y cómo se configuran.</li>
-</ul>
-<h3 id="modelo-de-ramas">Modelo de ramas</h3>
-<p>En Geoladris gastamos un modelo de ramas muy parecido al de <a href="http://docs.geoserver.org/stable/en/developer/source.html#repository-structure">GeoServer</a> y al modelo <a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">cactus</a>.</p>
-<p>Existen las siguientes ramas:</p>
-<ul>
-<li><strong><code>master</code></strong>: Rama principal sobre la que se realizan los últimos desarrollos.</li>
-<li>
-<p><strong>Ramas de <em>release</em></strong>: Ramas de desarrollo de una versión determinada. Tienen como nombre <code>&lt;major&gt;.&lt;minor&gt;.x</code> (<a href="http://semver.org">versionado semántico</a>). Por ejemplo: <code>6.0.x</code>.</p>
-<p>Estas ramas nacen de <code>master</code> o de otra rama de release; por ejemplo, si queremos sacar la <code>6.1.x</code> y en <code>master</code> existen cambios que nos llevan a la <code>7.0.x</code>, sacaremos la <code>6.1.x</code> a partir de la <code>6.0.x</code>.</p>
-<p>Nunca se vuelven a mezclar en <code>master</code>. Si se quieren incluir los cambios en diferentes ramas, se utiliza <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
-</li>
-<li>
-<p><strong>Ramas de <em>feature</em></strong>: Ramas para desarrollos específicos. Pueden salir tanto de <code>master</code> como de una rama de <em>release</em> y siempre se mezclan sobre la rama de la que salieron.</p>
-<p>Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.</p>
-</li>
-</ul>
-<p><strong>IMPORTANTE</strong>: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros <code>pom.xml</code> y <code>package.json</code>).</p>
-<p>Por ejemplo, si tenemos <code>6.1.0-SNAPSHOT</code> en <code>master</code> e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a <code>7.0.0-SNAPSHOT</code>, de forma que sepamos en todo momento qué version se corresponde con cada rama.</p>
                 
                   
                 
@@ -754,7 +783,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-07b0fbb49b.js"></script>
+      <script src="../../assets/javascripts/application-1d6ee6ee6c.js"></script>
       
       
       <script>app.initialize({url:{base:"../.."}})</script>
