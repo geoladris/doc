@@ -9,8 +9,13 @@ Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar direct
 
 ## Desarrollo
 
-* [Demo Latest](http://nullisland.geomati.co:8082/repository/snapshots/org/fao/unredd/apps/demo/6.1.0-SNAPSHOT/demo-6.1.0-SNAPSHOT.war)
+* [Demo Latest](http://nullisland.geomati.co:8082/repository/snapshots/org/fao/unredd/apps/demo/7.0.0-SNAPSHOT/demo-7.0.0-SNAPSHOT.war)
 
 ## Versiones antiguas
 
 * [Demo 5.0.0](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/5.0.0/demo-5.0.0.war)
+
+
+## Docker
+
+* [Demo](https://hub.docker.com/r/vicgonco/geoladris-demo/).
