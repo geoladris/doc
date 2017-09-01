@@ -36,6 +36,41 @@ Y al contrario: sería posible incluir un nuevo módulo, por ejemplo un mapa adi
 
 De esta manera la aplicación es totalmente modular: es posible reemplazar módulos sin que los otros módulos se vean afectados, se pueden realizar contribuciones bien definidas que sólo deben entender los mensajes existentes para poder integrarse en la aplicación, etc.
 
+## Git
+
+### Repositorios
+
+A continuación se detalla la estructura del proyecto.
+
+Si uno revisa el repositorio de código de [Geoladris](https://github.com/geoladris) encontrará 4 repositorios:
+
+* [doc](https://github.com/geoladris/doc), el repositorio donde se encuentra la documentación oficial del proyecto
+* [core](https://github.com/geoladris/core). Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).
+* [plugins](https://github.com/geoladris/plugins): Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver [plugins](plugins.md)).
+* [apps](https://github.com/geoladris/apps): Aplicaciones que definen qué plugins utilizan y cómo se configuran.
+
+### Modelo de ramas
+
+En Geoladris gastamos un modelo de ramas muy parecido al de [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#repository-structure) y al modelo [cactus](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/).
+
+Existen las siguientes ramas:
+
+* **`master`**: Rama principal sobre la que se realizan los últimos desarrollos.
+* **Ramas de _release_**: Ramas de desarrollo de una versión determinada. Tienen como nombre `<major>.<minor>.x` ([versionado semántico](http://semver.org)). Por ejemplo: `6.0.x`.
+
+    Estas ramas nacen de `master` o de otra rama de release; por ejemplo, si queremos sacar la `6.1.x` y en `master` existen cambios que nos llevan a la `7.0.x`, sacaremos la `6.1.x` a partir de la `6.0.x`.
+
+    Nunca se vuelven a mezclar en `master`. Si se quieren incluir los cambios en diferentes ramas, se utiliza [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
+
+* **Ramas de _feature_**: Ramas para desarrollos específicos. Pueden salir tanto de `master` como de una rama de *release* y siempre se mezclan sobre la rama de la que salieron.
+
+    Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.
+
+
+**IMPORTANTE**: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros `pom.xml` y `package.json`).
+
+Por ejemplo, si tenemos `6.1.0-SNAPSHOT` en `master` e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a `7.0.0-SNAPSHOT`, de forma que sepamos en todo momento qué version se corresponde con cada rama.
+
 ## Integración continua
 
 Geoladris está configurado en [Travis](https://travis-ci.org/geoladris/) para su integración continua.
@@ -74,6 +109,23 @@ after_success:
 
 Por último, hay que configurar las variables de entorno en la interfaz web de Travis.
 
+## Tests de integración
+
+Para ejecutar los tests de integración es necesario utilizar de manera explícita el profile de Maven `integration-tests`:
+
+```
+mvn verify -Pintegration-tests
+```
+
+Además, para que los tests de integración puedan pasar correctamente es necesario:
+
+* Establecer la variable de entorno `GEOLADRIS_EMAIL_PASSWORD`. La contraseña es privada y sólo la conocen los principales desarrolladores de Geoladris.
+* Configurar una base de datos PostGIS en local con puerto 5432 y credenciales `docker:docker`. Para ello se puede utilizar el siguiente comando:
+
+```
+docker run -d -p 5432:5432 --name=postgis kartoza/postgis
+```
+
 ## Depurando JavaScript en el navegador
 
 Por defecto, se utilizan recursos minificados en el cliente. Los recursos minificados forman parte del [empaquetado](apps.md).
@@ -89,37 +141,3 @@ Cuando se depura JavaScript es importante conocer la secuencia de inicio de la a
 5. Cuando todos los módulos se han cargado se lanza el evento `modules-loaded`.
 6. Cuando todas las capas se han añadido al mapa se lanza el evento `layers-loaded`.
 
-## Git
-
-### Repositorios
-
-A continuación se detalla la estructura del proyecto.
-
-Si uno revisa el repositorio de código de [Geoladris](https://github.com/geoladris) encontrará 4 repositorios:
-
-* [doc](https://github.com/geoladris/doc), el repositorio donde se encuentra la documentación oficial del proyecto
-* [core](https://github.com/geoladris/core). Proyecto Maven. Se encarga de empaquetar todos los plugins (en tiempo de compilación) y luego servir sus recursos (en tiempo de ejecución).
-* [plugins](https://github.com/geoladris/plugins): Conjunto de plugins con funcionalidad aislada que pueden ser o no incluidos en las aplicaciones de manera independiente (ver [plugins](plugins.md)).
-* [apps](https://github.com/geoladris/apps): Aplicaciones que definen qué plugins utilizan y cómo se configuran.
-
-### Modelo de ramas
-
-En Geoladris gastamos un modelo de ramas muy parecido al de [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#repository-structure) y al modelo [cactus](https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/).
-
-Existen las siguientes ramas:
-
-* **`master`**: Rama principal sobre la que se realizan los últimos desarrollos.
-* **Ramas de _release_**: Ramas de desarrollo de una versión determinada. Tienen como nombre `<major>.<minor>.x` ([versionado semántico](http://semver.org)). Por ejemplo: `6.0.x`.
-
-    Estas ramas nacen de `master` o de otra rama de release; por ejemplo, si queremos sacar la `6.1.x` y en `master` existen cambios que nos llevan a la `7.0.x`, sacaremos la `6.1.x` a partir de la `6.0.x`.
-
-    Nunca se vuelven a mezclar en `master`. Si se quieren incluir los cambios en diferentes ramas, se utiliza [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
-
-* **Ramas de _feature_**: Ramas para desarrollos específicos. Pueden salir tanto de `master` como de una rama de *release* y siempre se mezclan sobre la rama de la que salieron.
-
-    Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.
-
-
-**IMPORTANTE**: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros `pom.xml` y `package.json`).
-
-Por ejemplo, si tenemos `6.1.0-SNAPSHOT` en `master` e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a `7.0.0-SNAPSHOT`, de forma que sepamos en todo momento qué version se corresponde con cada rama.
