@@ -13,6 +13,7 @@
 * [Código fuente](dev/source_code.md).
 * [Plugins](dev/plugins.md).
 * [Aplicaciones](dev/apps.md).
+* [Publicación](dev/releases.md).
 * [Migración](dev/migrate.md).
 * [Contribuir](dev/contribute.md).
 * [Desarrollar con Eclipse](dev/eclipse.md).

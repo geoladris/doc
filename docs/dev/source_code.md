@@ -58,18 +58,35 @@ Existen las siguientes ramas:
 * **`master`**: Rama principal sobre la que se realizan los últimos desarrollos.
 * **Ramas de _release_**: Ramas de desarrollo de una versión determinada. Tienen como nombre `<major>.<minor>.x` ([versionado semántico](http://semver.org)). Por ejemplo: `6.0.x`.
 
-    Estas ramas nacen de `master` o de otra rama de release; por ejemplo, si queremos sacar la `6.1.x` y en `master` existen cambios que nos llevan a la `7.0.x`, sacaremos la `6.1.x` a partir de la `6.0.x`.
-
-    Nunca se vuelven a mezclar en `master`. Si se quieren incluir los cambios en diferentes ramas, se utiliza [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
+    Estas ramas nacen siempre de `master` y nunca se vuelven a mezclar en `master`. Si se quieren incluir los cambios en diferentes ramas, se utiliza [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
 
 * **Ramas de _feature_**: Ramas para desarrollos específicos. Pueden salir tanto de `master` como de una rama de *release* y siempre se mezclan sobre la rama de la que salieron.
 
     Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.
 
+### Aplicando cambios
 
-**IMPORTANTE**: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros `pom.xml` y `package.json`).
+Siguiente el [versionado semántico](http://semver.org) podemos encontrarnos con tres tipos de cambios:
 
-Por ejemplo, si tenemos `6.1.0-SNAPSHOT` en `master` e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a `7.0.0-SNAPSHOT`, de forma que sepamos en todo momento qué version se corresponde con cada rama.
+**Parches** (aumentan el patch number): Se pueden aplicar en cualquier rama.
+
+**Cambios menores** (aumentan el minor number): Se pueden aplicar únicamente en `master` o en las ramas de release (p. ej. `7.1.x`) siempre y cuando todavía no se haya publicado la primera versión de esa rama de release (p. ej. `7.1.0`).
+
+**Cambios mayores** (aumentan el major number): Únicamente aplicables en `master`. Además, en este caso es necesario dejar lista la rama de release de la versión menor que hasta ese momento estaba en `master`.
+
+Por ejemplo, si en `master` estaba la versión `7.2.0-SNAPSHOT` y aplicamos un cambio que actualiza la versión a `8.0.0-SNAPSHOT`, deberemos crear la rama de release antes de aplicar ese cambio:
+
+```bash
+git checkout master
+git checkout -b 7.2.x
+git push -u origin 7.2.x
+```
+
+**IMPORTANTE**: Para aplicar cambios en varias ramas, nunca mezclamos entre ellas; utilizamos [git cherry-pick](https://git-scm.com/docs/git-cherry-pick) (igual que [GeoServer](http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches)).
+
+**IMPORTANTE**: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos el changelog.
+
+**IMPORTANTE**: Los números de versión en los ficheros `pom.xml` y `package.json` únicamente se cambian durante el proceso de [publicación](releases.md) o en el caso de introducir cambios mayores.
 
 ## Integración continua
 
