@@ -16,6 +16,10 @@ A través de la [lista de correo](contribute.md#lista-de-correo) se acuerda la s
 
 Para decidir qué versión publicar se puede revisar el [changelog](../ref/changelog.md) donde se incluyen los cambios que se han ido añadiendo a cada una de las versiones sin publicar.
 
+### Preparar milestone en el repositorio
+
+Las versiones se gestionan a traves de milestones en el repositorio de Github. Una vez se ha acordado por la lista de correo, habrá que crear una milestone con la versión y la fecha acordadas.
+
 ### Preparar la rama de release
 
 Una vez se ha decidido la versión, hay que preparar la rama en el repositorio. Lo hacemos de una manera similar a [GeoServer](http://docs.geoserver.org/stable/en/developer/release-guide/index.html#if-you-are-cutting-the-first-rc-of-a-series-create-the-stable-branch).
@@ -56,7 +60,13 @@ git push -u origin 7.1.x
 
 ### Correcciones de última hora
 
-Una vez las ramas están listas para el despliegue se probará todo bien y se harán cambios de última hora. En este momento únicamente se pueden introducir correcciones a errores; estas correcciones hay que documentarlas inmediatamente en el changelog.
+Una vez las ramas están listas para el despliegue se probará todo bien y se harán cambios de última hora.
+
+Los únicos cambios que se pueden introducir son correcciones de errores.
+
+Todos los cambios que afecten a la publicación de la versión deberán tener asociada una issue en GitHub. La issue deberá pertenecer siempre a la milestone de la versión.
+
+Todos los cambios hay que documentarlos inmediatamente en el changelog.
 
 ### Desplegar
 
