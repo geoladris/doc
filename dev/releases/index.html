@@ -348,6 +348,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#preparar-milestone-en-el-repositorio" title="Preparar milestone en el repositorio" class="md-nav__link">
+    Preparar milestone en el repositorio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#preparar-la-rama-de-release" title="Preparar la rama de release" class="md-nav__link">
     Preparar la rama de release
   </a>
@@ -545,6 +552,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#preparar-milestone-en-el-repositorio" title="Preparar milestone en el repositorio" class="md-nav__link">
+    Preparar milestone en el repositorio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#preparar-la-rama-de-release" title="Preparar la rama de release" class="md-nav__link">
     Preparar la rama de release
   </a>
@@ -617,6 +631,8 @@
 <h3 id="acordar-una-version-y-una-fecha">Acordar una versión y una fecha</h3>
 <p>A través de la <a href="../contribute/#lista-de-correo">lista de correo</a> se acuerda la siguiente versión que se va a publicar y una fecha aproximada de cuándo va a ocurrir.</p>
 <p>Para decidir qué versión publicar se puede revisar el <a href="../../ref/changelog/">changelog</a> donde se incluyen los cambios que se han ido añadiendo a cada una de las versiones sin publicar.</p>
+<h3 id="preparar-milestone-en-el-repositorio">Preparar milestone en el repositorio</h3>
+<p>Las versiones se gestionan a traves de milestones en el repositorio de Github. Una vez se ha acordado por la lista de correo, habrá que crear una milestone con la versión y la fecha acordadas.</p>
 <h3 id="preparar-la-rama-de-release">Preparar la rama de release</h3>
 <p>Una vez se ha decidido la versión, hay que preparar la rama en el repositorio. Lo hacemos de una manera similar a <a href="http://docs.geoserver.org/stable/en/developer/release-guide/index.html#if-you-are-cutting-the-first-rc-of-a-series-create-the-stable-branch">GeoServer</a>.</p>
 <p>Únicamente debemos buscar la rama que se corresponde a la versión que queremos publicar. Por ejemplo, si queremos publicar la versión <code>7.1.0</code> deberemos buscar la rama que tenga la versión <code>7.1.0-SNAPSHOT</code> en el fichero <code>pom.xml</code>. Esta rama únicamente puede ser <code>master</code> o <code>7.1.x</code>.</p>
@@ -648,7 +664,10 @@ git push -u origin <span class="m">7</span>.1.x
 
 
 <h3 id="correcciones-de-ultima-hora">Correcciones de última hora</h3>
-<p>Una vez las ramas están listas para el despliegue se probará todo bien y se harán cambios de última hora. En este momento únicamente se pueden introducir correcciones a errores; estas correcciones hay que documentarlas inmediatamente en el changelog.</p>
+<p>Una vez las ramas están listas para el despliegue se probará todo bien y se harán cambios de última hora.</p>
+<p>Los únicos cambios que se pueden introducir son correcciones de errores.</p>
+<p>Todos los cambios que afecten a la publicación de la versión deberán tener asociada una issue en GitHub. La issue deberá pertenecer siempre a la milestone de la versión.</p>
+<p>Todos los cambios hay que documentarlos inmediatamente en el changelog.</p>
 <h3 id="desplegar">Desplegar</h3>
 <p>Cuando el software esté listo para el despliegue, actualizaremos la rama de release con la versión definitiva y la publicaremos:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Bump</span>
