@@ -319,6 +319,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#aplicando-cambios" title="Aplicando cambios" class="md-nav__link">
+    Aplicando cambios
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -563,6 +570,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#aplicando-cambios" title="Aplicando cambios" class="md-nav__link">
+    Aplicando cambios
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -645,16 +659,28 @@
 <li><strong><code>master</code></strong>: Rama principal sobre la que se realizan los últimos desarrollos.</li>
 <li>
 <p><strong>Ramas de <em>release</em></strong>: Ramas de desarrollo de una versión determinada. Tienen como nombre <code>&lt;major&gt;.&lt;minor&gt;.x</code> (<a href="http://semver.org">versionado semántico</a>). Por ejemplo: <code>6.0.x</code>.</p>
-<p>Estas ramas nacen de <code>master</code> o de otra rama de release; por ejemplo, si queremos sacar la <code>6.1.x</code> y en <code>master</code> existen cambios que nos llevan a la <code>7.0.x</code>, sacaremos la <code>6.1.x</code> a partir de la <code>6.0.x</code>.</p>
-<p>Nunca se vuelven a mezclar en <code>master</code>. Si se quieren incluir los cambios en diferentes ramas, se utiliza <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
+<p>Estas ramas nacen siempre de <code>master</code> y nunca se vuelven a mezclar en <code>master</code>. Si se quieren incluir los cambios en diferentes ramas, se utiliza <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
 </li>
 <li>
 <p><strong>Ramas de <em>feature</em></strong>: Ramas para desarrollos específicos. Pueden salir tanto de <code>master</code> como de una rama de <em>release</em> y siempre se mezclan sobre la rama de la que salieron.</p>
 <p>Se recomienda no mantener estas ramas durante mucho tiempo para evitar dificultades al mezclar.</p>
 </li>
 </ul>
-<p><strong>IMPORTANTE</strong>: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos tanto el changelog como las versiones (en los ficheros <code>pom.xml</code> y <code>package.json</code>).</p>
-<p>Por ejemplo, si tenemos <code>6.1.0-SNAPSHOT</code> en <code>master</code> e introducimos un cambio no compatible hacia atrás, lo documentaremos en el changelog y cambiaremos la versión a <code>7.0.0-SNAPSHOT</code>, de forma que sepamos en todo momento qué version se corresponde con cada rama.</p>
+<h3 id="aplicando-cambios">Aplicando cambios</h3>
+<p>Siguiente el <a href="http://semver.org">versionado semántico</a> podemos encontrarnos con tres tipos de cambios:</p>
+<p><strong>Parches</strong> (aumentan el patch number): Se pueden aplicar en cualquier rama.</p>
+<p><strong>Cambios menores</strong> (aumentan el minor number): Se pueden aplicar únicamente en <code>master</code> o en las ramas de release (p. ej. <code>7.1.x</code>) siempre y cuando todavía no se haya publicado la primera versión de esa rama de release (p. ej. <code>7.1.0</code>).</p>
+<p><strong>Cambios mayores</strong> (aumentan el major number): Únicamente aplicables en <code>master</code>. Además, en este caso es necesario dejar lista la rama de release de la versión menor que hasta ese momento estaba en <code>master</code>.</p>
+<p>Por ejemplo, si en <code>master</code> estaba la versión <code>7.2.0-SNAPSHOT</code> y aplicamos un cambio que actualiza la versión a <code>8.0.0-SNAPSHOT</code>, deberemos crear la rama de release antes de aplicar ese cambio:</p>
+<div class="codehilite"><pre><span></span>git checkout master
+git checkout -b <span class="m">7</span>.2.x
+git push -u origin <span class="m">7</span>.2.x
+</pre></div>
+
+
+<p><strong>IMPORTANTE</strong>: Para aplicar cambios en varias ramas, nunca mezclamos entre ellas; utilizamos <a href="https://git-scm.com/docs/git-cherry-pick">git cherry-pick</a> (igual que <a href="http://docs.geoserver.org/stable/en/developer/source.html#porting-changes-between-primary-branches">GeoServer</a>).</p>
+<p><strong>IMPORTANTE</strong>: Cada vez que introducimos un cambio (en cualquiera de las ramas), actualizamos el changelog.</p>
+<p><strong>IMPORTANTE</strong>: Los números de versión en los ficheros <code>pom.xml</code> y <code>package.json</code> únicamente se cambian durante el proceso de <a href="../releases/">publicación</a> o en el caso de introducir cambios mayores.</p>
 <h2 id="integracion-continua">Integración continua</h2>
 <p>Geoladris está configurado en <a href="https://travis-ci.org/geoladris/">Travis</a> para su integración continua.</p>
 <p>La configuración debe garantizar que se pasan todos los tests y que se hace un <code>mvn deploy</code> de todos los artefactos que componen Geoladris.</p>

@@ -337,6 +337,61 @@
     Proceso
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acordar-una-version-y-una-fecha" title="Acordar una versión y una fecha" class="md-nav__link">
+    Acordar una versión y una fecha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-la-rama-de-release" title="Preparar la rama de release" class="md-nav__link">
+    Preparar la rama de release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-la-rama-de-documentacion" title="Preparar la rama de documentación" class="md-nav__link">
+    Preparar la rama de documentación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcciones-de-ultima-hora" title="Correcciones de última hora" class="md-nav__link">
+    Correcciones de última hora
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desplegar" title="Desplegar" class="md-nav__link">
+    Desplegar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualizar-documentacion" title="Actualizar documentación" class="md-nav__link">
+    Actualizar documentación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviar-mensaje-a-la-lista-de-correo" title="Enviar mensaje a la lista de correo" class="md-nav__link">
+    Enviar mensaje a la lista de correo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -479,6 +534,61 @@
     Proceso
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acordar-una-version-y-una-fecha" title="Acordar una versión y una fecha" class="md-nav__link">
+    Acordar una versión y una fecha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-la-rama-de-release" title="Preparar la rama de release" class="md-nav__link">
+    Preparar la rama de release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparar-la-rama-de-documentacion" title="Preparar la rama de documentación" class="md-nav__link">
+    Preparar la rama de documentación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcciones-de-ultima-hora" title="Correcciones de última hora" class="md-nav__link">
+    Correcciones de última hora
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desplegar" title="Desplegar" class="md-nav__link">
+    Desplegar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actualizar-documentacion" title="Actualizar documentación" class="md-nav__link">
+    Actualizar documentación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviar-mensaje-a-la-lista-de-correo" title="Enviar mensaje a la lista de correo" class="md-nav__link">
+    Enviar mensaje a la lista de correo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -498,76 +608,109 @@
                 
                   <h1>Publicación</h1>
                 
-                <h3 id="frecuencia-de-publicaciones">Frecuencia de publicaciones</h3>
-<h3 id="proceso">Proceso</h3>
+                <h2 id="frecuencia-de-publicaciones">Frecuencia de publicaciones</h2>
+<p>En Geoladris no tenemos una frecuencia de publicación constante, sino que publicamos en función de las necesidades de los usuarios.</p>
+<p>El proceso de publicación se inicia simplemente con una conversación en la <a href="../contribute/#lista-de-correo">lista de correo</a> de desarrollo en la que se acuerda la versión de la nueva release y la fecha aproximada de la misma.</p>
+<p>¿Necesítas una nueva versión? <a href="../contribute/#lista-de-correo">Escríbenos</a>.</p>
+<h2 id="proceso">Proceso</h2>
+<p>El proceso que se describe aquí incluye únicamente un repositorio (<code>core</code> <strong>o</strong> <code>plugins</code> <strong>o</strong> <code>apps</code>). Para publicar todos los repositorioes habrá que llevar este proceso en paralelo para todos ellos.</p>
+<h3 id="acordar-una-version-y-una-fecha">Acordar una versión y una fecha</h3>
+<p>A través de la <a href="../contribute/#lista-de-correo">lista de correo</a> se acuerda la siguiente versión que se va a publicar y una fecha aproximada de cuándo va a ocurrir.</p>
+<p>Para decidir qué versión publicar se puede revisar el <a href="../../ref/changelog/">changelog</a> donde se incluyen los cambios que se han ido añadiendo a cada una de las versiones sin publicar.</p>
+<h3 id="preparar-la-rama-de-release">Preparar la rama de release</h3>
+<p>Una vez se ha decidido la versión, hay que preparar la rama en el repositorio. Lo hacemos de una manera similar a <a href="http://docs.geoserver.org/stable/en/developer/release-guide/index.html#if-you-are-cutting-the-first-rc-of-a-series-create-the-stable-branch">GeoServer</a>.</p>
+<p>Únicamente debemos buscar la rama que se corresponde a la versión que queremos publicar. Por ejemplo, si queremos publicar la versión <code>7.1.0</code> deberemos buscar la rama que tenga la versión <code>7.1.0-SNAPSHOT</code> en el fichero <code>pom.xml</code>. Esta rama únicamente puede ser <code>master</code> o <code>7.1.x</code>.</p>
+<p>En caso de que la rama con la versión a publicar sea <code>master</code> deberemos crear la rama <code>7.1.x</code>:</p>
+<div class="codehilite"><pre><span></span>git checkout master
+git checkout -b <span class="m">7</span>.1.x
+git push -u origin <span class="m">7</span>.1.x
+</pre></div>
+
+
+<p>y dejar la rama <code>master</code> preparada para seguir desarrollando la <code>7.2.0-SNAPSHOT</code>:</p>
+<div class="codehilite"><pre><span></span>git checkout master
+mvn versions:set -DnewVersion<span class="o">=</span><span class="m">7</span>.2.0-SNAPSHOT
+yarn version --no-git-tag-version --new-version <span class="m">7</span>.2.0-SNAPSHOT
+rm <span class="sb">`</span>git status <span class="p">|</span> grep pom.xml.versionsBackup<span class="sb">`</span>
+git add .
+git commit -m <span class="s2">&quot;Bump version to 7.2.0-SNAPSHOT&quot;</span>
+git push
+</pre></div>
+
+
+<h3 id="preparar-la-rama-de-documentacion">Preparar la rama de documentación</h3>
+<p>Para tener documentación de todas las versiones utilizamos ramas y tags como un repositorio de desarrollo que luego publicaremos en <a href="https://readthedocs.org/projects/geoladris/">ReadTheDocs</a>.</p>
+<p>El proceso es idéntico al de la <a href="#preparar-la-rama-de-release">rama de release</a> pero sin necesidad de actualizar versiones. Si hemos tenido que crear la rama de release a partir de <code>master</code> para el desarrollo, lo haremos aquí también:</p>
+<div class="codehilite"><pre><span></span>git checkout master
+git checkout -b <span class="m">7</span>.1.x
+git push -u origin <span class="m">7</span>.1.x
+</pre></div>
+
+
+<h3 id="correcciones-de-ultima-hora">Correcciones de última hora</h3>
+<p>Una vez las ramas están listas para el despliegue se probará todo bien y se harán cambios de última hora. En este momento únicamente se pueden introducir correcciones a errores; estas correcciones hay que documentarlas inmediatamente en el changelog.</p>
+<h3 id="desplegar">Desplegar</h3>
+<p>Cuando el software esté listo para el despliegue, actualizaremos la rama de release con la versión definitiva y la publicaremos:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Bump</span>
+git checkout <span class="m">7</span>.1.x
+mvn versions:set -DnewVersion<span class="o">=</span><span class="m">7</span>.1.0
+yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.0
+rm <span class="sb">`</span>git status <span class="p">|</span> grep pom.xml.versionsBackup<span class="sb">`</span>
+
+<span class="c1"># Commit</span>
+git add .
+git commit -m <span class="s2">&quot;Bump version to 7.1.0&quot;</span>
+
+<span class="c1"># Push</span>
+git tag <span class="m">7</span>.1.0
+git push
+git push --tags
+</pre></div>
+
+
+<p>El despliegue se debería realizar automáticamente con Travis. Deberemos esperar a que Travis envíe el correo de notificación de éxito y luego comprobar que los artefactos se han publicado correctamente, tanto con <a href="nullisland.geomati.co:8082/repository/releases/org/geoladris">Maven</a> como con <a href="https://www.npmjs.com/search?q=geoladris">yarn</a>.</p>
+<p>Para terminar, dejaremos la rama de release preparada con la siguiente versión (patch version++):</p>
+<div class="codehilite"><pre><span></span>mvn versions:set -DnewVersion<span class="o">=</span><span class="m">7</span>.1.1-SNAPSHOT
+yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.1-SNAPSHOT
+rm <span class="sb">`</span>git status <span class="p">|</span> grep pom.xml.versionsBackup<span class="sb">`</span>
+git add .
+git commit -m <span class="s2">&quot;Bump version to 7.1.1-SNAPSHOT&quot;</span>
+git push
+</pre></div>
+
+
+<h3 id="actualizar-documentacion">Actualizar documentación</h3>
+<p>Una vez la versión está publicada, deberemos actualizar la documentación. Las tareas a realizar son:</p>
 <ul>
-<li>Acordar una fecha por la lista de correo.</li>
 <li>
-<p>Preparar la rama de release (principalmente copiado de <a href="http://docs.geoserver.org/stable/en/developer/release-guide/index.html#if-you-are-cutting-the-first-rc-of-a-series-create-the-stable-branch">GeoServer</a>) y de <strong>documentación</strong>. Necesitaremos ramas en el repo de documentación para mantener documentación de diferentes versiones con readthedocs. Dos casos:</p>
+<p>Actualizar el changelog con las nuevas versiones, incluyendo fecha de publicación.</p>
 </li>
 <li>
-<p>Cambios menores (únicamente cambia el patch number). No se hace nada, se utiliza la rama existente (queremos publicar la <code>7.0.1</code>, utilizamos la rama <code>7.0.x</code> existente).</p>
-</li>
-<li>
-<p>Cambios mayores (cambia el minor y/o major number). Se crea una rama de release:</p>
-<div class="codehilite"><pre><span></span>git checkout &lt;rama_base&gt;
-git checkout -b &lt;rama_release&gt;
-</pre></div>
-
-
-<p><code>rama_release</code> se tiene que corresponder con el número de versión en el <code>pom.xml</code>. Por ejemplo, si en el <code>pom.xml</code> está <code>7.0.0-SNAPSHOT</code>, se crea la rama <code>7.0.x</code>. Para ello, se elige la <code>rama_base</code> correspondiente a la versión que se quiere publicar.</p>
-<p>Se actualiza <code>rama_base</code> con el siguiente minor number:</p>
-<div class="codehilite"><pre><span></span>git checkout rama_base
-mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
-yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
-git commit -m &quot;Bump version to 7.1.0-SNAPSHOT&quot;
-git push
+<p>Crear un tag en el repositorio de documentación:</p>
+<div class="codehilite"><pre><span></span>git checkout <span class="m">7</span>.1.x
+git tag <span class="m">7</span>.1.0
+git push --tags
 </pre></div>
 
 
 </li>
 <li>
-<p>Probar bien y hacer fixes de última hora sobre la rama de release.</p>
+<p>Añadir una versión en ReadTheDocs con el nuevo tag.</p>
 </li>
 <li>
-<p>Actualizar versiones a la versión definitiva:</p>
-<div class="codehilite"><pre><span></span>git checkout rama_release
-mvn versions:set -DnewVersion=7.0.0
-yarn version --no-git-tag-version --new-version 7.0.0
-git commit -m &quot;Bump version to 7.0.0&quot;
-git push
-</pre></div>
-
-
-</li>
-<li>
-<p>Desplegar</p>
-<div class="codehilite"><pre><span></span>mvn deploy -P release
-</pre></div>
-
-
-</li>
-<li>
-<p>Actualizar documentación (versiones en changelog, descargas, etc.) y hacer un tag.</p>
-</li>
-<li>
-<p>Añadir una versión en readthedocs para el tag creado.</p>
-</li>
-<li>
-<p>Actualizar la versión en la rama de release:</p>
-<div class="codehilite"><pre><span></span>git checkout rama_release
-mvn versions:set -DnewVersion=7.1.0-SNAPSHOT
-yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
-git commit -m &quot;Bump version to 7.1.0-SNAPSHOT&quot;
-git push
-</pre></div>
-
-
-</li>
-<li>
-<p>Enviar mensaje a la lista de correo.</p>
+<p>Mezclar cambios de la documentación en <code>master</code> (al menos el changelog).</p>
 </li>
 </ul>
+<h3 id="enviar-mensaje-a-la-lista-de-correo">Enviar mensaje a la lista de correo</h3>
+<p>Por último, es necesario enviar un correo a la lista. Se puede utilizar la siguiente plantilla:</p>
+<p><strong>Asunto</strong>: Nueva versión <code>&lt;versión&gt;</code></p>
+<p><strong>Mensaje</strong>:</p>
+<p>Hola a todos,</p>
+<p>Acabamos de publicar una nueva versión de Geoladris, la versión <code>&lt;versión&gt;</code>.</p>
+<p>Podéis encontrar los cambios que trae esta nueva versión en https://geoladris.github.io/doc/ref/changelog/.</p>
+<p>La documentación general la encontraréis en https://geoladris.github.io/doc/.</p>
+<p>Y la documentación sobre versiones anteriores está disponible en ReadTheDocs: https://readthedocs.org/projects/geoladris/.</p>
+<p>Saludos.</p>
                 
                   
                 

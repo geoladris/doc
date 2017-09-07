@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,25 +13,25 @@
         
     <url>
      <loc>/user/quickstart/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/user/config/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/user/create/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/user/download/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -41,49 +41,49 @@
         
     <url>
      <loc>/dev/quickstart/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/source_code/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/plugins/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/apps/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/migrate/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/releases/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/contribute/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/dev/eclipse/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -93,25 +93,25 @@
         
     <url>
      <loc>/ref/changelog/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ref/plugins/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ref/events/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ref/license/</loc>
-     <lastmod>2017-09-01</lastmod>
+     <lastmod>2017-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
