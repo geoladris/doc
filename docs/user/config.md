@@ -146,7 +146,13 @@ Geoladris reconoce algunos fichero estáticos específicos:
 
 ## `<config_dir>/portal.properties`
 
-Fichero de propiedades. Cada plugin define sus propiedades (ver [referencia](../ref/plugins.md)). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.
+Fichero de propiedades. Cada plugin define sus propiedades (ver [referencia](../ref/portal-properties.md)). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.
+
+## `<config_dir>/layers.json`
+
+Este archivo define la estructura de capas del proyecto. Consiste en un elemento JSON con cuatro propiedades. En este archivo definiremos las capas que desesamos carga en el visor, así como los grupos, dando de esta manera forma al arbol de capas. 
+
+Se puede encontrar una descripción de todos los elementos del archivo en [referencia](../ref/layers-json.md)
 
 ## Configurar caché
 
@@ -169,3 +175,39 @@ De la misma manera que el directorio de configuración, estas variables pueden e
 		<param-value>true</param-value>
 	</context-param>
 ```
+
+## Adaptación del aspecto gráfico
+
+### Cabecera de página
+
+Veamos cómo modificar la imagen de fondo, bandera y título de la cabecera del portal:
+
+![](images/header.png)
+
+Partiendo del GEOLADRIS_CONFIG_DIR:
+
+* **Imagen de fondo**: Se encuentra en `static/img/right.jpg`. Sustituir este fichero por otro de igual nombre y formato (jpeg), de 92 píxeles de alto. El ancho puede variar, aunque se recomienda que sea tan ancho como sea posible, hasta los 1920 px de una pantalla de alta definición. Para conseguir un mejor efecto junto con la bandera, se recomienda rellenar de contenido (logotipos, fotografía) la parte más a la derecha de la imagen, hasta un máximo de 500 px. Utilizar un color de fondo liso para el resto de la imagen, que ocupe toda la franja de la izquierda, y que se corresponda con el color de fondo de la bandera.
+
+* **Bandera**: Se encuentra en `static/img/left.jpg`. Sustituir este fichero por otro de igual nombre y formato (jpeg), de 92 píxeles de alto. El ancho puede variar, aunque se recomienda alrededor de los 200 px. Utilizar un color de fondo liso, correspondiente con la parte izquierda de la imagen de fondo, para dar una sensación de continuidad.
+
+* **Título**: Se encuentra definido en los ficheros de mensajes, directorio `messages`, ficheros de nombre `messages_<lang>.properties`. Buscar la propiedad "title" en cada uno de los ficheros de idioma.
+
+### *Favicon*
+
+
+Se conoce como *favicon* al icono que se muestra en el navegador en la barra de direcciones. Para personalizar el *favicon*
+del portal, basta con copiar la imagen en el directorio ``static/img``. El nombre de la imagen sólo puede ser `favicon.ico` o `favicon.png`.
+
+![](images/favicon.png)
+
+### Estilos predefinidos (CSS)
+
+En ciertos casos se requiere modificar los estilos que vienen predefinidos para OpenLayers, jQuery o cualquier otro. En estos casos,
+en lugar de modificar los estilos directamente en el fichero que se encuentra en `/var/tomcat/webapps/portal`, se ha de crear
+un nuevo fichero `overrides.css` en el directorio `<config_dir>/static/css` que contenga las reglas CSS que se desean modificar.
+
+De esta manera, tendrán preferencia las reglas que se escriban en `overrides.css` frente a cualquier otra que se encuentre en
+`/var/tomcat/webapps/portal`.
+
+Además, cuando se despliegue una actualización del portal en Tomcat, el fichero `overrides.css` no se modificará, manteniendo
+así la personalización.
