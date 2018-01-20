@@ -22,6 +22,5 @@ pages:
     - Plugins: ref/plugins.md
     - Eventos: ref/events.md
     - Licencia: ref/license.md
-    - layers.json: ref/layers-json.md
     - portal.properties: ref/portal-properties.md
 
