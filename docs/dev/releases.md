@@ -46,6 +46,16 @@ git commit -m "Bump version to 7.2.0-SNAPSHOT"
 git push
 ```
 
+En caso de que el repositorio tenga varios proyectos, la instrucción de `yarn` se deberá ejecutar para todos ellos:
+
+```bash
+for i in `ls */package.json`; do
+  pushd `dirname $i`
+  yarn version --no-git-tag-version --new-version 7.1.0-SNAPSHOT
+  popd
+done
+```
+
 ### Preparar la rama de documentación
 
 Para tener documentación de todas las versiones utilizamos ramas y tags como un repositorio de desarrollo que luego publicaremos en [ReadTheDocs](https://readthedocs.org/projects/geoladris/).
