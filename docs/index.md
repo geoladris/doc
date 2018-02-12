@@ -11,12 +11,12 @@
 
 * [Guía rápida](dev/quickstart.md).
 * [Código fuente](dev/source_code.md).
+* [Entorno de desarrollo](dev/environment.md).
 * [Plugins](dev/plugins.md).
 * [Aplicaciones](dev/apps.md).
 * [Publicación](dev/releases.md).
 * [Migración](dev/migrate.md).
 * [Contribuir](dev/contribute.md).
-* [Desarrollar con Eclipse](dev/eclipse.md).
 
 ## Referencia
 
