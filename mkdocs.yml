@@ -11,12 +11,12 @@ pages:
 - Desarrollador:
     - 'Guía rápida': dev/quickstart.md
     - 'Código fuente': dev/source_code.md
+    - 'Entorno de desarrollo': dev/environment.md
     - Plugins: dev/plugins.md
     - Aplicaciones: dev/apps.md
     - Migración: dev/migrate.md
     - Publicación: dev/releases.md
     - Contribuir: dev/contribute.md
-    - 'Desarrollar con Eclipse': dev/eclipse.md
 - Referencia:
     - 'Registro de cambios': ref/changelog.md
     - Plugins: ref/plugins.md
