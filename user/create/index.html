@@ -445,7 +445,7 @@
                 
                   <h1>Creación de aplicaciones</h1>
                 
-                <p>Para crear una aplicación propia, Geoladris proporciona un <a href="https://raw.githubusercontent.com/geoladris/core/master/build-tools/geoladris_build.sh">script</a> bash (Linux). Este script utiliza un fichero <code>build.json</code> que describe la aplicación y (opcionalmente) un directorio de configuración (llamado <code>config</code> junto a <code>build.json</code>) y produce un paquete <code>.war</code> listo para desplegar.</p>
+                <p>Para crear una aplicación propia, Geoladris proporciona un <a href="https://raw.githubusercontent.com/geoladris/core/master/build-tools/geoladris_build.sh">script</a> bash (Linux). Este script utiliza un fichero <code>build.json</code> que describe la aplicación y (opcionalmente) un <a href="../config/#directorio-de-configuracion">directorio de configuración</a> (llamado <code>config</code> junto a <code>build.json</code>) y produce un paquete <code>.war</code> listo para desplegar.</p>
 <p>Por ejemplo, se puede crear una aplicación que contenga únicamente los plugins <code>base</code> y <code>layers-editor</code> utilizando este fichero <code>build.json</code>:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;demo&quot;</span><span class="p">,</span>
@@ -464,11 +464,11 @@
 </pre></div>
 
 
-<p>También se puede utilizar el script para generar una aplicación con plugins que no son de Geoladris. Basta con añadir <code>&lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;</code> para los plugins servidor y <code>&lt;dependency&gt;:&lt;version&gt;</code> para los plugins cliente. Por ejemplo:</p>
+<p>También se puede utilizar el script para generar una aplicación con plugins que no son de Geoladris. Basta con añadir <code>&lt;grupo&gt;:&lt;plugin&gt;:&lt;version&gt;</code>. Por ejemplo:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;demo&quot;</span><span class="p">,</span>
   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;layers-editor&quot;</span><span class="p">,</span> <span class="s2">&quot;@csgis/ui:1.0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;de.csgis.geoladris:myplugin:1.0.1&quot;</span><span class="p">]</span>
+  <span class="nt">&quot;plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;layers-editor&quot;</span><span class="p">,</span> <span class="s2">&quot;migrupo:miplugin:1.0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;de.csgis.geoladris:myplugin:1.0.1&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 
