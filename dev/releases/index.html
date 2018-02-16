@@ -654,15 +654,6 @@ git push
 </pre></div>
 
 
-<p>En caso de que el repositorio tenga varios proyectos, la instrucción de <code>yarn</code> se deberá ejecutar para todos ellos:</p>
-<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>ls */package.json<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
-  <span class="nb">pushd</span> <span class="sb">`</span>dirname <span class="nv">$i</span><span class="sb">`</span>
-  yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.0-SNAPSHOT
-  <span class="nb">popd</span>
-<span class="k">done</span>
-</pre></div>
-
-
 <h3 id="preparar-la-rama-de-documentacion">Preparar la rama de documentación</h3>
 <p>Para tener documentación de todas las versiones utilizamos ramas y tags como un repositorio de desarrollo que luego publicaremos en <a href="https://readthedocs.org/projects/geoladris/">ReadTheDocs</a>.</p>
 <p>El proceso es idéntico al de la <a href="#preparar-la-rama-de-release">rama de release</a> pero sin necesidad de actualizar versiones. Si hemos tenido que crear la rama de release a partir de <code>master</code> para el desarrollo, lo haremos aquí también:</p>

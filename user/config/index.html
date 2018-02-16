@@ -261,6 +261,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#base-de-datos" title="Base de datos" class="md-nav__link">
+    Base de datos
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -565,6 +572,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#base-de-datos" title="Base de datos" class="md-nav__link">
+    Base de datos
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -713,6 +727,19 @@ data_source=Fuente de datos
         <span class="nt">&lt;param-name&gt;</span>GEOLADRIS_CONFIG_CACHE<span class="nt">&lt;/param-name&gt;</span>
         <span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
     <span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
+
+
+<h2 id="base-de-datos">Base de datos</h2>
+<p>Las aplicaciones <code>demo</code> y <code>develop</code> que proporciona Geoladris traen la posibilidad de conectar automáticamente a la base de datos que utilizarán algunos de los plugins (como el plugin <code>feedback</code>, por ejemplo).</p>
+<p>Para configurar esta base de datos es necesario configurar las siguientes propiedades Java:</p>
+<ul>
+<li><code>GEOLADRIS_DB_URL</code>: URL JDBC de la base de datos. Por ejemplo: <code>jdbc:postgresql://localhost:5432/geoladris</code>.</li>
+<li><code>GEOLADRIS_DB_USER</code>: Usuario para la autenticación con la base de datos.</li>
+<li><code>GEOLADRIS_DB_PASS</code>: Contraseña para la autenticación con la base de datos.</li>
+</ul>
+<p>Por ejemplo, para configurarlo en Tomcat bastaría con establecer <code>JAVA_OPTS</code>:</p>
+<div class="codehilite"><pre><span></span><span class="nv">JAVA_OPTS</span><span class="o">=</span>-DGEOLADRIS_CONFIG_DIR<span class="o">=</span>/var/geoladris -DGEOLADRIS_DB_URL<span class="o">=</span>jdbc:postgresql://localhost:5432/geoladris -DGEOLADRIS_DB_USER<span class="o">=</span>admin -DGEOLADRIS_DB_PASS<span class="o">=</span>geoladris
 </pre></div>
                 
                   
