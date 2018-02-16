@@ -7,6 +7,8 @@ This project follows [semantic versioning](http://semver.org).
 * El proceso de empaquetado de aplicaciones ahora se gestiona con Maven y `yarn` conjuntamente (ver [aplicaciones](../dev/apps.md)).
 * Las dependencias de los plugins cliente se gestionan ahora con `yarn`.
 * Estructura de los plugins cliente (ver [plugins](../dev/plugins.md)).
+* Los paquetes Java ahora se despliegan en el repo central de Maven.
+* El idioma se cambia con la ruta `/setlang?<idioma>` en lugar de con el parámetro `?lang=<idioma>`.
 
 ### Eliminado
 
@@ -15,7 +17,6 @@ This project follows [semantic versioning](http://semver.org).
 ### Corregido
 
 * Error al arrancar aplicaciones con Tomcat 8.0.x.
-
 
 ## Plugins - Sin publicar (7.0.0)
 
@@ -26,11 +27,33 @@ This project follows [semantic versioning](http://semver.org).
 ### Modificado
 
 * El nombre del recurso de base de datos en el fichero de Tomcat `context.xml` ahora debe ser `geoladris` en lugar de `unredd-portal`.
+* El plugin `ol2Controls` ahora se llama `ol2controls` (sin mayúscula).
+* Los paquetes Java ahora se despliegan en el repo central de Maven.
 
 ### Corregido
 
 * Checkboxes de la lista de capas (`layer-list.js`) no respondían.
 * `legend-panel.js` lanzaba excepciones.
+* La barra de desplazamiento de la lista de capas no funcionaba.
+* Multiples correcciones de la interfaz de usuario (CSS).
+* El panel de transparencia mostraba capas que no estaban visibles.
+* Corrección de varios *bugs* en el plugin `layers-editor`.
+* El plugin `language-buttons` no cambiaba el idioma correctamente.
+* El plugin `tour` no incluye ninguna configuración por defecto (ya que es específica de las aplicaciones).
+* Los servicios de estadísticas no funcionaban en ciertos entornos con Tomcat (no tenía permisos para escribir el fichero de log).
+
+## Apps - Sin publicar (7.0.0)
+
+### Añadido
+
+* Aplicación `develop`, para facilitar el desarrollo.
+* Aplicación `essential`, que incluye solo el núcleo sin ningún plugin.
+* Despliegue con Docker de la aplicación `demo`.
+* Posibilidad de especificar la conexión a base de datos de las aplicaciones `demo` y `develop` mediante variables de entorno (`GEOLADRIS_DB_URL`, `GEOLADRIS_DB_USER`, `GEOLADRIS_DB_PASS`) en lugar de editando el fichero `context.xml`.
+
+### Corregido
+
+* Redirección en caso de no añadir `/` al final de la URL en el navegador.
 
 ## Core - 6.0.1 [30-08-2017]
 
