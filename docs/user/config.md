@@ -169,3 +169,19 @@ De la misma manera que el directorio de configuración, estas variables pueden e
 		<param-value>true</param-value>
 	</context-param>
 ```
+
+## Base de datos
+
+Las aplicaciones `demo` y `develop` que proporciona Geoladris traen la posibilidad de conectar automáticamente a la base de datos que utilizarán algunos de los plugins (como el plugin `feedback`, por ejemplo).
+
+Para configurar esta base de datos es necesario configurar las siguientes propiedades Java:
+
+- `GEOLADRIS_DB_URL`: URL JDBC de la base de datos. Por ejemplo: `jdbc:postgresql://localhost:5432/geoladris`.
+- `GEOLADRIS_DB_USER`: Usuario para la autenticación con la base de datos.
+- `GEOLADRIS_DB_PASS`: Contraseña para la autenticación con la base de datos.
+
+Por ejemplo, para configurarlo en Tomcat bastaría con establecer `JAVA_OPTS`:
+
+```bash
+JAVA_OPTS=-DGEOLADRIS_CONFIG_DIR=/var/geoladris -DGEOLADRIS_DB_URL=jdbc:postgresql://localhost:5432/geoladris -DGEOLADRIS_DB_USER=admin -DGEOLADRIS_DB_PASS=geoladris
+```
