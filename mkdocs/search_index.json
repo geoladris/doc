@@ -382,7 +382,7 @@
         }, 
         {
             "location": "/ref/changelog/", 
-            "text": "This project follows \nsemantic versioning\n.\n\n\nCore - Sin publicar (7.0.0)\n\n\nModificado\n\n\n\n\nEl proceso de empaquetado de aplicaciones ahora se gestiona con Maven y \nyarn\n conjuntamente (ver \naplicaciones\n).\n\n\nLas dependencias de los plugins cliente se gestionan ahora con \nyarn\n.\n\n\nEstructura de los plugins cliente (ver \nplugins\n).\n\n\n\n\nEliminado\n\n\n\n\nVariable de entorno \nGEOLADRIS_MINIFIED\n. Los recursos en cliente se sirven minificados por defecto, con la posibilidad de servirlos sin minificar con el par\u00e1metro \ndebug=true\n.\n\n\n\n\nCorregido\n\n\n\n\nError al arrancar aplicaciones con Tomcat 8.0.x.\n\n\n\n\nPlugins - Sin publicar (7.0.0)\n\n\nA\u00f1adido\n\n\n\n\nPosibilidad de especificar API para Google Maps (\n#38\n).\n\n\n\n\nModificado\n\n\n\n\nEl nombre del recurso de base de datos en el fichero de Tomcat \ncontext.xml\n ahora debe ser \ngeoladris\n en lugar de \nunredd-portal\n.\n\n\n\n\nCorregido\n\n\n\n\nCheckboxes de la lista de capas (\nlayer-list.js\n) no respond\u00edan.\n\n\nlegend-panel.js\n lanzaba excepciones.\n\n\n\n\nCore - 6.0.1 [30-08-2017]\n\n\nCorregido\n\n\n\n\nError al arrancar aplicaciones con Tomcat 8.0.x.\n\n\n\n\nPlugins - 6.0.3 [30-08-2017]\n\n\nA\u00f1adido\n\n\n\n\nPosibilidad de especificar API para Google Maps (\n#38\n).\n\n\n\n\nCorregido\n\n\n\n\nCheckboxes de la lista de capas (\nlayer-list.js\n) no respond\u00edan.\n\n\nlegend-panel.js\n lanzaba excepciones .\n\n\n\n\nCore - 6.0.0 [2017-04-21]\n\n\nModificado\n\n\n\n\nLos plugins empaquetados como \n.jar\n pasan a estar contenidos en un subdirectorio dentro de \ngeoladris\n (en lugar de directamente en \ngeoladris\n). As\u00ed, todos los plugins est\u00e1n en subdirectorios, independientemente de su empaquetado (ver \ngu\u00eda de migraci\u00f3n\n).\n\n\nTodos los plugins toman su nombre del subdirectorio en el que est\u00e1n contenidos.\n\n\ninstallInRoot\n por defecto a \nfalse\n para todos los plugins, independientemente del empaquetado; \ncore\n se mantiene con \ninstallInRoot : true\n para que sus m\u00f3dulos se puedan referenciar de manera sencilla desde otros plugins.\n\n\nModuleConfigurationProvider\n a\u00f1adidos a una lista en \nServletContext\n en lugar de a un objeto \nConfig\n (ver \ngu\u00eda de migraci\u00f3n\n).\n\n\n\n\nCorregido\n\n\n\n\nMinificaci\u00f3n no funciona para plugins con \ninstallInRoot : false\n.\n\n\nPeticiones a recursos cualificados devuelven recursos sin cualificar (y viceversa)\n.\n\n\nNullPointerException\n cuando alg\u00fan \nModuleConfigurationProvider\n devuelve configuraci\u00f3n para un plugin no existente.\n\n\nBug con ficheros CSS llamados igual que el directorio que los contiene (\nstyles/styles.css\n, \nmodules/modules.css\n, \ntheme/theme.css\n) en plugins con \ninstallInRoot:false\n.\n\n\n\n\nA\u00f1adido\n\n\n\n\nScript (\ngeoladris_build.sh\n) para generar paquetes \n.war\n a partir de un descriptor \nbuild.json\n y un directorio de configuraci\u00f3n.\n\n\nPosibilidad de obtener la configuraci\u00f3n desde una base de datos, tanto configuraci\u00f3n de plugins (\npublic-conf.json\n) como propiedades (\nportal.properties\n) y mensajes (\nmessages/messages*.properties\n).\n\n\nPosibilidad de a\u00f1adir m\u00f3dulos en subdirectorios\n.\n\n\nDetectar cambios en los directorios de plugins\n.\n\n\nFichero descriptor de plugin (\nplugin\n-conf.json\n) opcional\n.\n\n\nVariable \nGEOLADRIS_CACHE_TIMEOUT\n (en segundos) para limpiar la cach\u00e9 de configuraci\u00f3n. \u00danicamente se tiene en cuenta si la variable \nGEOLADRIS_CONFIG_CACHE\n es \ntrue\n.\n\n\nM\u00e9todo \nPortalRequestConfiguration.getCurrentConfiguration()\n para poder modificar desde un \nModuleConfigurationProvider\n la configuraci\u00f3n en construcci\u00f3n, obtenida de los \nModuleConfigurationProvider\n previos.\n\n\n\n\nCore - 5.0.1 [2016-12-06]\n\n\nCorregido\n\n\n\n\nDevolver \nContent-type\n correcto para im\u00e1genes SVG\n.\n\n\n\n\nCore - 5.0.0 [2016-11-25]\n\n\nCorregido\n\n\n\n\nEspecificar \narrays\n JSON como configuraci\u00f3n de los m\u00f3dulos\n.\n\n\nSoporte para Java 8\n.\n\n\nEnviar al cliente \u00fanicamente las propiedades bien conocidas\n.\n\n\nPosibilidad de tener un directorio de configuraci\u00f3n distinto por aplicaci\u00f3n\n.\n\n\n\n\nA\u00f1adido\n\n\n\n\nNuevo descriptor de aplicaci\u00f3n \npublic-conf.json\n. Permite activar y desactivar plugins. Sustituye a \nplugin-conf.json\n, que se mantiene temporalmente por compatibilidad hacia atr\u00e1s.\n\n\nMezclar la configuraci\u00f3n por defecto de los plugins y no s\u00f3lo de sobreescribirla.\n\n\nEspecificar \nconfiguraci\u00f3n espec\u00edfica de usuario\n.\n\n\nA\u00f1adir plugins (s\u00f3lo parte cliente) en el directorio de configuraci\u00f3n.\n\n\nCualificar los m\u00f3dulos con el nombre del plugin al que pertenecen (\ninstallInRoot:false\n).\n\n\nDirectorio \ntheme\n en los plugins. Contiene ficheros CSS con el estilo de la aplicaci\u00f3n.\n\n\nPar\u00e1metro \ndebug\n que carga los m\u00f3dulos sin minificaci\u00f3n.\n\n\nEspecificar el t\u00edtulo del documento HTML en el fichero \nportal.properties\n.\n\n\n\n\nModificado\n\n\n\n\nEl soporte para el fichero \nlayers.json\n se ha movido al plugin \nbase\n.\n\n\nEl directorio \nnfms\n que contiene los recursos se ha renombrado a \ngeoladris\n.\n\n\n\n\nBugs conocidos\n\n\n\n\nMinificaci\u00f3n no funciona para plugins con installInRoot:false\n.\n\n\nEs posible cargar recursos instalados en la ra\u00edz como si pertenecieran a un plugin inexistente.\n.", 
+            "text": "This project follows \nsemantic versioning\n.\n\n\nCore - Sin publicar (7.0.0)\n\n\nModificado\n\n\n\n\nEl proceso de empaquetado de aplicaciones ahora se gestiona con Maven y \nyarn\n conjuntamente (ver \naplicaciones\n).\n\n\nLas dependencias de los plugins cliente se gestionan ahora con \nyarn\n.\n\n\nEstructura de los plugins cliente (ver \nplugins\n).\n\n\nLos paquetes Java ahora se despliegan en el repo central de Maven.\n\n\nEl idioma se cambia con la ruta \n/setlang?\nidioma\n en lugar de con el par\u00e1metro \n?lang=\nidioma\n.\n\n\n\n\nEliminado\n\n\n\n\nVariable de entorno \nGEOLADRIS_MINIFIED\n. Los recursos en cliente se sirven minificados por defecto, con la posibilidad de servirlos sin minificar con el par\u00e1metro \ndebug=true\n.\n\n\n\n\nCorregido\n\n\n\n\nError al arrancar aplicaciones con Tomcat 8.0.x.\n\n\n\n\nPlugins - Sin publicar (7.0.0)\n\n\nA\u00f1adido\n\n\n\n\nPosibilidad de especificar API para Google Maps (\n#38\n).\n\n\n\n\nModificado\n\n\n\n\nEl nombre del recurso de base de datos en el fichero de Tomcat \ncontext.xml\n ahora debe ser \ngeoladris\n en lugar de \nunredd-portal\n.\n\n\nEl plugin \nol2Controls\n ahora se llama \nol2controls\n (sin may\u00fascula).\n\n\nLos paquetes Java ahora se despliegan en el repo central de Maven.\n\n\n\n\nCorregido\n\n\n\n\nCheckboxes de la lista de capas (\nlayer-list.js\n) no respond\u00edan.\n\n\nlegend-panel.js\n lanzaba excepciones.\n\n\nLa barra de desplazamiento de la lista de capas no funcionaba.\n\n\nMultiples correcciones de la interfaz de usuario (CSS).\n\n\nEl panel de transparencia mostraba capas que no estaban visibles.\n\n\nCorrecci\u00f3n de varios \nbugs\n en el plugin \nlayers-editor\n.\n\n\nEl plugin \nlanguage-buttons\n no cambiaba el idioma correctamente.\n\n\nEl plugin \ntour\n no incluye ninguna configuraci\u00f3n por defecto (ya que es espec\u00edfica de las aplicaciones).\n\n\nLos servicios de estad\u00edsticas no funcionaban en ciertos entornos con Tomcat (no ten\u00eda permisos para escribir el fichero de log).\n\n\n\n\nApps - Sin publicar (7.0.0)\n\n\nA\u00f1adido\n\n\n\n\nAplicaci\u00f3n \ndevelop\n, para facilitar el desarrollo.\n\n\nAplicaci\u00f3n \nessential\n, que incluye solo el n\u00facleo sin ning\u00fan plugin.\n\n\nDespliegue con Docker de la aplicaci\u00f3n \ndemo\n.\n\n\nPosibilidad de especificar la conexi\u00f3n a base de datos de las aplicaciones \ndemo\n y \ndevelop\n mediante variables de entorno (\nGEOLADRIS_DB_URL\n, \nGEOLADRIS_DB_USER\n, \nGEOLADRIS_DB_PASS\n) en lugar de editando el fichero \ncontext.xml\n.\n\n\n\n\nCorregido\n\n\n\n\nRedirecci\u00f3n en caso de no a\u00f1adir \n/\n al final de la URL en el navegador.\n\n\n\n\nCore - 6.0.1 [30-08-2017]\n\n\nCorregido\n\n\n\n\nError al arrancar aplicaciones con Tomcat 8.0.x.\n\n\n\n\nPlugins - 6.0.3 [30-08-2017]\n\n\nA\u00f1adido\n\n\n\n\nPosibilidad de especificar API para Google Maps (\n#38\n).\n\n\n\n\nCorregido\n\n\n\n\nCheckboxes de la lista de capas (\nlayer-list.js\n) no respond\u00edan.\n\n\nlegend-panel.js\n lanzaba excepciones .\n\n\n\n\nCore - 6.0.0 [2017-04-21]\n\n\nModificado\n\n\n\n\nLos plugins empaquetados como \n.jar\n pasan a estar contenidos en un subdirectorio dentro de \ngeoladris\n (en lugar de directamente en \ngeoladris\n). As\u00ed, todos los plugins est\u00e1n en subdirectorios, independientemente de su empaquetado (ver \ngu\u00eda de migraci\u00f3n\n).\n\n\nTodos los plugins toman su nombre del subdirectorio en el que est\u00e1n contenidos.\n\n\ninstallInRoot\n por defecto a \nfalse\n para todos los plugins, independientemente del empaquetado; \ncore\n se mantiene con \ninstallInRoot : true\n para que sus m\u00f3dulos se puedan referenciar de manera sencilla desde otros plugins.\n\n\nModuleConfigurationProvider\n a\u00f1adidos a una lista en \nServletContext\n en lugar de a un objeto \nConfig\n (ver \ngu\u00eda de migraci\u00f3n\n).\n\n\n\n\nCorregido\n\n\n\n\nMinificaci\u00f3n no funciona para plugins con \ninstallInRoot : false\n.\n\n\nPeticiones a recursos cualificados devuelven recursos sin cualificar (y viceversa)\n.\n\n\nNullPointerException\n cuando alg\u00fan \nModuleConfigurationProvider\n devuelve configuraci\u00f3n para un plugin no existente.\n\n\nBug con ficheros CSS llamados igual que el directorio que los contiene (\nstyles/styles.css\n, \nmodules/modules.css\n, \ntheme/theme.css\n) en plugins con \ninstallInRoot:false\n.\n\n\n\n\nA\u00f1adido\n\n\n\n\nScript (\ngeoladris_build.sh\n) para generar paquetes \n.war\n a partir de un descriptor \nbuild.json\n y un directorio de configuraci\u00f3n.\n\n\nPosibilidad de obtener la configuraci\u00f3n desde una base de datos, tanto configuraci\u00f3n de plugins (\npublic-conf.json\n) como propiedades (\nportal.properties\n) y mensajes (\nmessages/messages*.properties\n).\n\n\nPosibilidad de a\u00f1adir m\u00f3dulos en subdirectorios\n.\n\n\nDetectar cambios en los directorios de plugins\n.\n\n\nFichero descriptor de plugin (\nplugin\n-conf.json\n) opcional\n.\n\n\nVariable \nGEOLADRIS_CACHE_TIMEOUT\n (en segundos) para limpiar la cach\u00e9 de configuraci\u00f3n. \u00danicamente se tiene en cuenta si la variable \nGEOLADRIS_CONFIG_CACHE\n es \ntrue\n.\n\n\nM\u00e9todo \nPortalRequestConfiguration.getCurrentConfiguration()\n para poder modificar desde un \nModuleConfigurationProvider\n la configuraci\u00f3n en construcci\u00f3n, obtenida de los \nModuleConfigurationProvider\n previos.\n\n\n\n\nCore - 5.0.1 [2016-12-06]\n\n\nCorregido\n\n\n\n\nDevolver \nContent-type\n correcto para im\u00e1genes SVG\n.\n\n\n\n\nCore - 5.0.0 [2016-11-25]\n\n\nCorregido\n\n\n\n\nEspecificar \narrays\n JSON como configuraci\u00f3n de los m\u00f3dulos\n.\n\n\nSoporte para Java 8\n.\n\n\nEnviar al cliente \u00fanicamente las propiedades bien conocidas\n.\n\n\nPosibilidad de tener un directorio de configuraci\u00f3n distinto por aplicaci\u00f3n\n.\n\n\n\n\nA\u00f1adido\n\n\n\n\nNuevo descriptor de aplicaci\u00f3n \npublic-conf.json\n. Permite activar y desactivar plugins. Sustituye a \nplugin-conf.json\n, que se mantiene temporalmente por compatibilidad hacia atr\u00e1s.\n\n\nMezclar la configuraci\u00f3n por defecto de los plugins y no s\u00f3lo de sobreescribirla.\n\n\nEspecificar \nconfiguraci\u00f3n espec\u00edfica de usuario\n.\n\n\nA\u00f1adir plugins (s\u00f3lo parte cliente) en el directorio de configuraci\u00f3n.\n\n\nCualificar los m\u00f3dulos con el nombre del plugin al que pertenecen (\ninstallInRoot:false\n).\n\n\nDirectorio \ntheme\n en los plugins. Contiene ficheros CSS con el estilo de la aplicaci\u00f3n.\n\n\nPar\u00e1metro \ndebug\n que carga los m\u00f3dulos sin minificaci\u00f3n.\n\n\nEspecificar el t\u00edtulo del documento HTML en el fichero \nportal.properties\n.\n\n\n\n\nModificado\n\n\n\n\nEl soporte para el fichero \nlayers.json\n se ha movido al plugin \nbase\n.\n\n\nEl directorio \nnfms\n que contiene los recursos se ha renombrado a \ngeoladris\n.\n\n\n\n\nBugs conocidos\n\n\n\n\nMinificaci\u00f3n no funciona para plugins con installInRoot:false\n.\n\n\nEs posible cargar recursos instalados en la ra\u00edz como si pertenecieran a un plugin inexistente.\n.", 
             "title": "Registro de cambios"
         }, 
         {
@@ -392,7 +392,7 @@
         }, 
         {
             "location": "/ref/changelog/#modificado", 
-            "text": "El proceso de empaquetado de aplicaciones ahora se gestiona con Maven y  yarn  conjuntamente (ver  aplicaciones ).  Las dependencias de los plugins cliente se gestionan ahora con  yarn .  Estructura de los plugins cliente (ver  plugins ).", 
+            "text": "El proceso de empaquetado de aplicaciones ahora se gestiona con Maven y  yarn  conjuntamente (ver  aplicaciones ).  Las dependencias de los plugins cliente se gestionan ahora con  yarn .  Estructura de los plugins cliente (ver  plugins ).  Los paquetes Java ahora se despliegan en el repo central de Maven.  El idioma se cambia con la ruta  /setlang? idioma  en lugar de con el par\u00e1metro  ?lang= idioma .", 
             "title": "Modificado"
         }, 
         {
@@ -417,12 +417,27 @@
         }, 
         {
             "location": "/ref/changelog/#modificado_1", 
-            "text": "El nombre del recurso de base de datos en el fichero de Tomcat  context.xml  ahora debe ser  geoladris  en lugar de  unredd-portal .", 
+            "text": "El nombre del recurso de base de datos en el fichero de Tomcat  context.xml  ahora debe ser  geoladris  en lugar de  unredd-portal .  El plugin  ol2Controls  ahora se llama  ol2controls  (sin may\u00fascula).  Los paquetes Java ahora se despliegan en el repo central de Maven.", 
             "title": "Modificado"
         }, 
         {
             "location": "/ref/changelog/#corregido_1", 
-            "text": "Checkboxes de la lista de capas ( layer-list.js ) no respond\u00edan.  legend-panel.js  lanzaba excepciones.", 
+            "text": "Checkboxes de la lista de capas ( layer-list.js ) no respond\u00edan.  legend-panel.js  lanzaba excepciones.  La barra de desplazamiento de la lista de capas no funcionaba.  Multiples correcciones de la interfaz de usuario (CSS).  El panel de transparencia mostraba capas que no estaban visibles.  Correcci\u00f3n de varios  bugs  en el plugin  layers-editor .  El plugin  language-buttons  no cambiaba el idioma correctamente.  El plugin  tour  no incluye ninguna configuraci\u00f3n por defecto (ya que es espec\u00edfica de las aplicaciones).  Los servicios de estad\u00edsticas no funcionaban en ciertos entornos con Tomcat (no ten\u00eda permisos para escribir el fichero de log).", 
+            "title": "Corregido"
+        }, 
+        {
+            "location": "/ref/changelog/#apps-sin-publicar-700", 
+            "text": "", 
+            "title": "Apps - Sin publicar (7.0.0)"
+        }, 
+        {
+            "location": "/ref/changelog/#anadido_1", 
+            "text": "Aplicaci\u00f3n  develop , para facilitar el desarrollo.  Aplicaci\u00f3n  essential , que incluye solo el n\u00facleo sin ning\u00fan plugin.  Despliegue con Docker de la aplicaci\u00f3n  demo .  Posibilidad de especificar la conexi\u00f3n a base de datos de las aplicaciones  demo  y  develop  mediante variables de entorno ( GEOLADRIS_DB_URL ,  GEOLADRIS_DB_USER ,  GEOLADRIS_DB_PASS ) en lugar de editando el fichero  context.xml .", 
+            "title": "A\u00f1adido"
+        }, 
+        {
+            "location": "/ref/changelog/#corregido_2", 
+            "text": "Redirecci\u00f3n en caso de no a\u00f1adir  /  al final de la URL en el navegador.", 
             "title": "Corregido"
         }, 
         {
@@ -431,7 +446,7 @@
             "title": "Core - 6.0.1 [30-08-2017]"
         }, 
         {
-            "location": "/ref/changelog/#corregido_2", 
+            "location": "/ref/changelog/#corregido_3", 
             "text": "Error al arrancar aplicaciones con Tomcat 8.0.x.", 
             "title": "Corregido"
         }, 
@@ -441,12 +456,12 @@
             "title": "Plugins - 6.0.3 [30-08-2017]"
         }, 
         {
-            "location": "/ref/changelog/#anadido_1", 
+            "location": "/ref/changelog/#anadido_2", 
             "text": "Posibilidad de especificar API para Google Maps ( #38 ).", 
             "title": "A\u00f1adido"
         }, 
         {
-            "location": "/ref/changelog/#corregido_3", 
+            "location": "/ref/changelog/#corregido_4", 
             "text": "Checkboxes de la lista de capas ( layer-list.js ) no respond\u00edan.  legend-panel.js  lanzaba excepciones .", 
             "title": "Corregido"
         }, 
@@ -461,12 +476,12 @@
             "title": "Modificado"
         }, 
         {
-            "location": "/ref/changelog/#corregido_4", 
+            "location": "/ref/changelog/#corregido_5", 
             "text": "Minificaci\u00f3n no funciona para plugins con  installInRoot : false .  Peticiones a recursos cualificados devuelven recursos sin cualificar (y viceversa) .  NullPointerException  cuando alg\u00fan  ModuleConfigurationProvider  devuelve configuraci\u00f3n para un plugin no existente.  Bug con ficheros CSS llamados igual que el directorio que los contiene ( styles/styles.css ,  modules/modules.css ,  theme/theme.css ) en plugins con  installInRoot:false .", 
             "title": "Corregido"
         }, 
         {
-            "location": "/ref/changelog/#anadido_2", 
+            "location": "/ref/changelog/#anadido_3", 
             "text": "Script ( geoladris_build.sh ) para generar paquetes  .war  a partir de un descriptor  build.json  y un directorio de configuraci\u00f3n.  Posibilidad de obtener la configuraci\u00f3n desde una base de datos, tanto configuraci\u00f3n de plugins ( public-conf.json ) como propiedades ( portal.properties ) y mensajes ( messages/messages*.properties ).  Posibilidad de a\u00f1adir m\u00f3dulos en subdirectorios .  Detectar cambios en los directorios de plugins .  Fichero descriptor de plugin ( plugin -conf.json ) opcional .  Variable  GEOLADRIS_CACHE_TIMEOUT  (en segundos) para limpiar la cach\u00e9 de configuraci\u00f3n. \u00danicamente se tiene en cuenta si la variable  GEOLADRIS_CONFIG_CACHE  es  true .  M\u00e9todo  PortalRequestConfiguration.getCurrentConfiguration()  para poder modificar desde un  ModuleConfigurationProvider  la configuraci\u00f3n en construcci\u00f3n, obtenida de los  ModuleConfigurationProvider  previos.", 
             "title": "A\u00f1adido"
         }, 
@@ -476,7 +491,7 @@
             "title": "Core - 5.0.1 [2016-12-06]"
         }, 
         {
-            "location": "/ref/changelog/#corregido_5", 
+            "location": "/ref/changelog/#corregido_6", 
             "text": "Devolver  Content-type  correcto para im\u00e1genes SVG .", 
             "title": "Corregido"
         }, 
@@ -486,12 +501,12 @@
             "title": "Core - 5.0.0 [2016-11-25]"
         }, 
         {
-            "location": "/ref/changelog/#corregido_6", 
+            "location": "/ref/changelog/#corregido_7", 
             "text": "Especificar  arrays  JSON como configuraci\u00f3n de los m\u00f3dulos .  Soporte para Java 8 .  Enviar al cliente \u00fanicamente las propiedades bien conocidas .  Posibilidad de tener un directorio de configuraci\u00f3n distinto por aplicaci\u00f3n .", 
             "title": "Corregido"
         }, 
         {
-            "location": "/ref/changelog/#anadido_3", 
+            "location": "/ref/changelog/#anadido_4", 
             "text": "Nuevo descriptor de aplicaci\u00f3n  public-conf.json . Permite activar y desactivar plugins. Sustituye a  plugin-conf.json , que se mantiene temporalmente por compatibilidad hacia atr\u00e1s.  Mezclar la configuraci\u00f3n por defecto de los plugins y no s\u00f3lo de sobreescribirla.  Especificar  configuraci\u00f3n espec\u00edfica de usuario .  A\u00f1adir plugins (s\u00f3lo parte cliente) en el directorio de configuraci\u00f3n.  Cualificar los m\u00f3dulos con el nombre del plugin al que pertenecen ( installInRoot:false ).  Directorio  theme  en los plugins. Contiene ficheros CSS con el estilo de la aplicaci\u00f3n.  Par\u00e1metro  debug  que carga los m\u00f3dulos sin minificaci\u00f3n.  Especificar el t\u00edtulo del documento HTML en el fichero  portal.properties .", 
             "title": "A\u00f1adido"
         }, 
