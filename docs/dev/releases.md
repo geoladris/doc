@@ -70,7 +70,11 @@ Todos los cambios hay que documentarlos inmediatamente en el changelog.
 
 ### Desplegar
 
-Cuando el software esté listo para el despliegue, actualizaremos la rama de release con la versión definitiva y la publicaremos:
+Cuando el software esté listo para el despliegue, en primer lugar actualizaremos las dependencias entre proyectos para Maven (`pom.xml`) y npm (`package.json`). Por ejemplo, si estamos desplegando la versión `7.1.0`, en el `pom.xml` y `package.json` de nuestros plugins deberemos sustituir las versiones de desarrollo (`7.1.0-SNAPSHOT`/`7.1.0-alpha.x`) por la versión final (`7.1.0`).
+
+En caso de actualizar algún fichero `package.json` hay que recordar volver a ejecutar `yarn` para actualizar el fichero `yarn.lock` y subirlo al repositorio también.
+
+Una vez todas las versiones están listas, actualizaremos la rama de release con la versión definitiva y la publicaremos:
 
 ```bash
 # Bump
@@ -84,12 +88,40 @@ git add .
 git commit -m "Bump version to 7.1.0"
 
 # Push
-git tag 7.1.0
+git tag v7.1.0
 git push
 git push --tags
 ```
 
-El despliegue se debería realizar automáticamente con Travis. Deberemos esperar a que Travis envíe el correo de notificación de éxito y luego comprobar que los artefactos se han publicado correctamente, tanto con [Maven](nullisland.geomati.co:8082/repository/releases/org/geoladris) como con [yarn](https://www.npmjs.com/search?q=geoladris).
+En el caso de repositorios con múltiples suproyectos, además deberemos cambiar la versión en todos los subdirectorios:
+
+```bash
+for i in `ls */package.json`; do
+  pushd `dirname $i`;
+  yarn version --no-git-tag-version --new-version 7.1.0;
+  popd;
+done
+```
+
+El despliegue de los artefactos Java se debería realizar automáticamente con Travis. Deberemos esperar a que Travis envíe el correo de notificación de éxito y luego comprobar que los artefactos se han publicado correctamente en [Maven](http://central.maven.org/maven2/com/github/geoladris) (la publicación de artefactos en el repositorio central de Maven puede tardar hasta 10 minutos).
+
+Sin embargo, la publicación de paquetes JavaScript ha de ser manual. Para ello, deberemos ejecutar la siguiente instrucción:
+
+```bash
+yarn publish --no-git-tag-version --access public --new-version 7.1.0
+```
+
+o, para repositorios con múltiples proyectos:
+
+```bash
+for i in `ls */package.json`; do
+  pushd `dirname $i`;
+  yarn publish --no-git-tag-version --access public --new-version 7.1.0;
+  popd;
+done
+```
+
+Después comprobaremos que los paquetes se han subido correctamente a [npmjs](https://www.npmjs.com/search?q=geoladris).
 
 Para terminar, dejaremos la rama de release preparada con la siguiente versión (patch version++):
 
@@ -102,19 +134,31 @@ git commit -m "Bump version to 7.1.1-SNAPSHOT"
 git push
 ```
 
+y, para repositorios con subdirectorios:
+
+```bash
+for i in `ls */package.json`; do
+  pushd `dirname $i`;
+  yarn version --no-git-tag-version --new-version 7.1.1-SNAPSHOT;
+  popd;
+done
+```
+
 ### Actualizar documentación
 
 Una vez la versión está publicada, deberemos actualizar la documentación. Las tareas a realizar son:
 
 * Actualizar el changelog con las nuevas versiones, incluyendo fecha de publicación.
 
+* Actualizar los enlaces (la [guía rápida](../user/quickstart.md), la [sección de descargas](../user/download.md)).
+
 * Crear un tag en el repositorio de documentación:
 
-        :::bash
-        git checkout 7.1.x
-        git tag 7.1.0
-        git push --tags
-
+```bash
+git checkout 7.1.x
+git tag v7.1.0
+git push --tags
+```
 
 * Añadir una versión en ReadTheDocs con el nuevo tag.
 
