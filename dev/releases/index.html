@@ -669,7 +669,9 @@ git push -u origin <span class="m">7</span>.1.x
 <p>Todos los cambios que afecten a la publicación de la versión deberán tener asociada una issue en GitHub. La issue deberá pertenecer siempre a la milestone de la versión.</p>
 <p>Todos los cambios hay que documentarlos inmediatamente en el changelog.</p>
 <h3 id="desplegar">Desplegar</h3>
-<p>Cuando el software esté listo para el despliegue, actualizaremos la rama de release con la versión definitiva y la publicaremos:</p>
+<p>Cuando el software esté listo para el despliegue, en primer lugar actualizaremos las dependencias entre proyectos para Maven (<code>pom.xml</code>) y npm (<code>package.json</code>). Por ejemplo, si estamos desplegando la versión <code>7.1.0</code>, en el <code>pom.xml</code> y <code>package.json</code> de nuestros plugins deberemos sustituir las versiones de desarrollo (<code>7.1.0-SNAPSHOT</code>/<code>7.1.0-alpha.x</code>) por la versión final (<code>7.1.0</code>).</p>
+<p>En caso de actualizar algún fichero <code>package.json</code> hay que recordar volver a ejecutar <code>yarn</code> para actualizar el fichero <code>yarn.lock</code> y subirlo al repositorio también.</p>
+<p>Una vez todas las versiones están listas, actualizaremos la rama de release con la versión definitiva y la publicaremos:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Bump</span>
 git checkout <span class="m">7</span>.1.x
 mvn versions:set -DnewVersion<span class="o">=</span><span class="m">7</span>.1.0
@@ -681,13 +683,37 @@ git add .
 git commit -m <span class="s2">&quot;Bump version to 7.1.0&quot;</span>
 
 <span class="c1"># Push</span>
-git tag <span class="m">7</span>.1.0
+git tag v7.1.0
 git push
 git push --tags
 </pre></div>
 
 
-<p>El despliegue se debería realizar automáticamente con Travis. Deberemos esperar a que Travis envíe el correo de notificación de éxito y luego comprobar que los artefactos se han publicado correctamente, tanto con <a href="nullisland.geomati.co:8082/repository/releases/org/geoladris">Maven</a> como con <a href="https://www.npmjs.com/search?q=geoladris">yarn</a>.</p>
+<p>En el caso de repositorios con múltiples suproyectos, además deberemos cambiar la versión en todos los subdirectorios:</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>ls */package.json<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nb">pushd</span> <span class="sb">`</span>dirname <span class="nv">$i</span><span class="sb">`</span><span class="p">;</span>
+  yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.0<span class="p">;</span>
+  popd<span class="p">;</span>
+<span class="k">done</span>
+</pre></div>
+
+
+<p>El despliegue de los artefactos Java se debería realizar automáticamente con Travis. Deberemos esperar a que Travis envíe el correo de notificación de éxito y luego comprobar que los artefactos se han publicado correctamente en <a href="http://central.maven.org/maven2/com/github/geoladris">Maven</a> (la publicación de artefactos en el repositorio central de Maven puede tardar hasta 10 minutos).</p>
+<p>Sin embargo, la publicación de paquetes JavaScript ha de ser manual. Para ello, deberemos ejecutar la siguiente instrucción:</p>
+<div class="codehilite"><pre><span></span>yarn publish --no-git-tag-version --access public --new-version <span class="m">7</span>.1.0
+</pre></div>
+
+
+<p>o, para repositorios con múltiples proyectos:</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>ls */package.json<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nb">pushd</span> <span class="sb">`</span>dirname <span class="nv">$i</span><span class="sb">`</span><span class="p">;</span>
+  yarn publish --no-git-tag-version --access public --new-version <span class="m">7</span>.1.0<span class="p">;</span>
+  popd<span class="p">;</span>
+<span class="k">done</span>
+</pre></div>
+
+
+<p>Después comprobaremos que los paquetes se han subido correctamente a <a href="https://www.npmjs.com/search?q=geoladris">npmjs</a>.</p>
 <p>Para terminar, dejaremos la rama de release preparada con la siguiente versión (patch version++):</p>
 <div class="codehilite"><pre><span></span>mvn versions:set -DnewVersion<span class="o">=</span><span class="m">7</span>.1.1-SNAPSHOT
 yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.1-SNAPSHOT
@@ -698,6 +724,15 @@ git push
 </pre></div>
 
 
+<p>y, para repositorios con subdirectorios:</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="sb">`</span>ls */package.json<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nb">pushd</span> <span class="sb">`</span>dirname <span class="nv">$i</span><span class="sb">`</span><span class="p">;</span>
+  yarn version --no-git-tag-version --new-version <span class="m">7</span>.1.1-SNAPSHOT<span class="p">;</span>
+  popd<span class="p">;</span>
+<span class="k">done</span>
+</pre></div>
+
+
 <h3 id="actualizar-documentacion">Actualizar documentación</h3>
 <p>Una vez la versión está publicada, deberemos actualizar la documentación. Las tareas a realizar son:</p>
 <ul>
@@ -705,14 +740,19 @@ git push
 <p>Actualizar el changelog con las nuevas versiones, incluyendo fecha de publicación.</p>
 </li>
 <li>
+<p>Actualizar los enlaces (la <a href="../../user/quickstart/">guía rápida</a>, la <a href="../../user/download/">sección de descargas</a>).</p>
+</li>
+<li>
 <p>Crear un tag en el repositorio de documentación:</p>
+</li>
+</ul>
 <div class="codehilite"><pre><span></span>git checkout <span class="m">7</span>.1.x
-git tag <span class="m">7</span>.1.0
+git tag v7.1.0
 git push --tags
 </pre></div>
 
 
-</li>
+<ul>
 <li>
 <p>Añadir una versión en ReadTheDocs con el nuevo tag.</p>
 </li>
