@@ -1,6 +1,6 @@
 This project follows [semantic versioning](http://semver.org).
 
-## Core - Sin publicar (7.0.0)
+## Core - 7.0.0 [20-02-2018]
 
 ### Modificado
 
@@ -18,7 +18,7 @@ This project follows [semantic versioning](http://semver.org).
 
 * Error al arrancar aplicaciones con Tomcat 8.0.x.
 
-## Plugins - Sin publicar (7.0.0)
+## Plugins - 7.0.0 [20-02-2018]
 
 ### Añadido
 
@@ -42,7 +42,7 @@ This project follows [semantic versioning](http://semver.org).
 * El plugin `tour` no incluye ninguna configuración por defecto (ya que es específica de las aplicaciones).
 * Los servicios de estadísticas no funcionaban en ciertos entornos con Tomcat (no tenía permisos para escribir el fichero de log).
 
-## Apps - Sin publicar (7.0.0)
+## Apps - 7.0.0 [20-02-2018]
 
 ### Añadido
 
