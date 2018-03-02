@@ -1,4 +1,4 @@
-Para crear una aplicación propia, Geoladris proporciona un [script](https://raw.githubusercontent.com/geoladris/core/master/build-tools/geoladris_build.sh) bash (Linux). Este script utiliza un fichero `build.json` que describe la aplicación y (opcionalmente) un [directorio de configuración](config.md#directorio-de-configuracion) (llamado `config` junto a `build.json`) y produce un paquete `.war` listo para desplegar.
+Para crear una aplicación propia, Geoladris proporciona un [script](https://raw.githubusercontent.com/geoladris/core/7.0.x/build-tools/geoladris_build.sh) bash (Linux). Este script utiliza un fichero `build.json` que describe la aplicación y (opcionalmente) un [directorio de configuración](config.md#directorio-de-configuracion) (llamado `config` junto a `build.json`) y produce un paquete `.war` listo para desplegar.
 
 Por ejemplo, se puede crear una aplicación que contenga únicamente los plugins `base` y `layers-editor` utilizando este fichero `build.json`:
 
