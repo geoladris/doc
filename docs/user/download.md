@@ -6,10 +6,12 @@ Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar direct
 ## Estable
 
 * [Demo 7.0.0](https://repo1.maven.org/maven2/com/github/geoladris/apps/demo/7.0.0/demo-7.0.0.war)
+* [Essential 7.0.0](https://repo1.maven.org/maven2/com/github/geoladris/apps/essential/7.0.0/essential-7.0.0.war)
 
 ## Desarrollo
 
 * [Demo Latest](https://oss.sonatype.org/content/repositories/snapshots/com/github/geoladris/apps/demo/7.1.0-SNAPSHOT/)
+* [Essential Latest](https://oss.sonatype.org/content/repositories/snapshots/com/github/geoladris/apps/essential/7.1.0-SNAPSHOT/)
 
 ## Docker
 
