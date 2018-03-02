@@ -87,17 +87,17 @@
         }, 
         {
             "location": "/user/download/", 
-            "text": "Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar directamente y probar. Estas aplicaciones son:\n\n\n\n\ndemo\n: Aplicaci\u00f3n con la mayor parte de la funcionalidad de Geoladris. \u00datil como plantilla para configurar una aplicaci\u00f3n propia.\n\n\nessential\n: Aplicaci\u00f3n con la m\u00ednima funcionalidad de Geoladris. \u00datil como base para desarrollo.\n\n\n\n\nEstable\n\n\n\n\nDemo 7.0.0\n\n\n\n\nDesarrollo\n\n\n\n\nDemo Latest\n\n\n\n\nDocker\n\n\n\n\nDemo\n.", 
+            "text": "Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar directamente y probar. Estas aplicaciones son:\n\n\n\n\ndemo\n: Aplicaci\u00f3n con la mayor parte de la funcionalidad de Geoladris. \u00datil como plantilla para configurar una aplicaci\u00f3n propia.\n\n\nessential\n: Aplicaci\u00f3n con la m\u00ednima funcionalidad de Geoladris. \u00datil como base para desarrollo.\n\n\n\n\nEstable\n\n\n\n\nDemo 7.0.0\n\n\nEssential 7.0.0\n\n\n\n\nDesarrollo\n\n\n\n\nDemo Latest\n\n\nEssential Latest\n\n\n\n\nDocker\n\n\n\n\nDemo\n.", 
             "title": "Descargas"
         }, 
         {
             "location": "/user/download/#estable", 
-            "text": "Demo 7.0.0", 
+            "text": "Demo 7.0.0  Essential 7.0.0", 
             "title": "Estable"
         }, 
         {
             "location": "/user/download/#desarrollo", 
-            "text": "Demo Latest", 
+            "text": "Demo Latest  Essential Latest", 
             "title": "Desarrollo"
         }, 
         {
