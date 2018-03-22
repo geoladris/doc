@@ -1283,12 +1283,25 @@
 <h2 id="mapa">Mapa</h2>
 <h3 id="activate-exclusive-control"><code>activate-exclusive-control</code></h3>
 <p>Pide la activación exclusiva del control que se pasa como parámetro y la desactivación del control exclusivo que estuviera activado en el momento de lanzar el mensaje.</p>
-<p><strong>Parámetros</strong>: OpenLayers.Control</p>
+<p><strong>Parámetros</strong>: Un objeto con las siguientes propiedades:</p>
+<ul>
+<li><code>controlIds</code>: Array de identificadores de controles, creados con <code>map:createControl</code>.</li>
+</ul>
 <p><strong>Ejemplo de uso</strong>:</p>
-<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">clickControl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Control</span><span class="p">({</span>
-<span class="p">...</span>
+<div class="codehilite"><pre><span></span><span class="nx">define</span><span class="p">([</span> <span class="s2">&quot;ol2/controlRegistry&quot;</span> <span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">controlRegistry</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">controlRegistry</span><span class="p">.</span><span class="nx">registerControl</span><span class="p">(</span><span class="s1">&#39;measure&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Control</span><span class="p">.</span><span class="nx">Measure</span><span class="p">(</span><span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Handler</span><span class="p">.</span><span class="nx">Path</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">bus</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;map:createControl&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;controlId&#39;</span><span class="o">:</span> <span class="s1">&#39;measure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;controlType&#39;</span><span class="o">:</span> <span class="s1">&#39;measure&#39;</span>
+  <span class="p">});</span>
+  <span class="nx">bus</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;activate-exclusive-control&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">controlIds</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;measure&#39;</span><span class="p">]</span>
+  <span class="p">});</span>
+  <span class="p">...</span>
 <span class="p">});</span>
-<span class="nx">bus</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;activate-exclusive-control&quot;</span><span class="p">,</span> <span class="p">[</span> <span class="nx">clickControl</span> <span class="p">]);</span>
 </pre></div>
 
 
