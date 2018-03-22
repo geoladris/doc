@@ -317,15 +317,27 @@ bus.send("show-layer-panel", [ "layers_transparency_selector" ]);
 
 Pide la activación exclusiva del control que se pasa como parámetro y la desactivación del control exclusivo que estuviera activado en el momento de lanzar el mensaje.
 
-**Parámetros**: OpenLayers.Control
+**Parámetros**: Un objeto con las siguientes propiedades:
+
+* `controlIds`: Array de identificadores de controles, creados con `map:createControl`.
 
 **Ejemplo de uso**:
 
 ```js
-var clickControl = new OpenLayers.Control({
-...
+define([ "ol2/controlRegistry" ], function(controlRegistry) {
+  ...
+  controlRegistry.registerControl('measure', function(message) {
+    return new OpenLayers.Control.Measure(OpenLayers.Handler.Path);
+  });
+  bus.send('map:createControl', {
+    'controlId': 'measure',
+    'controlType': 'measure'
+  });
+  bus.send("activate-exclusive-control", {
+	controlIds: ['measure']
+  });
+  ...
 });
-bus.send("activate-exclusive-control", [ clickControl ]);
 ```
 
 ### `zoom-in`
