@@ -135,6 +135,8 @@ Para esto, basta con copiar el plugin que se desea incluir dentro del directorio
 
 La única limitación es que los plugins han de ser plugins [cliente](../dev/plugins.md#cliente); es decir, plugins con código JavaScript exclusivamente. No es posible desplegar en caliente código Java con nuevos servicios.
 
+Existen multitud de plugins. Se podrá encontrar información sobre ellos en la referencia a los [plugins](../ref/plugins.md)
+
 ## Recursos estáticos
 
 En ocasiones es útil poder servir recursos estáticos directamente desde la aplicación web. Para eso existe el directorio `<config_dir>/static`. Cualquier fichero que se incluya en este directorio se servirá automáticamente a través de la URL `http://<host>/<app>/static/*`. Por ejemplo, se podría acceder a un fichero `<config_dir>/static/header.png` a través de `http://localhost:8080/demo/static/header.png`.
@@ -146,7 +148,7 @@ Geoladris reconoce algunos fichero estáticos específicos:
 
 ## `<config_dir>/portal.properties`
 
-Fichero de propiedades. Cada plugin define sus propiedades (ver [referencia](../ref/plugins.md)). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.
+Fichero de propiedades. Cada plugin define sus propiedades (ver [referencia](../ref/portal-properties.md)). Estas propiedades son privadas y nunca abandonan el servidor, por lo que es un buen sitio para almacenar contraseñas y otra información sensible.
 
 ## Configurar caché
 
