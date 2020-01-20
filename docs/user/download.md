@@ -5,16 +5,13 @@ Geoladris proporciona alguna aplicaciones de ejemplo para poder descargar direct
 
 ## Estable
 
-* [Demo 6.0.2](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/6.0.2/demo-6.0.2.war)
+* [Demo 7.0.0](https://repo1.maven.org/maven2/com/github/geoladris/apps/demo/7.0.0/demo-7.0.0.war)
+* [Essential 7.0.0](https://repo1.maven.org/maven2/com/github/geoladris/apps/essential/7.0.0/essential-7.0.0.war)
 
 ## Desarrollo
 
-* [Demo Latest](http://nullisland.geomati.co:8082/repository/snapshots/org/fao/unredd/apps/demo/7.0.0-SNAPSHOT/demo-7.0.0-SNAPSHOT.war)
-
-## Versiones antiguas
-
-* [Demo 5.0.0](http://nullisland.geomati.co:8082/repository/releases/org/fao/unredd/apps/demo/5.0.0/demo-5.0.0.war)
-
+* [Demo Latest](https://oss.sonatype.org/content/repositories/snapshots/com/github/geoladris/apps/demo/7.1.0-SNAPSHOT/)
+* [Essential Latest](https://oss.sonatype.org/content/repositories/snapshots/com/github/geoladris/apps/essential/7.1.0-SNAPSHOT/)
 
 ## Docker
 

@@ -172,21 +172,18 @@ De la misma manera que el directorio de configuración, estas variables pueden e
 	</context-param>
 ```
 
-## Adaptación del aspecto gráfico
+## Base de datos
 
-### *Favicon*
+Las aplicaciones `demo` y `develop` que proporciona Geoladris traen la posibilidad de conectar automáticamente a la base de datos que utilizarán algunos de los plugins (como el plugin `feedback`, por ejemplo).
 
-Se conoce como *favicon* al icono que se muestra en el navegador en la barra de direcciones. Para personalizar el *favicon*
-del portal, basta con copiar la imagen en el directorio ``static/img``. El nombre de la imagen sólo puede ser `favicon.ico` o `favicon.png`.
+Para configurar esta base de datos es necesario configurar las siguientes propiedades Java:
 
-![](images/favicon.png)
+- `GEOLADRIS_DB_URL`: URL JDBC de la base de datos. Por ejemplo: `jdbc:postgresql://localhost:5432/geoladris`.
+- `GEOLADRIS_DB_USER`: Usuario para la autenticación con la base de datos.
+- `GEOLADRIS_DB_PASS`: Contraseña para la autenticación con la base de datos.
 
-### Estilos predefinidos (CSS)
+Por ejemplo, para configurarlo en Tomcat bastaría con establecer `JAVA_OPTS`:
 
-En ciertos casos se requiere modificar los estilos que vienen predefinidos para OpenLayers, jQuery o cualquier otro. En estos casos, en lugar de modificar los estilos directamente en el fichero que se encuentra en `<tomcat>/webapps/portal`, se ha de crear un nuevo fichero `overrides.css` en el directorio `<config_dir>/static/` que contenga las reglas CSS que se desean modificar.
-
-De esta manera, tendrán preferencia las reglas que se escriban en `overrides.css` frente a cualquier otra que se encuentre en
-`<tomcat>/webapps/portal`.
-
-Además, cuando se despliegue una actualización del portal en Tomcat, el fichero `overrides.css` no se modificará, manteniendo
-así la personalización.
+```bash
+JAVA_OPTS=-DGEOLADRIS_CONFIG_DIR=/var/geoladris -DGEOLADRIS_DB_URL=jdbc:postgresql://localhost:5432/geoladris -DGEOLADRIS_DB_USER=admin -DGEOLADRIS_DB_PASS=geoladris
+```
