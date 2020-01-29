@@ -1,7 +1,10 @@
-site_name: Geoladris
-theme: 'material'
+site_name: Documentación de la Plataforma de Diseminación de datos SNMB-Argentina
+theme: material
 markdown_extensions: [codehilite]
-pages:
+plugins:
+    - pdf-export:
+        combined: true
+nav:
 - Home: index.md
 - Usuario:
     - 'Guía rápida': user/quickstart.md

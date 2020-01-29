@@ -1,4 +1,4 @@
-En primer lugar hay que clonar los repositorios de Geoladris (ver [repositorios](source_code#repositorios)):
+En primer lugar hay que clonar los repositorios de Geoladris (ver [repositorios](source_code.md#repositorios)):
 
 ```
 git clone git@github.com:geoladris/core.git

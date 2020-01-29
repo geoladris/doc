@@ -7,7 +7,7 @@ wget http://apache.rediris.es/tomcat/tomcat-8/v8.5.27/bin/apache-tomcat-8.5.27.t
 tar xzf apache-tomcat-8.5.27.tar.gz
 ```
 
-Configuraremos el directorio de Geoladris para Tomcat (ver [más](../user/config#directorio-de-configuracion)):
+Configuraremos el directorio de Geoladris para Tomcat (ver [más](../user/config.md#directorio-de-configuracion)):
 
 ```bash
 echo "JAVA_OPTS=-DGEOLADRIS_CONFIG_DIR=$PWD/geoladris_config_dir" > apache-tomcat-8.5.27/bin/setenv.sh
