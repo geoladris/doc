@@ -1,4 +1,4 @@
-# Documentación de Geoladris
+# Documentación de la Plataforma de Diseminación de datos SNMB-Argentina
 
 ## Usuario
 

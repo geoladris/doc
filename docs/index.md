@@ -1,4 +1,4 @@
-# Documentación de Geoladris
+# Documentación de la Plataforma de Diseminación de datos SNMB-Argentina
 
 ## Usuario
 
@@ -17,6 +17,12 @@
 * [Publicación](dev/releases.md).
 * [Migración](dev/migrate.md).
 * [Contribuir](dev/contribute.md).
+
+## Documentación técnica
+
+* [Diagrama de clases](dev/class_diagram.md)
+* [Diagrama Entidad-Relación](dev/entidad_relacion.md)
+* [Árbol de capas](dev/layers.md)
 
 ## Referencia
 
